@@ -24,11 +24,10 @@ public class DemoApplication {
 	@Bean
 	CommandLineRunner runner(FlightRepository repository) {
 		return args -> {
-		Flight flight = new Flight(250);
-		repository.insert(flight);
+			Flight flight = new Flight(250);
+			repository.insert(flight);
 		};
 
 	}
 
 }
-
