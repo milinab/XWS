@@ -19,5 +19,9 @@ public class Flight {
     private String departurePlace;
     private String arrivalPlace;
     private Float price;
+    private Integer maxCapacity;
 
+    public Flight(Integer maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
 }
