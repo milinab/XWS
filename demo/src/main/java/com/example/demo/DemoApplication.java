@@ -22,10 +22,12 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(FlightRepository repository) {
+	CommandLineRunner runner(FlightRepository repository, AppUserRepository appUserRepository) {
 		return args -> {
 			Flight flight = new Flight(250);
+			AppUser appUser = new AppUser("kia", "Aleksa", "Ignjatovic", "aleksaignjatovic20@gmail.com", "123");
 			repository.insert(flight);
+			appUserRepository.insert(appUser);
 		};
 
 	}
