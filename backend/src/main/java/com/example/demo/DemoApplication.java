@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.enums.TicketStatus;
 import com.example.demo.model.AppUser;
 import com.example.demo.model.Flight;
 import com.example.demo.model.Ticket;
@@ -28,7 +29,8 @@ public class DemoApplication {
 		return args -> {
 			Flight flight = new Flight(250);
 			AppUser appUser = new AppUser("kia", "Aleksa", "Ignjatovic", "aleksaignjatovic20@gmail.com", "123");
-			Ticket ticket = new Ticket(flight, appUser);
+			TicketStatus ticketStatus = TicketStatus.valueOf("APPROVED");
+			Ticket ticket = new Ticket(flight, appUser, ticketStatus);
 			repository.insert(flight);
 			ticketRepository.insert(ticket);
 			appUserRepository.insert(appUser);
