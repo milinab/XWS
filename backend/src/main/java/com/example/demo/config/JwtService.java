@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.model.AppUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -29,11 +30,13 @@ public class JwtService {
         return claimResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(AppUser userDetails) {
+        HashMap<String,String> map = new HashMap<>();//Creating HashMap.
+        map.put("role", userDetails.getAuthorities().iterator().next().toString());
+        return generateToken(map, userDetails);
     }
 
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+    public String generateToken(Map<String, String> extraClaims, UserDetails userDetails) {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
