@@ -30,7 +30,7 @@ public class DemoApplication {
 			Flight flight = new Flight(250);
 			AppUser appUser = new AppUser("kia", "Aleksa", "Ignjatovic", "aleksaignjatovic20@gmail.com", "123");
 			TicketStatus ticketStatus = TicketStatus.valueOf("APPROVED");
-			Ticket ticket = new Ticket(flight, appUser, ticketStatus);
+			Ticket ticket = new Ticket(flight, appUser, ticketStatus, 4);
 			repository.insert(flight);
 			ticketRepository.insert(ticket);
 			appUserRepository.insert(appUser);
