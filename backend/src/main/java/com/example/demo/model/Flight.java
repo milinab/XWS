@@ -24,4 +24,39 @@ public class Flight {
     public Flight(Integer maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
+
+    public Flight(String id, Integer maxCapacity) {
+        this.id = id;
+        this.maxCapacity = maxCapacity;
+    }
+
+    public Flight(Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departurePlace = departurePlace;
+        this.arrivalPlace = arrivalPlace;
+        this.price = price;
+        this.maxCapacity = maxCapacity;
+    }
+
+    public Flight(String id, Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
+        this.id = id;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departurePlace = departurePlace;
+        this.arrivalPlace = arrivalPlace;
+        this.price = price;
+        this.maxCapacity = maxCapacity;
+    }
+
+    public Flight(String id) {
+        this.id = id;
+    }
+
+    public Flight() {
+    }
 }
