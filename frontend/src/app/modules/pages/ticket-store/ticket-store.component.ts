@@ -11,6 +11,7 @@ import { TicketService } from '../../airline/service/ticket.service';
 })
 export class TicketStoreComponent implements OnInit {
   flights: Flight[] = [];
+  flight: any;
   selectedFlight: any;
   numTickets: any;
 
@@ -26,14 +27,11 @@ export class TicketStoreComponent implements OnInit {
   }
 
   buyTickets(): void {
-    const tickets: Ticket[] = [];
-    for (let i = 0; i < this.numTickets; i++) {
-      const ticket: Ticket = {
-        flight: this.selectedFlight,
-        numberOfTickets: 1,
-      };
-      tickets.push(ticket);
-    }
+    const tickets: Ticket = {
+      flightId: this.selectedFlight.id,
+      numberOfTickets: this.numTickets,
+      appUserId: "asdfas"
+    };
 
     this.ticketService.createMultipleTickets(tickets).subscribe(
       (createdTickets) => {

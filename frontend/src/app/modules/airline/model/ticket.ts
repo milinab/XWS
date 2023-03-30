@@ -1,6 +1,5 @@
-import {Flight} from "./flight";
-
 export interface Ticket{
-  flight: Flight;
+  appUserId: string;
+  flightId: string;
   numberOfTickets: number;
 }
