@@ -28,6 +28,6 @@ public class DemoApplication {
 	CommandLineRunner runner(FlightRepository repository, AppUserRepository appUserRepository, TicketRepository ticketRepository) {
 		return args -> {
 
+		};
 	}
-
 }

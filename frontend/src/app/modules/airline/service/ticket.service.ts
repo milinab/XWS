@@ -15,7 +15,7 @@ export class TicketService {
     return this.http.post<Ticket>(`${this.baseUrl}`, ticket);
   }
 
-  createMultipleTickets(tickets: Ticket[]): Observable<Ticket[]> {
+  createMultipleTickets(tickets: Ticket): Observable<Ticket[]> {
     return this.http.post<Ticket[]>(`${this.baseUrl}/multiple`, tickets);
   }
 

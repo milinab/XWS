@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.FlightDTO;
 import com.example.demo.model.Flight;
+import com.example.demo.model.Ticket;
 import com.example.demo.service.FlightService;
 import com.example.demo.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,22 @@ public class FlightController {
         }
         FlightDTO flightDTO = new FlightDTO(flight);
         return new ResponseEntity<>(flightDTO, HttpStatus.OK);
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Flight> createTicket(@RequestBody Flight flight) {
+        Flight savedFlight = null;
+        try {
+            savedFlight = flightService.save(flight);
+            if (savedFlight == null) {
+                System.out.println("aaa");
+                return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            }
+            return new ResponseEntity<Flight>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Flight>(savedFlight, HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping (value = "/all")
