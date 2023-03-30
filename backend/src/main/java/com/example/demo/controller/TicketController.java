@@ -4,6 +4,7 @@ import com.example.demo.dto.TicketDTO;
 import com.example.demo.model.Ticket;
 import com.example.demo.service.TicketService;
 import jakarta.annotation.security.PermitAll;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api/tickets")
+@RequiredArgsConstructor
 
 public class TicketController {
     private TicketService ticketService;
@@ -26,7 +27,7 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
-    @PreAuthorize("")
+    //@PreAuthorize("")
     @GetMapping(value = "/all")
     public ResponseEntity<List<TicketDTO>> GetAllTickets() {
         List<Ticket> ticketList = ticketService.findAll();
