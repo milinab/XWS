@@ -24,6 +24,7 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
+    //@PreAuthorize("")
     @GetMapping(value = "/all")
     public ResponseEntity<List<TicketDTO>> GetAllTickets() {
         List<Ticket> ticketList = ticketService.findAll();
@@ -57,8 +58,8 @@ public class TicketController {
         List<Ticket> ticketList = new ArrayList<>();
         for (int i = 0; i < ticket.getNumberOfTickets(); i++) {
             Ticket newTicket = new Ticket();
-            newTicket.setAppUser(ticket.getAppUser());
-            newTicket.setFlight(ticket.getFlight());
+            newTicket.setAppUserId(ticket.getAppUserId());
+            newTicket.setFlightId(ticket.getFlightId());
             newTicket.setNumberOfTickets(ticket.getNumberOfTickets());
             ticketList.add(ticketService.save(newTicket));
         }

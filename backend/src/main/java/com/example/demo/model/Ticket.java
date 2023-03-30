@@ -12,15 +12,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Ticket {
     @Id
     private String id;
-    private Flight flight;
-    private AppUser appUser;
+    private String flightId;
+    private String appUserId;
     private TicketStatus status;
     private Integer numberOfTickets;
 
 
-    public Ticket(Flight flight, AppUser appUser, TicketStatus ticketStatus, Integer numberOfTickets) {
-        this.flight = flight;
-        this.appUser = appUser;
+    public Ticket(String flight, String appUser, TicketStatus ticketStatus, Integer numberOfTickets) {
+        this.flightId = flight;
+        this.appUserId = appUser;
+        this.status = ticketStatus;
+        this.numberOfTickets = numberOfTickets;
+    }
+    public Ticket(String flight, TicketStatus ticketStatus, Integer numberOfTickets) {
+        this.flightId = flight;
         this.status = ticketStatus;
         this.numberOfTickets = numberOfTickets;
     }

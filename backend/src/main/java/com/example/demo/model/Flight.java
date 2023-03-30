@@ -25,8 +25,8 @@ public class Flight {
         this.maxCapacity = maxCapacity;
     }
 
-    public Flight(String id, Integer maxCapacity) {
-        this.id = id;
+    public Flight(String departurePlace, Integer maxCapacity) {
+        this.departurePlace = departurePlace;
         this.maxCapacity = maxCapacity;
     }
 
@@ -59,4 +59,6 @@ public class Flight {
 
     public Flight() {
     }
+
+
 }
