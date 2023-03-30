@@ -10,6 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api/flights")
@@ -27,6 +30,17 @@ public class FlightController {
         }
         FlightDTO flightDTO = new FlightDTO(flight);
         return new ResponseEntity<>(flightDTO, HttpStatus.OK);
+    }
+
+    @GetMapping (value = "/all")
+    public ResponseEntity<List<FlightDTO>>GetAllFlights(){
+        List<Flight> flightList = flightService.findAll();
+        List<FlightDTO> flightDTOS = new ArrayList<>();
+        for(Flight flight : flightList){
+            flightDTOS.add(new FlightDTO(flight));
+        }
+        System.out.println(flightDTOS);
+        return new ResponseEntity<>(flightDTOS, HttpStatus.OK);
     }
 }
 

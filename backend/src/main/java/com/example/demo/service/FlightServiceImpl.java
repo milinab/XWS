@@ -5,6 +5,7 @@ import com.example.demo.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +22,11 @@ public class FlightServiceImpl implements FlightService{
             return flight.get();
         }
         return null;
+    }
+
+    @Override
+    public List<Flight> findAll() {
+        return flightRepository.findAll();
     }
 
 
