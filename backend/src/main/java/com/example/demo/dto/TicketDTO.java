@@ -13,12 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TicketDTO {
     private String id;
-    private Flight flight;
-    private AppUser appUser;
+    private String flight;
+    private String appUser;
     private TicketStatus status;
     private Integer numberOfTickets;
 
     public TicketDTO(Ticket ticket) {
-        this(ticket.getId(), ticket.getFlight(), ticket.getAppUser(), ticket.getStatus(), ticket.getNumberOfTickets());
+        this(ticket.getId(), ticket.getFlightId(), ticket.getAppUserId(), ticket.getStatus(), ticket.getNumberOfTickets());
     }
 }

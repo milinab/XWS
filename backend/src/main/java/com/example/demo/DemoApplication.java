@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import com.example.demo.enums.TicketStatus;
 import com.example.demo.model.AppUser;
 import com.example.demo.model.Flight;
+import com.example.demo.model.Ticket;
 import com.example.demo.repository.AppUserRepository;
 import com.example.demo.repository.FlightRepository;
+import com.example.demo.repository.TicketRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,11 +25,9 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(FlightRepository repository, AppUserRepository appUserRepository) {
+	CommandLineRunner runner(FlightRepository repository, AppUserRepository appUserRepository, TicketRepository ticketRepository) {
 		return args -> {
 
 		};
-
 	}
-
 }

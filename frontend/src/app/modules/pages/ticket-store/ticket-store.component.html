@@ -2,15 +2,21 @@
   <div class="h2">
         Flight
   </div>
-  <p>
-    <mat-form-field class="mat-form-field" color="primary"> Name: </mat-form-field>
-    <mat-form-field class="mat-form-field" color="primary">  </mat-form-field>
-  <p>
-    <mat-form-field class="mat-form-field" color="primary"> Description: </mat-form-field>
-    <mat-form-field class="mat-form-field" color="primary">  </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field class="mat-form-field" color="primary"> Average grade: </mat-form-field>
-    <mat-form-field class="mat-form-field" color="primary">  </mat-form-field>
-  </p>
+  <div class="container">
+    <h1>Select a Flight</h1>
+    <select [(ngModel)]="selectedFlight" (change)="onFlightSelection(selectedFlight)">
+      <option *ngFor="let flight of flights" [ngValue]="flight">{{ flight.departurePlace }} to {{ flight.arrivalPlace }} - {{ flight.departureDate | date:'medium' }} - {{ flight.price | currency:'USD' }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="numTicketsSelect">Select Number of Tickets:</label>
+    <select id="numTicketsSelect" [(ngModel)]="numTickets">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <button (click)="buyTickets()" [disabled]="!selectedFlight">Buy Tickets</button>
 </div>
