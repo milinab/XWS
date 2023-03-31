@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.enums.FlightStatus;
 import com.mongodb.internal.connection.Time;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -20,6 +21,8 @@ public class Flight {
     private String arrivalPlace;
     private Float price;
     private Integer maxCapacity;
+
+    private FlightStatus status;
 
     public Flight(Integer maxCapacity) {
         this.maxCapacity = maxCapacity;

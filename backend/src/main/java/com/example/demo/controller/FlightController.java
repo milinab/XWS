@@ -33,22 +33,6 @@ public class FlightController {
         return new ResponseEntity<>(flightDTO, HttpStatus.OK);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Flight> createTicket(@RequestBody Flight flight) {
-        Flight savedFlight = null;
-        try {
-            savedFlight = flightService.save(flight);
-            if (savedFlight == null) {
-                System.out.println("aaa");
-                return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-            }
-            return new ResponseEntity<Flight>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<Flight>(savedFlight, HttpStatus.CONFLICT);
-        }
-    }
-
     @GetMapping (value = "/all")
     public ResponseEntity<List<FlightDTO>>GetAllFlights(){
         List<Flight> flightList = flightService.findAll();
@@ -58,6 +42,30 @@ public class FlightController {
         }
         System.out.println(flightDTOS);
         return new ResponseEntity<>(flightDTOS, HttpStatus.OK);
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
+        Flight newFlight = null;
+        try {
+            newFlight = flightService.save(flight);
+            if(newFlight == null) {
+                return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            }
+            return new ResponseEntity<Flight>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<Flight>(newFlight, HttpStatus.CONFLICT);
+        }
+    }
+
+    @PutMapping(consumes = "application/json", value = "/cancel/{id}")
+    public ResponseEntity<Flight> cancelFlight(@PathVariable("id") String id) {
+        Boolean flight = flightService.cancelFlight(id);
+        if (flight== false){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 
