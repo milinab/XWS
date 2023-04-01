@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -73,8 +74,23 @@ public class FlightController {
     @GetMapping("/search")
     public List<Flight> searchFlights(
             @RequestParam("departurePlace") String departurePlace,
-            @RequestParam("arrivalPlace") String arrivalPlace) {
-            return flightService.searchFlights(departurePlace, arrivalPlace);
+            @RequestParam("arrivalPlace") String arrivalPlace,
+            @RequestParam("departureDate") String departureDateString,
+            @RequestParam("arrivalDate") String arrivalDateString,
+            @RequestParam("numPassengers") int numPassengers
+
+    ) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date departureDate = formatter.parse(departureDateString);
+            Date arrivalDate = formatter.parse(arrivalDateString);
+            System.out.println(departureDate.toString());
+
+            return flightService.searchFlights(departurePlace, arrivalPlace, departureDate, arrivalDate, numPassengers);
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

@@ -20,7 +20,7 @@ export class FlightService{
   }
 
 
-  searchFlights(departurePlace: string, arrivalPlace: string ): Observable<Flight[]>{
+  searchFlights(departurePlace: string, arrivalPlace: string, departureDate: Date, arrivalDate: Date, numPassengers: number): Observable<Flight[]>{
     return this.http.get<Flight[]> (this.apiHost + 'api/flights/search', {headers: this.headers});
 
   }

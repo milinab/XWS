@@ -14,6 +14,7 @@ import {CreateFlightComponent} from "./create-flight/create-flight.component";
 import {MaterialModule} from "../../material/material.module";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     NgxMaterialTimepickerModule,
     MatDatepickerModule
   ]

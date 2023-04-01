@@ -9,6 +9,6 @@ public interface FlightService {
     Flight save(Flight flight);
     Flight findOne(String id);
     List<Flight> findAll();
-    List<Flight> searchFlights(String departurePlace, String arrivalPlace);
+    public List<Flight> searchFlights(String departurePlace, String arrivalPlace,  Date departureDate, Date arrivalDate, int numPassengers);
     Boolean cancelFlight(String id);
 }
