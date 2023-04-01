@@ -15,6 +15,7 @@ export class TicketStoreComponent implements OnInit {
   flight: any;
   selectedFlight: any;
   numTickets: any;
+  errorMessage: string = '';
 
   constructor(
     private tokenStorageService: TokenStorageService,
@@ -34,6 +35,7 @@ export class TicketStoreComponent implements OnInit {
       numberOfTickets: this.numTickets,
       appUserId: this.tokenStorageService.getUser().id
     };
+    this.errorMessage = '';
 
     this.ticketService.createMultipleTickets(tickets).subscribe(
       (createdTickets) => {
@@ -43,6 +45,14 @@ export class TicketStoreComponent implements OnInit {
       (error) => {
         // handle error
         console.error(error);
+        if (error.status === 400) {
+          // display error message in template
+          this.errorMessage = 'Not enough capacity';
+        } else {
+          // display generic error message in template
+          this.errorMessage = 'An error occurred. Please try again later.';
+        }
+
       }
     );
   }

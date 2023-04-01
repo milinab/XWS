@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.TicketDTO;
+import com.example.demo.model.Flight;
 import com.example.demo.model.Ticket;
+import com.example.demo.service.FlightService;
 import com.example.demo.service.TicketService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,12 @@ import java.util.List;
 
 public class TicketController {
     private TicketService ticketService;
+    private FlightService flightService;
 
     @Autowired
-    public TicketController(TicketService ticketService) {
+    public TicketController(TicketService ticketService, FlightService flightService) {
         this.ticketService = ticketService;
+        this.flightService = flightService;
     }
 
     //  @PreAuthorize("")
@@ -57,6 +61,16 @@ public class TicketController {
 
     @PostMapping(value ="/multiple",  consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Ticket>> createMultipleTicket(@RequestBody Ticket ticket) {
+        Flight flight = flightService.findOne(ticket.getFlightId());
+        if (flight == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<Ticket> existingTickets = ticketService.findByFlightId(ticket.getFlightId());
+        int totalTickets = existingTickets.size();
+        int remainingCapacity = flight.getMaxCapacity() - totalTickets;
+        if (ticket.getNumberOfTickets() > remainingCapacity) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         List<Ticket> ticketList = new ArrayList<>();
         for (int i = 0; i < ticket.getNumberOfTickets(); i++) {
             Ticket newTicket = new Ticket();

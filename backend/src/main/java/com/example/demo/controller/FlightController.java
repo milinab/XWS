@@ -43,7 +43,6 @@ public class FlightController {
         for(Flight flight : flightList){
             flightDTOS.add(new FlightDTO(flight));
         }
-        System.out.println(flightDTOS);
         return new ResponseEntity<>(flightDTOS, HttpStatus.OK);
     }
 
