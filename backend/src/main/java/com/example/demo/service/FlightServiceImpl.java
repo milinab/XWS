@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.enums.FlightStatus;
 import com.example.demo.model.Flight;
 import com.example.demo.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +38,8 @@ public class FlightServiceImpl implements FlightService{
 
     @Override
     public Flight save(Flight flight){
-        return this.flightRepository.save(flight);
+        flight.setStatus(FlightStatus.SCHEDULED);
+        return flightRepository.save(flight);
     }
 
     public List<Flight> searchFlights(String departurePlace, String arrivalPlace) {
@@ -49,6 +53,17 @@ public class FlightServiceImpl implements FlightService{
         return flightRepository.findAll(example);
     }
 
-
-
+    @Override
+    public Boolean cancelFlight(String id) {
+        Optional<Flight> flight = flightRepository.findById(id);
+        Date departureDate = flight.get().getDepartureDate();
+        LocalDate localDepartureDate = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if(localDepartureDate.isBefore(LocalDate.now()) || flight.get().getStatus().equals(FlightStatus.CANCELLED))
+        {
+            return false;
+        }
+        flight.get().setStatus(FlightStatus.CANCELLED);
+        flightRepository.save(flight.get());
+        return true;
+    }
 }

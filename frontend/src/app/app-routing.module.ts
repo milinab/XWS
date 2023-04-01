@@ -4,9 +4,16 @@ import { HomeComponent } from "./modules/pages/home/home.component";
 import {TicketStoreComponent} from "./modules/pages/ticket-store/ticket-store.component";
 import {FlightsComponent} from "./modules/pages/flights/flights.component";
 
+
+import {LoginComponent} from "./modules/pages/login/login.component";
+import {RegistrationComponent} from "./modules/pages/registration/registration.component";
+
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'ticket-store', component: TicketStoreComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'search-flights', component: FlightsComponent}
 ];
 

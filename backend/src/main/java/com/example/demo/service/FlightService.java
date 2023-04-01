@@ -10,4 +10,5 @@ public interface FlightService {
     Flight findOne(String id);
     List<Flight> findAll();
     List<Flight> searchFlights(String departurePlace, String arrivalPlace);
+    Boolean cancelFlight(String id);
 }

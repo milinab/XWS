@@ -3,6 +3,7 @@ import { Flight } from '../../airline/model/flight';
 import { Ticket } from '../../airline/model/ticket';
 import { FlightService } from '../../airline/service/flight.service';
 import { TicketService } from '../../airline/service/ticket.service';
+import { TokenStorageService } from "../../airline/service/token-storage.service";
 
 @Component({
   selector: 'app-ticket-store',
@@ -16,6 +17,7 @@ export class TicketStoreComponent implements OnInit {
   numTickets: any;
 
   constructor(
+    private tokenStorageService: TokenStorageService,
     private flightService: FlightService,
     private ticketService: TicketService
   ) {}
@@ -30,7 +32,7 @@ export class TicketStoreComponent implements OnInit {
     const tickets: Ticket = {
       flightId: this.selectedFlight.id,
       numberOfTickets: this.numTickets,
-      appUserId: "asdfas"
+      appUserId: this.tokenStorageService.getUser().id
     };
 
     this.ticketService.createMultipleTickets(tickets).subscribe(

@@ -7,28 +7,53 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatToolbar, MatToolbarModule} from '@angular/material/toolbar';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MatInputModule,
     MatButtonModule,
     MatTableModule,
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatRadioModule,
+
   ],
   exports: [
     CommonModule,
-    MatInputModule,
     MatButtonModule,
     MatTableModule,
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatRadioModule
+
   ]
 })
 export class MaterialModule {}
