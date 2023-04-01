@@ -10,6 +10,7 @@ export class FlightService{
   private readonly API_URL = 'http://localhost:8082/api/flights/all';
   apiHost: string = 'http://localhost:8082/';
   headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  baseUrl: string = 'http://localhost:8082/api/flights';
 
 
   constructor(private http: HttpClient) {
@@ -19,9 +20,8 @@ export class FlightService{
     return this.http.get<Flight[]>(this.API_URL);
   }
 
-
-  searchFlights(departurePlace: string, arrivalPlace: string, departureDate: Date, arrivalDate: Date, numPassengers: number): Observable<Flight[]>{
-    return this.http.get<Flight[]> (this.apiHost + 'api/flights/search', {headers: this.headers});
-
+  searchFlights(searchCriteria: any) {
+    const url = `${this.baseUrl}/search`;
+    return this.http.get<Flight[]>(url, { params: searchCriteria });
   }
 }

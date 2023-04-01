@@ -2,25 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import {FlightService} from "../../airline/service/flight.service";
 import {Flight} from "../../airline/model/flight";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {enableProdMode} from '@angular/core';
 
 @Component({
   selector: 'app-flights',
   templateUrl: './flights.component.html',
-  styleUrls: ['./flights.component.css']
+  styleUrls: ['./flights.component.css'],
+
 })
 export class FlightsComponent implements OnInit {
-  departurePlace: any;
-  arrivalPlace: any;
-  searchResults: Flight[] | undefined;
-  departureDate: any;
-  arrivalDate: any;
-  numPassengers: any;
+   searchResults: Flight[] | undefined;
+    isHidden: boolean = true;
+  searchCriteria = {
+    departurePlace: '',
+    arrivalPlace: '',
+    departureDate: '',
+    arrivalDate: '',
+    numPassengers: 0,
+
+
+  };
 
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
     this.getFlights();
-
   }
 
   getFlights(): void {
@@ -28,6 +34,18 @@ export class FlightsComponent implements OnInit {
       this.searchResults = flights;
     });
   }
+  searchFlights() {
+    this.flightService.searchFlights(this.searchCriteria).subscribe((res) => {
+      this.searchResults = res;
 
+    });
 
+  }
+  reset(){
+    this.getFlights();
+    this.isHidden = true;
+  }
+  hidden(){
+    this.isHidden = !this.isHidden;
+  }
 }
