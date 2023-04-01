@@ -1,0 +1,60 @@
+.title-container-flight{
+  color: #fff;
+  font-size: 26px;
+  padding-bottom: 2%;
+  text-align: center;
+  background-color: #263238;
+  padding-top:2%;
+  margin-top: 20px;
+  border-radius: 50px;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.con{
+  background-color: #fff;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+  position: center;
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 570px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  max-height: 98%;
+  width: 85%;
+}
+
+.input-schedule {
+  margin-top: 20px;
+  width: 60%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.place {
+  margin-left: 340px;
+  padding: 25px;
+  width: 60%;
+}
+
+.price-form {
+  min-width: 50px;
+  max-width: 300px;
+  margin-left: 340px;
+  width: 70%;
+  padding: 5px;
+}
+
+.example-full-width {
+  width: 100%;
+}

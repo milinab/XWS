@@ -9,6 +9,7 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent} from "./navbar/navbar.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MaterialModule,
     PagesModule,
     HospitalModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MaterialModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

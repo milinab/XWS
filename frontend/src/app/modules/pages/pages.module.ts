@@ -10,8 +10,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from "@angular/material/button";
-import {MatSelectModule} from "@angular/material/select";
+import {CreateFlightComponent} from "./create-flight/create-flight.component";
+import {MaterialModule} from "../../material/material.module";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -19,18 +23,20 @@ import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
     TicketStoreComponent,
     FlightsComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    CreateFlightComponent
   ],
-    imports: [
-        CommonModule,
-        AppRoutingModule,
-        MatFormFieldModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        NgxMaterialTimepickerModule
-    ]
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    NgxMaterialTimepickerModule,
+    MatDatepickerModule
+  ]
 })
 export class PagesModule { }
