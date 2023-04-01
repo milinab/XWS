@@ -15,14 +15,12 @@ public class FlightDTO {
     private String id;
     private Date departureDate;
     private Date arrivalDate;
-    private Time departureTime;
-    private Time arrivalTime;
     private String departurePlace;
     private String arrivalPlace;
     private Float price;
     private Integer maxCapacity;
 
     public FlightDTO(Flight flight){
-        this(flight.getId(), flight.getDepartureDate(), flight.getArrivalDate(), flight.getDepartureTime(), flight.getArrivalTime(), flight.getDeparturePlace(), flight.getArrivalPlace(), flight.getPrice(), flight.getMaxCapacity());
+        this(flight.getId(), flight.getDepartureDate(), flight.getArrivalDate(), flight.getDeparturePlace(), flight.getArrivalPlace(), flight.getPrice(), flight.getMaxCapacity());
     }
 }

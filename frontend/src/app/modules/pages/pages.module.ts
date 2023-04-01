@@ -5,11 +5,13 @@ import { HomeComponent } from './home/home.component';
 import { TicketStoreComponent } from './ticket-store/ticket-store.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
+import { FlightsComponent } from './flights/flights.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     TicketStoreComponent,
+    FlightsComponent,
   ],
     imports: [
         CommonModule,
