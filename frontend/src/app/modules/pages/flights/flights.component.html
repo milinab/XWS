@@ -1,0 +1,37 @@
+<!--<div>-->
+<!--  <ul>-->
+<!--    <li *ngFor="let flight of flights">-->
+<!--      {{flight.departurePlace}} to {{flight.arrivalPlace}}-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
+<table>
+  <thead>
+  <tr>
+    <th>Departure place</th>
+    <th>Arrival place</th>
+    <th>Arrival date</th>
+    <th>Departure date</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let flight of flights">
+    <td>{{ flight.departurePlace }}</td>
+    <td>{{ flight.arrivalPlace }}</td>
+    <td>{{ flight.arrivalDate | date }}</td>
+    <td>{{ flight.departureDate | date }}</td>
+    <td>{{ flight.price }}</td>
+
+  </tr>
+  </tbody>
+</table>
+
+<div><form (ngSubmit)="onSubmit()">
+  <label for="departurePlace">Departure Place:</label>
+  <input type="text" id="departurePlace" name="departurePlace" [(ngModel)]="departurePlace">
+  <label for="arrivalPlace">Arrival Place:</label>
+  <input type="text" id="arrivalPlace" name="arrivalPlace" [(ngModel)]="arrivalPlace">
+  <button type="submit">Search</button>
+</form>
+</div>

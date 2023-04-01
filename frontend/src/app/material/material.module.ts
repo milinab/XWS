@@ -16,7 +16,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {TimepickerModule} from "ngx-bootstrap/timepicker";
 
 
 
@@ -39,8 +38,7 @@ import {TimepickerModule} from "ngx-bootstrap/timepicker";
     MatDialogModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    TimepickerModule
+    MatNativeDateModule
   ],
   exports: [
     CommonModule,
@@ -59,8 +57,7 @@ import {TimepickerModule} from "ngx-bootstrap/timepicker";
     MatDialogModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    TimepickerModule
+    MatNativeDateModule
   ]
 })
 export class MaterialModule {}

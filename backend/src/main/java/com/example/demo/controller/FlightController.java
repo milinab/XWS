@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.FlightDTO;
 import com.example.demo.model.Flight;
-import com.example.demo.model.Ticket;
 import com.example.demo.service.FlightService;
 import com.example.demo.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -66,6 +68,13 @@ public class FlightController {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public List<Flight> searchFlights(
+            @RequestParam("departurePlace") String departurePlace,
+            @RequestParam("arrivalPlace") String arrivalPlace) {
+            return flightService.searchFlights(departurePlace, arrivalPlace);
     }
 }
 

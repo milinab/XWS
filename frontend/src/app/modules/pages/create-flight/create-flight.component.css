@@ -42,9 +42,19 @@
 }
 
 .place {
-  display: block;
-  margin-left: 250px;
-  margin-right: auto;
-  padding: 5px;
+  margin-left: 340px;
+  padding: 25px;
+  width: 60%;
+}
+
+.price-form {
+  min-width: 50px;
+  max-width: 300px;
+  margin-left: 340px;
   width: 70%;
+  padding: 5px;
+}
+
+.example-full-width {
+  width: 100%;
 }

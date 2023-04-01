@@ -15,12 +15,12 @@ public class Flight {
     private String id;
     private Date departureDate;
     private Date arrivalDate;
-    private Time departureTime;
-    private Time arrivalTime;
     private String departurePlace;
     private String arrivalPlace;
     private Float price;
     private Integer maxCapacity;
+    private Integer numPassengers;
+    private String origin;
 
     private FlightStatus status;
 
@@ -28,28 +28,28 @@ public class Flight {
         this.maxCapacity = maxCapacity;
     }
 
+//    public Flight(String id, Integer maxCapacity) {
+//        this.id = id;
+//        this.maxCapacity = maxCapacity;
+//    }
+
     public Flight(String departurePlace, Integer maxCapacity) {
         this.departurePlace = departurePlace;
         this.maxCapacity = maxCapacity;
     }
-
-    public Flight(Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
+    public Flight(Date departureDate, Date arrivalDate, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.price = price;
         this.maxCapacity = maxCapacity;
     }
 
-    public Flight(String id, Date departureDate, Date arrivalDate, Time departureTime, Time arrivalTime, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
+    public Flight(String id, Date departureDate, Date arrivalDate, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
         this.id = id;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.price = price;
@@ -62,6 +62,13 @@ public class Flight {
 
     public Flight() {
     }
+    public Flight(String departurePlace, String arrivalPlace) {
+        this.departurePlace = departurePlace;
+        this.arrivalPlace = arrivalPlace;
+    }
+
+
+
 
 
 }
