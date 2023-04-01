@@ -1,0 +1,97 @@
+.plane-image {
+  height: 50px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.book {
+  font-size: 15px;
+  margin-top: 7px;
+  color: white;
+  font-family: "Candara Light";
+}
+
+.plane-animation {
+  position: relative;
+  width: 98vw;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  background-color: #263238;
+}
+
+.plane-containter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  animation: move 80s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(5600%);
+  }
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-plane {
+  width: 50%;
+  position: absolute;
+  left: 0;
+  top: 150px;
+  display: flex;
+  align-items: center;
+  animation: move_plane 1.5s linear;
+}
+
+@keyframes move_plane {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+h2 {
+  padding-left: 55%;
+  padding-top: 5%;
+  font-family: "Bookman Old Style";
+  font-size: 35px;
+  font-max-size: 35px;
+}
+
+h3 {
+
+  padding-top: 2%;
+  font-family: "Candara Light";
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  width: 40%;
+  padding-left: 55%
+
+}

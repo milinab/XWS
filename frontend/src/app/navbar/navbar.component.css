@@ -5,3 +5,10 @@
 .mat-raised-button {
   margin-left: 8px;
 }
+
+mat-toolbar {
+  background-color: #263238;
+  color: white;
+  font-family: "Bookman Old Style";
+  font-size: 30px;
+}

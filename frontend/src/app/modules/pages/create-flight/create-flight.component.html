@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="con">
+    <form>
+      <div class="title-container-flight">
+        Create a flight
+      </div>
+      <div>
+        <div>
+          <mat-form-field appearance="fill" class="input-schedule">
+            <mat-label>Departure date</mat-label>
+            <input matInput name="picker" [matDatepicker]="picker" [(ngModel)]="departureDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill" class="input-schedule">
+            <mat-label>Arrival date</mat-label>
+            <input matInput name="picker1" [matDatepicker]="picker1" [(ngModel)]="arrivalDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <input type="number" step="0.01" [(ngModel)]="myFloat">
+      </div>
+      <div class="flex">
+        <div class="input-place">
+          <mat-form-field class="place">
+            <mat-label>Departure place</mat-label>
+            <textarea name="departurePlace" class="input-place" [(ngModel)]="departurePlace" matInput placeholder="Departure date"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="input-place">
+          <mat-form-field class="place">
+            <mat-label>Arrival place</mat-label>
+            <textarea name="arrivalPlace" class="input-place" [(ngModel)]="arrivalPlace" matInput placeholder="Arrival date"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <button id="submit" mat-flat-button color="primary" class="input-schedule button-color" (click)="saveFlight()">Submit</button>
+    </form>
+  </div>
+</div>

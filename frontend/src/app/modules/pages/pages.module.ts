@@ -9,22 +9,26 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from "@angular/material/button";
+import {CreateFlightComponent} from "./create-flight/create-flight.component";
+import {MaterialModule} from "../../material/material.module";
 
 @NgModule({
   declarations: [
     HomeComponent,
     TicketStoreComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    CreateFlightComponent
   ],
-    imports: [
-        CommonModule,
-        AppRoutingModule,
-        MatFormFieldModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule
-    ]
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MaterialModule
+  ]
 })
 export class PagesModule { }
