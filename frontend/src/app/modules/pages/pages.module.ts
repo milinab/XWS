@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatSelectModule} from "@angular/material/select";
         ReactiveFormsModule,
         MatInputModule,
         MatButtonModule,
-        MatSelectModule
+        MatSelectModule,
+        NgxMaterialTimepickerModule
     ]
 })
 export class PagesModule { }

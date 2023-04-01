@@ -14,6 +14,26 @@
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Sign In</button>
     </div>
+    <div>
+      <mat-form-field  appearance="fill" class="input-schedule">
+        <mat-label>Choose start time</mat-label>
+        <input id="startTimeSchedule" type="text"
+               matInput
+               [ngxTimepicker]="pickerTime"
+               formControlName="startTime"
+        />
+        <ngx-material-timepicker #pickerTime></ngx-material-timepicker>
+      </mat-form-field>
+      <mat-form-field  appearance="fill" class="input-schedule">
+        <mat-label>Choose finish time</mat-label>
+        <input id="finishTimeSchedule" type="text"
+               matInput
+               [ngxTimepicker]="pickerTime1"
+               formControlName="finishTime"
+        />
+        <ngx-material-timepicker #pickerTime1></ngx-material-timepicker>
+      </mat-form-field>
+    </div>
 
 
   </form>
