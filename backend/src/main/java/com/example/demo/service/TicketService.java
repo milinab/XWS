@@ -9,4 +9,5 @@ public interface TicketService {
     Ticket save(Ticket ticket);
     List<Ticket> findAll();
     List<Ticket> createMultipleTicket(List<Ticket> ticket);
+    List<Ticket> findByFlightId(String flightId);
 }
