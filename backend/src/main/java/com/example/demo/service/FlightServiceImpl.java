@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.enums.FlightStatus;
 import com.example.demo.model.Flight;
 import com.example.demo.repository.FlightRepository;
+import com.example.demo.utils.DateOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @Service
 public class FlightServiceImpl implements FlightService{
     private FlightRepository flightRepository;
+    private DateOperations dateOperations;
 
     @Autowired
     public FlightServiceImpl(FlightRepository flightRepository) {this.flightRepository  = flightRepository;}
@@ -42,16 +44,25 @@ public class FlightServiceImpl implements FlightService{
         return flightRepository.save(flight);
     }
 
-    public List<Flight> searchFlights(String departurePlace, String arrivalPlace) {
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withIgnoreCase()
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
 
-        Flight exampleFlight = new Flight(departurePlace, arrivalPlace);
-        Example<Flight> example = Example.of(exampleFlight, matcher);
+public List<Flight> searchFlights(String departurePlace, String arrivalPlace, Date departureDate, Date arrivalDate, int numPassengers) {
+    List<Flight> allFlights = findAll();
+    List<Flight> matchingFlights = new ArrayList<>();
 
-        return flightRepository.findAll(example);
+    for (Flight flight : allFlights) {
+        System.out.println(flight.getDepartureDate());
+        if (flight.getDeparturePlace() != null && flight.getDeparturePlace().equalsIgnoreCase(departurePlace)
+            && flight.getArrivalPlace() != null && flight.getArrivalPlace().equalsIgnoreCase(arrivalPlace)
+            && dateOperations.isSameDate(flight.getDepartureDate(), departureDate)
+            && dateOperations.isSameDate(flight.getArrivalDate(), arrivalDate)
+                && flight.getMaxCapacity() >= numPassengers) {
+            matchingFlights.add(flight);
+        }
     }
+
+    return matchingFlights;
+}
+
 
     @Override
     public Boolean cancelFlight(String id) {

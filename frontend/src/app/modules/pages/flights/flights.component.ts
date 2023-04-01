@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FlightService} from "../../airline/service/flight.service";
 import {Flight} from "../../airline/model/flight";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-flights',
@@ -10,28 +11,23 @@ import {Flight} from "../../airline/model/flight";
 export class FlightsComponent implements OnInit {
   departurePlace: any;
   arrivalPlace: any;
- // flightsSearch: Flight[] | undefined;
-  flights: Flight[] | undefined;
-
+  searchResults: Flight[] | undefined;
+  departureDate: any;
+  arrivalDate: any;
+  numPassengers: any;
 
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
     this.getFlights();
+
   }
 
   getFlights(): void {
     this.flightService.getAllFlights().subscribe(flights => {
-      this.flights = flights;
+      this.searchResults = flights;
     });
   }
 
-  onSubmit() {
-    this.flightService.searchFlights(this.departurePlace, this.arrivalPlace).subscribe(flights=>{
-      this.flights = flights.filter(flight =>
-        flight.departurePlace === this.departurePlace && flight.arrivalPlace === this.arrivalPlace
-      );
-    })
 
-  }
 }

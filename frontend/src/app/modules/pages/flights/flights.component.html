@@ -16,7 +16,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let flight of flights">
+  <tr *ngFor="let flight of searchResults">
     <td>{{ flight.departurePlace }}</td>
     <td>{{ flight.arrivalPlace }}</td>
     <td>{{ flight.arrivalDate | date }}</td>
@@ -27,11 +27,4 @@
   </tbody>
 </table>
 
-<div><form (ngSubmit)="onSubmit()">
-  <label for="departurePlace">Departure Place:</label>
-  <input type="text" id="departurePlace" name="departurePlace" [(ngModel)]="departurePlace">
-  <label for="arrivalPlace">Arrival Place:</label>
-  <input type="text" id="arrivalPlace" name="arrivalPlace" [(ngModel)]="arrivalPlace">
-  <button type="submit">Search</button>
-</form>
-</div>
+

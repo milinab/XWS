@@ -19,8 +19,6 @@ public class Flight {
     private String arrivalPlace;
     private Float price;
     private Integer maxCapacity;
-    private Integer numPassengers;
-    private String origin;
 
     private FlightStatus status;
 
@@ -62,12 +60,20 @@ public class Flight {
 
     public Flight() {
     }
-    public Flight(String departurePlace, String arrivalPlace) {
+//    public Flight(String departurePlace, String arrivalPlace) {
+//        this.departurePlace = departurePlace;
+//        this.arrivalPlace = arrivalPlace;
+//    }
+
+
+
+    public Flight(String departurePlace, String arrivalPlace, Date departureDate, Date arrivalDate) {
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+
     }
-
-
 
 
 
