@@ -9,6 +9,7 @@ import {LoginComponent} from "./modules/pages/login/login.component";
 import {RegistrationComponent} from "./modules/pages/registration/registration.component";
 import {CreateFlightComponent} from "./modules/pages/create-flight/create-flight.component";
 import {AdminFlightsComponent} from "./modules/pages/admin-flights/admin-flights.component";
+import {MyTicketsComponent} from "./modules/pages/my-tickets/my-tickets.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'create-flight', component: CreateFlightComponent },
   { path: 'home', component: HomeComponent },
   { path: 'search-flights', component: FlightsComponent},
-  { path: 'admin-flights', component: AdminFlightsComponent}
+  { path: 'admin-flights', component: AdminFlightsComponent},
+  { path: 'my-tickets', component: MyTicketsComponent}
 ];
 
 @NgModule({

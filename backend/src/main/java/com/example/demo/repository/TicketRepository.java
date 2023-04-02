@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface TicketRepository extends MongoRepository<Ticket, String> {
     public List<Ticket> findByFlightId(String flightId);
+    List<Ticket> findByAppUserId(String appUserId);
 }

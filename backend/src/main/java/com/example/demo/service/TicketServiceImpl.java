@@ -43,6 +43,13 @@ public class TicketServiceImpl implements TicketService{
     }
 
     @Override
+    public List<Ticket> getTicketsByAppUserId(String appUserId) {
+        return ticketRepository.findByAppUserId(appUserId);
+    }
+
+    @Override
     public List<Ticket> findAll(){ return ticketRepository.findAll();}
+
+
 
 }

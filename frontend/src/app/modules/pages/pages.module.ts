@@ -17,6 +17,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatSelectModule } from '@angular/material/select';
 import {MatIconModule} from "@angular/material/icon";
 import {AdminFlightsComponent} from "./admin-flights/admin-flights.component";
+import { MyTicketsComponent } from './my-tickets/my-tickets.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {AdminFlightsComponent} from "./admin-flights/admin-flights.component";
     RegistrationComponent,
     LoginComponent,
     CreateFlightComponent,
-    AdminFlightsComponent
+    AdminFlightsComponent,
+    MyTicketsComponent
   ],
   imports: [
     CommonModule,

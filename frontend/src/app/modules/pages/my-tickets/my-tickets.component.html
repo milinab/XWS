@@ -1,0 +1,14 @@
+<h1>My Tickets</h1>
+
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+<div *ngIf="tickets.length === 0">
+  <p>No tickets found.</p>
+</div>
+
+<div class="ticket-container">
+  <div class="ticket" *ngFor="let ticket of tickets">
+    <h2>Flight: {{ ticket.flightId }}</h2>
+    <p>Number of Tickets: {{ ticket.numberOfTickets }}</p>
+  </div>
+</div>
