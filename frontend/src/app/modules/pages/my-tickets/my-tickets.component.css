@@ -1,0 +1,31 @@
+.ticket-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ticket {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+
+.ticket h2 {
+  margin-top: 0;
+}
+
+.ticket p {
+  margin-bottom: 5px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}

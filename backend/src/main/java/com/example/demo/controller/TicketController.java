@@ -42,6 +42,12 @@ public class TicketController {
         return new ResponseEntity<>(ticketDTOS, HttpStatus.OK);
     }
 
+    @GetMapping("/tickets/appUserId/{appUserId}")
+    public ResponseEntity<List<Ticket>> getTicketsByAppUserId(@PathVariable String appUserId) {
+        List<Ticket> tickets = ticketService.getTicketsByAppUserId(appUserId);
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
+
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {

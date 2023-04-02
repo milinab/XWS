@@ -10,4 +10,6 @@ public interface TicketService {
     List<Ticket> findAll();
     List<Ticket> createMultipleTicket(List<Ticket> ticket);
     List<Ticket> findByFlightId(String flightId);
+    List<Ticket> getTicketsByAppUserId(String appUserId);
+
 }
