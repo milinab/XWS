@@ -1,0 +1,38 @@
+<table>
+  <thead>
+  <tr>
+    <th>Departure place</th>
+    <th>Arrival place</th>
+    <th>Departure date</th>
+    <th>Arrival date</th>
+    <th>Departure time</th>
+    <th>Arrival time</th>
+    <th>Price</th>
+    <th>Remaining tickets</th>
+    <th>Status</th>
+    <th>Cancel</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let flight of flights">
+    <td>{{ flight.departurePlace }}</td>
+    <td>{{ flight.arrivalPlace }}</td>
+    <td>{{ flight.departureDate | date }}</td>
+    <td>{{ flight.arrivalDate | date }}</td>
+    <td>{{ flight.departureTime}} h</td>
+    <td>{{ flight.arrivalTime}} h</td>
+    <td>{{ flight.price }}</td>
+    <td>{{ flight.remainingTickets }}</td>
+    <td>{{statusToString(flight.status)}}</td>
+    <td><button style="margin-left: 15px; height: 50%" mat-mini-fab class="butt-back" (click)="cancelFlight(flight.id)">
+      <mat-icon>clear</mat-icon>
+    </button></td>
+
+
+  </tr>
+  </tbody>
+</table>
+
+
+
+

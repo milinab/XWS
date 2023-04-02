@@ -1,5 +1,6 @@
+<link rel="stylesheet" href="navbar.component.css">
 <mat-toolbar>
-  <span>ARON Airlines</span>
+  <span (click)="openHome()">ARON Airlines</span>
   <span class="example-spacer"></span>
   <button  *ngIf="!isLoggedIn" mat-raised-button color="accent" class="login-button" (click)="openLogin()">Log in</button>
   <button  *ngIf="!isLoggedIn" mat-raised-button color="accent" class="mat-raised-button" (click)="openRegistration()" mat-dialog-close>Sign up</button>
