@@ -55,6 +55,7 @@ public List<Flight> searchFlights(String departurePlace, String arrivalPlace, Da
             && flight.getArrivalPlace() != null && flight.getArrivalPlace().equalsIgnoreCase(arrivalPlace)
             && dateOperations.isSameDate(flight.getDepartureDate(), departureDate)
             && dateOperations.isSameDate(flight.getArrivalDate(), arrivalDate)
+                && dateOperations.checkBeforeAndAfter(departureDate, arrivalDate)
                 && flight.getMaxCapacity() >= numPassengers) {
             matchingFlights.add(flight);
         }
