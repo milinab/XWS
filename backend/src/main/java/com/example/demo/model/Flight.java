@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 @Data //geteri, seteri, konstruktori...
@@ -15,6 +16,8 @@ public class Flight {
     private String id;
     private Date departureDate;
     private Date arrivalDate;
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;
     private String departurePlace;
     private String arrivalPlace;
     private Float price;
@@ -48,6 +51,18 @@ public class Flight {
         this.id = id;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
+        this.departurePlace = departurePlace;
+        this.arrivalPlace = arrivalPlace;
+        this.price = price;
+        this.maxCapacity = maxCapacity;
+    }
+
+    public Flight(String id, Date departureDate, Date arrivalDate, LocalTime departureTime, LocalTime arrivalTime, String departurePlace, String arrivalPlace, Float price, Integer maxCapacity) {
+        this.id = id;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.price = price;
