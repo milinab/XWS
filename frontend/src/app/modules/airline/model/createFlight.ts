@@ -1,7 +1,6 @@
 import {Time} from "@angular/common";
 
-export class Flight {
-  id: string = '';
+export class CreateFlight {
   departureDate: Date = new Date();
   arrivalDate: Date = new Date();
   departureTime: string = '';
@@ -11,11 +10,9 @@ export class Flight {
   price: number = 0;
   maxCapacity: number = 0;
   status: any;
-  remainingTickets: number = 0;
 
   public constructor(obj?: any) {
     if (obj) {
-      this.id = obj.id;
       this.departureDate = obj.departureDate;
       this.arrivalDate = obj.arrivalDate;
       this.departureTime = obj.departureTime;
@@ -25,7 +22,6 @@ export class Flight {
       this.price = obj.price;
       this.maxCapacity = obj.maxCapacity;
       this.status = obj.status;
-      this.remainingTickets = obj.remainingTickets;
     }
   }
 }

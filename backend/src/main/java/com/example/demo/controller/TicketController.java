@@ -82,5 +82,13 @@ public class TicketController {
         return new ResponseEntity<>(ticketList, HttpStatus.CREATED);
     }
 
+    @GetMapping("/remaining/{flightId}")
+    public ResponseEntity<Integer> getRemainingNumber(@PathVariable String flightId) {
+        Flight flight = flightService.findOne(flightId);
+        List<Ticket> existingTickets = ticketService.findByFlightId(flightId);
+        int totalTickets = existingTickets.size();
+        int remainingCapacity = flight.getMaxCapacity() - totalTickets;
+        return new ResponseEntity<>(remainingCapacity, HttpStatus.OK);
+    }
 }
 

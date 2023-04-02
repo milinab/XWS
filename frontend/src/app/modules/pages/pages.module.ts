@@ -15,6 +15,8 @@ import {MaterialModule} from "../../material/material.module";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatSelectModule } from '@angular/material/select';
+import {MatIconModule} from "@angular/material/icon";
+import {AdminFlightsComponent} from "./admin-flights/admin-flights.component";
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
     FlightsComponent,
     RegistrationComponent,
     LoginComponent,
-    CreateFlightComponent
+    CreateFlightComponent,
+    AdminFlightsComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatSelectModule,
     NgxMaterialTimepickerModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatIconModule
   ]
 })
 export class PagesModule { }

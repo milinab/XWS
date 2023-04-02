@@ -42,19 +42,39 @@
 }
 
 .place {
-  margin-left: 340px;
-  padding: 25px;
-  width: 60%;
+  margin-left: 290px;
+  padding-top: 25px;
+  width: 62%;
+}
+
+.place1 {
+  margin-left: 400px;
+  padding-top: 25px;
+  width:50%;
 }
 
 .price-form {
-  min-width: 50px;
   max-width: 300px;
-  margin-left: 340px;
-  width: 70%;
-  padding: 5px;
+  margin-left: 290px;
+  width:20%;
+  padding-top: 5px;
 }
 
 .example-full-width {
   width: 100%;
 }
+
+.timepicker {
+  place-items: center;
+  width: 20%;
+  font-size: 15px;
+  padding-top: 25px;
+  margin-left: 290px;
+}
+
+.times {
+  display: flex;
+  flex-direction: row;
+}
+
+
