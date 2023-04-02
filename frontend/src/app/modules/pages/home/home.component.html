@@ -22,4 +22,26 @@
   </div>
 </div>
 </body>
+
+<div class="form-container">
+  <form (ngSubmit)="searchFlights()" class="container-search">
+    <label>Departure Place:</label>
+    <input type="text" name="departurePlace"  [(ngModel)]="searchCriteria.departurePlace"><br>
+
+    <label>Arrival Place:</label>
+    <input type="text" name="arrivalPlace"  [(ngModel)]="searchCriteria.arrivalPlace"><br>
+
+    <label>Departure Date:</label>
+    <input type="date" name="departureDate"  [(ngModel)]="searchCriteria.departureDate"><br>
+
+    <label>Arrival Date:</label>
+    <input type="date" name="arrivalDate" [(ngModel)]="searchCriteria.arrivalDate"><br>
+
+    <label>Number of Passengers:</label>
+    <input type="number" name="numPassengers"  [(ngModel)]="searchCriteria.numPassengers"><br>
+
+    <button type="submit">Search Flights</button>
+    <button type="reset">Cancel</button>
+  </form>
+</div>
 </html>

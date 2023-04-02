@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'create-flight', component: CreateFlightComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'search-flights', component: FlightsComponent}
+  { path: 'searched-flights', component: FlightsComponent}
 ];
 
 @NgModule({

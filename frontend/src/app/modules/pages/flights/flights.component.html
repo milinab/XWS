@@ -1,4 +1,7 @@
-<table>
+<div class="container-flights">
+  <div class="example-container">
+
+<table  class="example-table">
   <thead>
   <tr>
     <th>Departure place</th>
@@ -6,7 +9,7 @@
     <th>Arrival date</th>
     <th>Departure date</th>
     <th>Price</th>
-    <th [hidden]="isHidden">Total price</th>
+    <th>Total price</th>
   </tr>
   </thead>
   <tbody>
@@ -16,31 +19,12 @@
     <td>{{ flight.arrivalDate | date }}</td>
     <td>{{ flight.departureDate | date }}</td>
     <td>{{ flight.price }}</td>
-    <td [hidden]="isHidden">{{ flight.price * searchCriteria.numPassengers}}</td>
+    <td>{{ flight.price * searchCriteria.numPassengers}}</td>
   </tr>
   </tbody>
 </table>
-
-<form (ngSubmit)="searchFlights()">
-  <label>Departure Place:</label>
-  <input type="text" name="departurePlace" [(ngModel)]="searchCriteria.departurePlace">
-
-  <label>Arrival Place:</label>
-  <input type="text" name="arrivalPlace" [(ngModel)]="searchCriteria.arrivalPlace">
-
-  <label>Departure Date:</label>
-  <input type="date" name="departureDate" [(ngModel)]="searchCriteria.departureDate">
-
-  <label>Arrival Date:</label>
-  <input type="date" name="arrivalDate" [(ngModel)]="searchCriteria.arrivalDate">
-
-  <label>Number of Passengers:</label>
-  <input type="number" name="numPassengers" [(ngModel)]="searchCriteria.numPassengers">
-
-  <button (click)="hidden()" type="submit">Search Flights</button>
-  <button (click)="reset()" type="reset">Cancel</button>
-</form>
-
+</div>
+</div>
 
 
 

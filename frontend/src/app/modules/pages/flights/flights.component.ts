@@ -3,6 +3,7 @@ import {FlightService} from "../../airline/service/flight.service";
 import {Flight} from "../../airline/model/flight";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {enableProdMode} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-flights',
@@ -12,40 +13,30 @@ import {enableProdMode} from '@angular/core';
 })
 export class FlightsComponent implements OnInit {
    searchResults: Flight[] | undefined;
-    isHidden: boolean = true;
+   // isHidden: boolean = true;
   searchCriteria = {
     departurePlace: '',
     arrivalPlace: '',
     departureDate: '',
     arrivalDate: '',
     numPassengers: 0,
-
-
   };
 
-  constructor(private flightService: FlightService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getFlights();
-  }
+    // var searchedFlight = JSON.parse(t);
 
-  getFlights(): void {
-    this.flightService.getAllFlights().subscribe(flights => {
-      this.searchResults = flights;
-    });
-  }
-  searchFlights() {
-    this.flightService.searchFlights(this.searchCriteria).subscribe((res) => {
-      this.searchResults = res;
+    this.searchResults = history.state.searchResults;
+  console.log(this.searchResults);
+    var a = this.route.snapshot.paramMap.getAll('queryParams')
 
-    });
+    console.log("U FLIGHT:")
+    console.log(a)
 
   }
-  reset(){
-    this.getFlights();
-    this.isHidden = true;
-  }
+
   hidden(){
-    this.isHidden = !this.isHidden;
+   // this.isHidden = !this.isHidden;
   }
 }
