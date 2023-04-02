@@ -40,8 +40,18 @@ public class FlightServiceImpl implements FlightService{
 
     @Override
     public Flight save(Flight flight){
-        flight.setStatus(FlightStatus.SCHEDULED);
-        return flightRepository.save(flight);
+        Date departureDate = flight.getDepartureDate();
+        LocalDate localDepartureDate = departureDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Date arrivalDate = flight.getArrivalDate();
+        LocalDate localArrivalDate = arrivalDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if(localDepartureDate.isAfter(localArrivalDate) || localDepartureDate.isBefore(LocalDate.now()) || localArrivalDate.isBefore(LocalDate.now())) {
+            return null;
+        } else if(localDepartureDate.isEqual(localArrivalDate) && flight.getArrivalTime().isBefore(flight.getDepartureTime())) {
+            return null;
+        } else {
+            flight.setStatus(FlightStatus.SCHEDULED);
+            return flightRepository.save(flight);
+        }
     }
 
 

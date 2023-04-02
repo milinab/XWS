@@ -8,7 +8,7 @@
         <div>
           <mat-form-field appearance="fill" class="input-schedule">
             <mat-label>Departure date</mat-label>
-            <input matInput name="picker" [matDatepicker]="picker" [(ngModel)]="departureDate" [formControl]="dateFormControl">
+            <input matInput name="picker" [matDatepicker]="picker" [(ngModel)]="flight.departureDate" [formControl]="dateFormControl">
             <mat-error *ngIf="dateFormControl.hasError('date') && !dateFormControl.hasError('required')">
               Please enter a date
             </mat-error>
@@ -23,7 +23,7 @@
         <div>
           <mat-form-field appearance="fill" class="input-schedule">
             <mat-label>Arrival date</mat-label>
-            <input matInput name="picker1" [matDatepicker]="picker1" [(ngModel)]="arrivalDate" [formControl]="dateFormControl">
+            <input matInput name="picker1" [matDatepicker]="picker1" [(ngModel)]="flight.arrivalDate" [formControl]="dateFormControl">
             <mat-error *ngIf="dateFormControl.hasError('date') && !dateFormControl.hasError('required')">
               Please enter a date
             </mat-error>
@@ -36,12 +36,20 @@
           </mat-form-field>
         </div>
       </div>
-      <div  class="flex">
+      <div class="times">
+        <mat-form-field class="timepicker">
+          <input type="time" name="time1" [(ngModel)]="flight.departureTime" matInput placeholder="Click to get the departure time" value="00:00" min="00:00" max="12:00">
+        </mat-form-field>
+        <mat-form-field class="timepicker">
+          <input type="time" name="time2" [(ngModel)]="flight.arrivalTime" matInput placeholder="Click to get the arrival time" value="00:00" min="00:00" max="12:00">
+        </mat-form-field>
+      </div>
 
+      <div  class="flex">
         <form class="price-form">
           <mat-form-field class="example-full-width">
             <mat-label>Price</mat-label>
-            <input type="price" step="0.01" matInput [formControl]="priceFormControl" placeholder="Ex. 250.00">
+            <input type="price" name="price" step="0.01" matInput [formControl]="priceFormControl" [(ngModel)]="flight.price" placeholder="Ex. 250.00">
             <mat-error *ngIf="priceFormControl.hasError('price') && !priceFormControl.hasError('required')">
               Please enter a price
             </mat-error>
@@ -53,7 +61,7 @@
         <form class="price-form">
           <mat-form-field class="example-full-width">
             <mat-label>MAX capacity</mat-label>
-            <input type="maxCapacity" step="0.01" matInput [formControl]="maxCapFormControl" placeholder="Ex. 180">
+            <input type="maxCapacity" name="maxCap" step="0.01" matInput [formControl]="maxCapFormControl" [(ngModel)]="flight.maxCapacity" placeholder="Ex. 180">
             <mat-error *ngIf="maxCapFormControl.hasError('maxCapacity') && !maxCapFormControl.hasError('required')">
               Please enter a max capacity of the flight
             </mat-error>
@@ -63,11 +71,11 @@
           </mat-form-field>
         </form>
       </div>
-      <div class="flex">
+      <div class="times">
         <div class="input-place">
           <mat-form-field class="place">
             <mat-label>Departure place</mat-label>
-            <textarea name="departurePlace" class="input-place" [(ngModel)]="departurePlace" matInput placeholder="Departure date" [formControl]="placeDFormControl"></textarea>
+            <textarea name="departurePlace" class="input-place" [(ngModel)]="flight.departurePlace" matInput placeholder="Departure place" [formControl]="placeDFormControl"></textarea>
             <mat-error *ngIf="placeDFormControl.hasError('place') && !placeDFormControl.hasError('required')">
               Please enter a departure place
             </mat-error>
@@ -77,9 +85,9 @@
           </mat-form-field>
         </div>
         <div class="input-place">
-          <mat-form-field class="place">
+          <mat-form-field class="place1">
             <mat-label>Arrival place</mat-label>
-            <textarea name="arrivalPlace" class="input-place" [(ngModel)]="arrivalPlace" matInput placeholder="Arrival date" [formControl]="placeAFormControl"></textarea>
+            <textarea name="arrivalPlace" class="input-place" [(ngModel)]="flight.arrivalPlace" matInput placeholder="Arrival place" [formControl]="placeAFormControl"></textarea>
             <mat-error *ngIf="placeAFormControl.hasError('place') && !placeAFormControl.hasError('required')">
               Please enter an arrival place
             </mat-error>
@@ -90,7 +98,7 @@
         </div>
       </div>
 
-      <button id="submit" mat-flat-button color="accent" class="input-schedule button-color" (click)="saveFlight()">Submit</button>
+      <button id="submit" mat-flat-button color="accent" class="input-schedule button-color" (click)="createFlight()">Submit</button>
     </form>
   </div>
 </div>

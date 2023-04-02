@@ -20,7 +20,6 @@ export class FlightsComponent implements OnInit {
     arrivalDate: '',
     numPassengers: 0,
 
-
   };
 
   constructor(private flightService: FlightService) { }
@@ -48,4 +47,5 @@ export class FlightsComponent implements OnInit {
   hidden(){
     this.isHidden = !this.isHidden;
   }
+
 }
