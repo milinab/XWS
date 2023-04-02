@@ -22,4 +22,8 @@ export class TicketService {
   getAllTickets(): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(`${this.baseUrl}`);
   }
+
+  getTicketsByUserId(userId: string): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.baseUrl}/tickets/appUserId/${userId}`);
+  }
 }

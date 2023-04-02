@@ -15,6 +15,7 @@ import {MaterialModule} from "../../material/material.module";
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { MatSelectModule } from '@angular/material/select';
+import { MyTicketsComponent } from './my-tickets/my-tickets.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
     FlightsComponent,
     RegistrationComponent,
     LoginComponent,
-    CreateFlightComponent
+    CreateFlightComponent,
+    MyTicketsComponent
   ],
   imports: [
     CommonModule,
