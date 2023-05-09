@@ -9,22 +9,28 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccommodationCreateComponent } from './modules/booking/accommodation-create/accommodation-create.component';
 import {FormsModule} from "@angular/forms";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
     AppComponent,
     AccommodationCreateComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        MaterialModule,
-        PagesModule,
-        HospitalModule,
-        FormsModule
-    ],
+  
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MaterialModule,
+    PagesModule,
+    HospitalModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
+
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
