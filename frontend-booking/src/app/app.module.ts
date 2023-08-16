@@ -8,6 +8,7 @@ import { HospitalModule } from "./modules/hospital/hospital.module";
 import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccommodationCreateComponent } from './modules/booking/accommodation-create/accommodation-create.component';
+import {FormsModule} from "@angular/forms";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 
@@ -16,6 +17,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     AppComponent,
     AccommodationCreateComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,7 +27,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     PagesModule,
     HospitalModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
