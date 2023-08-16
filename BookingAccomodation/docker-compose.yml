@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  accomodationdb:
+    image: mongo
+
+  reservationdb:
+    image: mongo
+
+  reservation-service:
+    image: ${DOCKER_REGISTRY-}reservationservice
+    build:
+      context: .
+      dockerfile: reservation-service\Dockerfile
+
+  accomodation-service:
+    image: ${DOCKER_REGISTRY-}accomodationservice
+    build:
+      context: .
+      dockerfile: Accomodations\Dockerfile
+
+  mongo-express:
+    image: mongo-express  
+
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway\Dockerfile
