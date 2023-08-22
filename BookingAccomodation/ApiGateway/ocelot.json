@@ -18,6 +18,23 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/User",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/Reservation/available",
       "UpstreamHttpMethod": [ "Post", "Options" ],
 

@@ -1005,11 +1005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nemanja\\source\\repos\\XML project\\ApiGateway\\ApiGateway.csproj",
+      "projectUniqueName": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
       "projectName": "ApiGateway",
-      "projectPath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\ApiGateway\\ApiGateway.csproj",
+      "projectPath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
       "packagesPath": "C:\\Users\\Nemanja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\ApiGateway\\obj\\",
+      "outputPath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\ApiGateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nemanja\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -2333,11 +2333,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nemanja\\source\\repos\\XML project\\reservation-service\\reservation-service.csproj",
+      "projectUniqueName": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\reservation-service\\reservation-service.csproj",
       "projectName": "reservation-service",
-      "projectPath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\reservation-service\\reservation-service.csproj",
+      "projectPath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\reservation-service\\reservation-service.csproj",
       "packagesPath": "C:\\Users\\Nemanja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\reservation-service\\obj\\",
+      "outputPath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\reservation-service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nemanja\\AppData\\Roaming\\NuGet\\NuGet.Config",

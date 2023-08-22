@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ca79XueH4p9CSe0pv1wATChUHt1Y3N4+7ruOjWa0/uAoObXzK+jeTzQ7alsUghff3bYq1/FKWNlFR4TtRskJ2A==",
+  "dgSpecHash": "OPStvhnkN+wSFi/w3/zQ7o7rbnRS5Jez2YqioDfHQk5xu5wDLUfeVLpuohqqZPWTgBSab9B3t8oqpp2REEfXdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\ApiGateway\\ApiGateway.csproj",
+  "projectFilePath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nemanja\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\Nemanja\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.5\\microsoft.aspnetcore.jsonpatch.7.0.5.nupkg.sha512",

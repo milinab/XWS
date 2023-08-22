@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="325b3862-2680-47d8-ad1f-810eb0c9fc8a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../customer/src/main/java/com/example/customer/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/main/java/com/example/customer/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/main/java/com/example/customer/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/main/java/com/example/customer/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/booking/model/appUser.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/booking/services/user.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/booking/services/user.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/pages/update-profile/update-profile.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/pages/update-profile/update-profile.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/pages/update-profile/update-profile.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/pages/update-profile/update-profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../customer/src/main/java/com/example/customer/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../customer/src/main/java/com/example/customer/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-booking/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-booking/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-booking/src/app/modules/booking/model/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/booking/model/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-booking/src/app/modules/pages/pages.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-booking/src/app/modules/pages/pages.module.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2QOEexHn2BPSVOuK2eLbwAIlPDB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Nemanja/Desktop/ISA-project/ISA-projekat/BloodBank-BE"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="325b3862-2680-47d8-ad1f-810eb0c9fc8a" name="Changes" comment="" />
+      <created>1685216326252</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685216326252</updated>
+      <workItem from="1685216327505" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nemanja\\source\\repos\\XML project\\Accomodations\\Accomodations.csproj": {}
+    "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\Accomodations\\Accomodations.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nemanja\\source\\repos\\XML project\\Accomodations\\Accomodations.csproj": {
+    "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\Accomodations\\Accomodations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nemanja\\source\\repos\\XML project\\Accomodations\\Accomodations.csproj",
+        "projectUniqueName": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\Accomodations\\Accomodations.csproj",
         "projectName": "Accomodations",
-        "projectPath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\Accomodations\\Accomodations.csproj",
+        "projectPath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\Accomodations\\Accomodations.csproj",
         "packagesPath": "C:\\Users\\Nemanja\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nemanja\\source\\repos\\XML project\\Accomodations\\obj\\",
+        "outputPath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\Accomodations\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nemanja\\AppData\\Roaming\\NuGet\\NuGet.Config",

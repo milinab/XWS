@@ -7,6 +7,15 @@ services:
   reservationdb:
     image: mongo
 
+  userdb:
+    image: mongo
+
+  user-service:
+    image: ${DOCKER_REGISTRY-}userservice
+    build:
+      context: .
+      dockerfile: user-service\Dockerfile
+
   reservation-service:
     image: ${DOCKER_REGISTRY-}reservationservice
     build:
