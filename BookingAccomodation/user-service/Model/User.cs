@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace user_service.Model
 {
@@ -12,5 +13,10 @@ namespace user_service.Model
         [BsonRepresentation(BsonType.String)]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+
+        [JsonIgnore]
+        public string PasswordHash { get; set; }
     }
 }

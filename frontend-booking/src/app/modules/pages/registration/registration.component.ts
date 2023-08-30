@@ -30,7 +30,6 @@ export class RegistrationComponent implements OnInit {
       username: this.registerForm.controls.username.value!,
       firstName: this.registerForm.controls.firstName.value!,
       lastName: this.registerForm.controls.lastName.value!,
-      email: this.registerForm.controls.email.value!,
       password: this.registerForm.controls.password.value!,
     })
     console.log(registerRequest);

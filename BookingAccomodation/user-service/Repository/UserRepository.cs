@@ -29,5 +29,15 @@ namespace user_service.Repository
             return;
 
         }
+        public async Task<Model.User> FindByUsernameAsync(string username)
+        {
+            var filter = Builders<Model.User>.Filter.Eq(x => x.Username, username);
+            return await _userCollection.Find(filter).FirstOrDefaultAsync();
+        }
+        public async Task<User> GetByIdAsync(Guid id)
+        {
+            var filter = Builders<User>.Filter.Eq(x => x.Id, id);
+            return await _userCollection.Find(filter).FirstOrDefaultAsync();
+        }
     }
 }

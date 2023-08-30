@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FOowp89ui7sqMh4db5RbEk+iP+x8gFTs8wPjVq6V7KKHqMxqHFQNfRD7ovEwYQJnkIcDM0bn9DUKFZtuFuCQXQ==",
+  "dgSpecHash": "Afr4qr2b4UUndnvHa9XypW177iwM+WHVgH3eh7RNSjLoqkUJzSHefmUQLh/m3TkgtE+OQkGZlImBXHiMFsEEgA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nemanja\\source\\repos\\BookingAccomodation\\Accomodations\\Accomodations.csproj",
+  "projectFilePath": "C:\\Users\\Nemanja\\Desktop\\XML-project\\XWS\\BookingAccomodation\\Accomodations\\Accomodations.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nemanja\\.nuget\\packages\\aspnetcore.identity.mongodbcore\\3.1.2\\aspnetcore.identity.mongodbcore.3.1.2.nupkg.sha512",
     "C:\\Users\\Nemanja\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",

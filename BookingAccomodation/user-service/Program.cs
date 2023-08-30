@@ -1,8 +1,11 @@
 using user_service.Model;
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using user_service.Authorization;
+using user_service.Helpers;
 using user_service.Repository;
 using user_service.Service;
+using user_service.Service.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,9 +35,14 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
     }
 };
 
+
+// Add services to the container.
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
+builder.Services.AddSingleton<IJwtUtils, JwtUtils>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddSingleton<UserRepository>();
 builder.Services.AddSingleton<UserService>();
-
 builder.Services.AddGrpc();
 
 builder.Services.Configure<KestrelServerOptions>(options =>
@@ -67,8 +75,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(opt =>
 {
-    opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
-    //opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:5000");
+    opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200");
+    //opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200/register");
+
+    //opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4000");
 });
 
 
@@ -77,6 +87,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
+// custom jwt auth middleware
+app.UseMiddleware<JwtMiddleware>();
 
 
 app.Run();

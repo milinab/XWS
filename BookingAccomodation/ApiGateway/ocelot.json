@@ -35,6 +35,40 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/User/authenticate",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/authenticate",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/register",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/register",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/Reservation/available",
       "UpstreamHttpMethod": [ "Post", "Options" ],
 

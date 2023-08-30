@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class AuthService {
 
-  apiHost: string = 'http://localhost:8083/';
+  apiHost: string = 'http://localhost:8001/';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   register(registerRequest: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/v1/auth/register', registerRequest, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'api/User/register', registerRequest, {headers: this.headers});
   }
 
 }
