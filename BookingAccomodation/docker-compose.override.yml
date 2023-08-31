@@ -21,7 +21,7 @@ services:
      - "18006:27017"
 
   accomodation-service:
-    container_name: accomodation-service
+    container_name: Accomodations
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "AccomodationDatabase:ConnectionString=mongodb://accomodationdb:27017"

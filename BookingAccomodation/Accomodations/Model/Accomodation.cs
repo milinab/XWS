@@ -15,5 +15,10 @@ namespace Accomodations.Model
         public Guid HostId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public Address Address { get; set; }
+        public Convenience Convenience { get; set; }
+        public List<String> Photos { get; set; }
+        public int MinNumberOfGuests { get; set; }
+        public int MaxNumberOfGuests { get; set; } 
     }
 }
