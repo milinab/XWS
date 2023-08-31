@@ -29,5 +29,28 @@ namespace reservation_service.Repository
             var update = Builders<Reservation>.Update.Set(r => r.Canceled, true);
             await _reservationsCollection.UpdateOneAsync(r => r.Id ==id, update);
         }
+
+        public bool IsAccomodationAvailable(Guid accomodationId, DateTime startDate, DateTime endDate)
+        {
+            List<Reservation> reservations = _reservationsCollection.Find(
+                r =>
+                    accomodationId == r.AccomodationId &&
+                    false == r.Canceled).ToList();
+
+            if (reservations.Count == 0)
+            {
+                return true;
+            }
+
+            foreach (var r in reservations)
+            {
+                if (startDate <= r.EndDate && endDate >= r.StartDate)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

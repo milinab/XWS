@@ -1,4 +1,5 @@
-﻿using Accomodations.Model;
+﻿using Accomodations.Dtos;
+using Accomodations.Model;
 using Accomodations.ProtoServices;
 using Accomodations.Service;
 using AutoMapper;
@@ -54,12 +55,30 @@ namespace Accomodations.Controllers
         }
         
         [HttpPost("available")]
-        public async Task<bool> IsAccomodationAvailable(ReservationForCheckRequest searchRequest)
+        public async Task<IEnumerable<Accomodation>> IsAccomodationAvailable(SearchDto searchRequest)
         {
-            return accomodationAvailableService.IsAccAvailable(
-                searchRequest.AccomodationId,
-                searchRequest.StartDate,
-                searchRequest.EndDate);
+            List<Accomodation> accomodations = _service.checkCityAndNumberOfGuests(searchRequest);
+            if (accomodations.Count == 0)
+            {
+                return Array.Empty<Accomodation>();
+            }
+
+            List<Accomodation> results = new List<Accomodation>();
+
+            foreach (var accomodation in accomodations)
+            {
+                var isAccAvailable = accomodationAvailableService.IsAccAvailable(
+                    accomodation.Id.ToString(), 
+                    searchRequest.StartDate.ToString(),
+                    searchRequest.EndDate.ToString());
+
+                if (isAccAvailable)
+                {
+                    results.Add(accomodation);
+                }
+            }
+
+            return results;
         }
 
     }

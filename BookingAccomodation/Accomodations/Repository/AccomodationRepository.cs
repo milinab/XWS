@@ -1,4 +1,5 @@
-﻿using Accomodations.Model;
+﻿using Accomodations.Dtos;
+using Accomodations.Model;
 using Accomodations.Repository.Interface;
 using AutoMapper;
 using Microsoft.Extensions.Options;
@@ -42,6 +43,18 @@ namespace Accomodations.Repository
         {
             return await _accomodationsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
+        }
+
+        public List<Accomodation> CheckCityAndNumberOfGuests(SearchDto searchRequest)
+        {
+            var numberOfGuests = searchRequest.NumberOfGuests;
+            var city = searchRequest.City;
+            return _accomodationsCollection.Find(
+                a =>
+                    a.Address.City.Equals(city)
+                    && numberOfGuests >= a.MinNumberOfGuests
+                    && numberOfGuests <= a.MaxNumberOfGuests
+            ).ToList();
         }
     }
 }

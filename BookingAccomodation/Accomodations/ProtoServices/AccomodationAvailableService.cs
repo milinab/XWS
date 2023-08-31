@@ -17,6 +17,7 @@ public class AccomodationAvailableService : IAccomodationAvailableService
     public bool IsAccAvailable(String id, String startDate, String endDate)
     {
         Console.WriteLine($"--> Calling GRPC Service {_configuration["GrpcCheckAccomodationsReservation"]} ");
+        Console.WriteLine($"Parameters {id}, {startDate}, {endDate}");
         var channel = GrpcChannel.ForAddress(_configuration["GrpcCheckAccomodationsReservation"]);
         var client = new GrpcCheckAvailability.GrpcCheckAvailabilityClient(channel);
         var request = new ReservationForCheckRequest {

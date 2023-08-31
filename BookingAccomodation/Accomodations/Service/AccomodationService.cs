@@ -1,4 +1,5 @@
-﻿using Accomodations.Model;
+﻿using Accomodations.Dtos;
+using Accomodations.Model;
 using Accomodations.Repository;
 using Accomodations.Service.Interface;
 
@@ -23,5 +24,10 @@ namespace Accomodations.Service
 
         public async Task<Accomodation> GetAccomodationById(Guid id) =>
             await _repository.GetAccomodationById(id);
+
+        public List<Accomodation> checkCityAndNumberOfGuests(SearchDto searchRequest)
+        {
+           return _repository.CheckCityAndNumberOfGuests(searchRequest);
+        }
     }
 }

@@ -46,6 +46,15 @@ namespace reservation_service.Service
                 return false;
             }
         }
+
+        public bool IsAccomodationAvailable(string requestAccomodationId, string requestStartDate, string requestEndDate)
+        {
+            Guid accomodationId = Guid.Parse(requestAccomodationId);
+            DateTime startDate = DateTime.Parse(requestStartDate);
+            DateTime endDate = DateTime.Parse(requestEndDate);
+
+            return _repository.IsAccomodationAvailable(accomodationId, startDate, endDate);
+        }
     }
 
 }
