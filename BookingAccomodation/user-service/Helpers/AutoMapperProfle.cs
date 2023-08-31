@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using MongoDB.Driver.Core.Operations;
 using user_service.Model;
-using UpdateRequest = user_service.Model.UpdateRequest;
 
 namespace user_service.Helpers
 {
@@ -9,13 +7,11 @@ namespace user_service.Helpers
     {
         public AutoMapperProfile()
         {
-            // User -> AuthenticateResponse
-            CreateMap<User, AuthenticateResponse>();
+            CreateMap<User, AuthenticateResponse>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id)); // Map Id property
 
-            // RegisterRequest -> User
             CreateMap<RegisterRequest, User>();
-
-            // UpdateRequest -> User
+            
             CreateMap<UpdateRequest, User>()
                 .ForAllMembers(x => x.Condition(
                     (src, dest, prop) =>

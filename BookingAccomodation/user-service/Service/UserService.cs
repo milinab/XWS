@@ -34,7 +34,7 @@ namespace user_service.Service
             var user = await _userRepository.FindByUsernameAsync(model.Username);
 
             // validate
-            if (user == null || BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash))
+            if (user == null || !await Task.Run(() => BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash)))
             {
                 throw new AppException("Username or password is incorrect");
                 
