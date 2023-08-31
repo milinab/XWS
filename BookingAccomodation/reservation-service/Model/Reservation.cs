@@ -14,9 +14,12 @@ namespace reservation_service.Model
         [BsonRepresentation(BsonType.String)]
         public Guid AccomodationId { get; set; }
         public string GuestUsername { get; set; }
+        
+        public bool Canceled { get; set; }
         public Reservation()
         {
             Created = DateTime.Now;
+            Canceled = false;
         }
 
     }

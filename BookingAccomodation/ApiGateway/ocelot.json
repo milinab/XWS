@@ -18,6 +18,40 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/Reservation/{id:guid}/cancel",
+      "UpstreamHttpMethod": [ "Put", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reservation-service",
+          "Port": 5100
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Reservation/{id:guid}/cancel",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/Reservation/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reservation-service",
+          "Port": 5100
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Reservation/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/Accomodation",
       "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
 

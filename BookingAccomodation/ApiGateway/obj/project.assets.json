@@ -1000,26 +1000,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nemanja\\.nuget\\packages\\": {}
+    "C:\\Users\\Milina\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nemanja\\Desktop\\XML-project\\XWS\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
+      "projectUniqueName": "D:\\faks\\4GODINA\\XWS1\\XWS\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
       "projectName": "ApiGateway",
-      "projectPath": "C:\\Users\\Nemanja\\Desktop\\XML-project\\XWS\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
-      "packagesPath": "C:\\Users\\Nemanja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nemanja\\Desktop\\XML-project\\XWS\\BookingAccomodation\\ApiGateway\\obj\\",
+      "projectPath": "D:\\faks\\4GODINA\\XWS1\\XWS\\BookingAccomodation\\ApiGateway\\ApiGateway.csproj",
+      "packagesPath": "C:\\Users\\Milina\\.nuget\\packages\\",
+      "outputPath": "D:\\faks\\4GODINA\\XWS1\\XWS\\BookingAccomodation\\ApiGateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Nemanja\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Milina\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Milina\\.dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1074,7 +1073,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Milina\\.dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

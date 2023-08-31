@@ -26,6 +26,26 @@ namespace reservation_service.Service
 
             await _repository.CreateAsync(newReservation);
         }
+
+        public async Task<bool> CancelReservationAsync(Guid id)
+        {
+            Reservation reservation = GetByIdAsync(id).Result;
+            DateTime currentDate = DateTime.Now;
+            TimeSpan difference = reservation.StartDate - currentDate;
+            if (difference.Days > 1)
+            {
+                Console.WriteLine("Current date " + currentDate);
+                Console.WriteLine("Start date " + reservation.StartDate);
+                Console.WriteLine("Difference " + difference.Days);
+                await _repository.CancelReservationAsync(id);
+
+                return true;
+            } 
+            else
+            {
+                return false;
+            }
+        }
     }
 
 }

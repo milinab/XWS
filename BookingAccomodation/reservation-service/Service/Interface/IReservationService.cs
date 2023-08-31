@@ -7,5 +7,6 @@ namespace reservation_service.Service.Interface
         Task<List<Reservation>> GetAllAsync();
         Task<Reservation> GetByIdAsync(Guid id);
         Task CreateAsync(Reservation newReservation);
+        Task<bool> CancelReservationAsync(Guid id);
     }
 }

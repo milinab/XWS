@@ -21,7 +21,7 @@ namespace reservation_service.Controllers
         public async Task<List<Reservation>> Get() =>
    await _reservationService.GetAllAsync();
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         public async Task<ActionResult<Reservation>> Get(Guid id)
         {
             var reservation = await _reservationService.GetByIdAsync(id);
@@ -43,6 +43,12 @@ namespace reservation_service.Controllers
         public async Task<bool> GetBool(Reservation reservation)
         {
             return checkAccomodationAvailability.CheckAccomodadtions(reservation.AccomodationId,reservation.StartDate,reservation.EndDate);
+        }
+        
+        [HttpPut("{id:guid}/cancel")]
+        public async Task<bool> Cancel(Guid id)
+        {
+            return await _reservationService.CancelReservationAsync(id);
         }
     }
 

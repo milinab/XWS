@@ -22,7 +22,12 @@ namespace reservation_service.Repository
             await _reservationsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
         public async Task CreateAsync(Reservation newReservation) =>
-    await _reservationsCollection.InsertOneAsync(newReservation);
-
+            await _reservationsCollection.InsertOneAsync(newReservation);
+        
+        public async Task CancelReservationAsync(Guid id)
+        {
+            var update = Builders<Reservation>.Update.Set(r => r.Canceled, true);
+            await _reservationsCollection.UpdateOneAsync(r => r.Id ==id, update);
+        }
     }
 }
