@@ -44,6 +44,7 @@ builder.Services.Configure<KestrelServerOptions>(options =>
 
 builder.Services.AddSingleton<AccomodationRepository>();
 builder.Services.AddSingleton<AccomodationService>();
+builder.Services.AddSingleton<AccomodationAvailableService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

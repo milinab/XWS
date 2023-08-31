@@ -1,7 +1,9 @@
 ﻿using Accomodations.Model;
+using Accomodations.ProtoServices;
 using Accomodations.Service;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using reservation_service;
 
 namespace Accomodations.Controllers
 {
@@ -12,11 +14,13 @@ namespace Accomodations.Controllers
 
         private readonly AccomodationService _service;
         private readonly IMapper _mapper;
+        private readonly AccomodationAvailableService accomodationAvailableService;
 
-        public AccomodationController(AccomodationService service, IMapper mapper)
+        public AccomodationController(AccomodationService service, IMapper mapper, AccomodationAvailableService accomodationAvailableService)
         {
             _service = service;
             _mapper = mapper;
+            this.accomodationAvailableService = accomodationAvailableService;
         }
 
         [HttpGet]
@@ -47,6 +51,15 @@ namespace Accomodations.Controllers
             //return CreatedAtRoute(nameof(GetAccomodationById), new { id = accomodationModel.Id }, accomodationModel);
              await _service.CreateAsync(accomodationCreateDto);
              return CreatedAtAction(nameof(GetAccomodations), new { id = accomodationCreateDto.Id }, accomodationCreateDto);
+        }
+        
+        [HttpPost("available")]
+        public async Task<bool> IsAccomodationAvailable(ReservationForCheckRequest searchRequest)
+        {
+            return accomodationAvailableService.IsAccAvailable(
+                searchRequest.AccomodationId,
+                searchRequest.StartDate,
+                searchRequest.EndDate);
         }
 
     }
