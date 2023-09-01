@@ -15,4 +15,8 @@ export class AccommodationService {
   createAccommodation(accommodation: any): Observable<any> {
     return this.http.post<any>(this.apiHost + 'api/accommodation/create', accommodation, {headers: this.headers});
   }
+
+  searchAccommodations(searchRequest: any) {
+    return this.http.post<any>(this.apiHost + 'api/accommodation/available', searchRequest, {headers: this.headers});
+  }
 }

@@ -4,9 +4,10 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MaterialModule} from "../../material/material.module";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -14,12 +15,14 @@ import {MaterialModule} from "../../material/material.module";
     LoginComponent,
     RegistrationComponent,
   ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MaterialModule,
-  ]
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MaterialModule,
+        FormsModule,
+        MatInputModule
+    ]
 })
 export class PagesModule { }
