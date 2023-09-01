@@ -5,6 +5,11 @@
   </div>
 
   <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" [(ngModel)]="accommodation.description">
+  </div>
+
+  <div>
     <label for="streetNumber">Street Number:</label>
     <input type="text" id="streetNumber" name="streetNumber" [(ngModel)]="accommodation.address.streetNumber" required>
   </div>

@@ -12,8 +12,8 @@ export class AccommodationService {
 
   constructor(private http: HttpClient) { }
 
-  createAccommodation(accommodation: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/accommodation/create', accommodation, {headers: this.headers});
+  createAccommodation(accomodation: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'api/Accomodation', accomodation, {headers: this.headers});
   }
 
   searchAccommodations(searchRequest: any) {
