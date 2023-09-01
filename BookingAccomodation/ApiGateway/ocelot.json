@@ -69,8 +69,8 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/api/Accomodation/available",
-      "UpstreamHttpMethod": [ "Post", "Options" ],
+      "UpstreamPathTemplate": "/api/accomodation/available",
+      "UpstreamHttpMethod": [ "Get", "Post","Options" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -79,7 +79,7 @@
           "Port": 5200
         }
       ],
-      "DownstreamPathTemplate": "/api/Accomodation/available",
+      "DownstreamPathTemplate": "/api/accomodation/available",
       "EnableCors": true,
       "CorsOptions": {
         "PolicyName": "CorsPolicy"

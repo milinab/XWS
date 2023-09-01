@@ -42,30 +42,14 @@
   </div>
   <hr>
   <div class="accommodation-list">
-    <div class="accommodation-card">
-      <h2 class="accommodation-name">Villa</h2>
-      <p class="accommodation-location">Novi Sad, Serbia</p>
-      <p class="accommodation-details">
-        Min Guests: 2 | WiFi: Available
-      </p>
-    </div>
-  </div>
-  <div class="accommodation-list">
-    <div class="accommodation-card">
-      <h2 class="accommodation-name">Villa</h2>
-      <p class="accommodation-location">Novi Sad, Serbia</p>
-      <p class="accommodation-details">
-        Min Guests: 2 | WiFi: Available
-      </p>
-    </div>
-  </div>
-  <div class="accommodation-list">
     <div class="accommodation-card" *ngFor="let acc of searchResponse">
       <h2 class="accommodation-name">{{ acc.name }}</h2>
       <p class="accommodation-location">{{ acc.address.city }}, {{ acc.address.country }}</p>
       <p class="accommodation-details">
         Min Guests: {{ acc.minNumberOfGuests }} | WiFi: {{ acc.convenience.wifi ? 'Available' : 'Not Available' }}
       </p>
+      <!-- Add the Reserve button here -->
+      <button (click)="createReservation(acc)" class="reserve-button">Reserve</button>
     </div>
   </div>
 </div>
