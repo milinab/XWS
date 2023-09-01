@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AccommodationService {
-  apiHost: string = 'http://localhost:8082/';
+  apiHost: string = 'http://localhost:8001/';
   headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
 
@@ -17,6 +17,6 @@ export class AccommodationService {
   }
 
   searchAccommodations(searchRequest: any) {
-    return this.http.post<any>(this.apiHost + 'api/accommodation/available', searchRequest, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'api/accomodation/available', searchRequest, {headers: this.headers});
   }
 }
