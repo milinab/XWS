@@ -26,7 +26,7 @@ namespace reservation_service.Repository
         
         public async Task CancelReservationAsync(Guid id)
         {
-            var update = Builders<Reservation>.Update.Set(r => r.Canceled, true);
+            var update = Builders<Reservation>.Update.Set(r => r.Status, ReservationStatus.Canceled);
             await _reservationsCollection.UpdateOneAsync(r => r.Id ==id, update);
         }
 
@@ -35,7 +35,7 @@ namespace reservation_service.Repository
             List<Reservation> reservations = _reservationsCollection.Find(
                 r =>
                     accomodationId == r.AccomodationId &&
-                    false == r.Canceled).ToList();
+                    ReservationStatus.Active == r.Status).ToList();
 
             if (reservations.Count == 0)
             {

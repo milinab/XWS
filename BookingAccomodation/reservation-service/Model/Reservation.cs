@@ -4,6 +4,13 @@ using MongoDB.Bson;
 
 namespace reservation_service.Model
 {
+    public enum ReservationStatus
+    {
+        Active,
+        Pending,
+        Canceled
+    }
+    
     public class Reservation
     {
         [BsonRepresentation(BsonType.String)]
@@ -15,11 +22,11 @@ namespace reservation_service.Model
         public Guid AccomodationId { get; set; }
         public string GuestUsername { get; set; }
         
-        public bool Canceled { get; set; }
+        public ReservationStatus Status { get; set; }
         public Reservation()
         {
             Created = DateTime.Now;
-            Canceled = false;
+            Status = ReservationStatus.Pending;
         }
 
     }
