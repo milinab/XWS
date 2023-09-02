@@ -11,11 +11,13 @@ import { AccommodationCreateComponent } from './modules/booking/accommodation-cr
 import {FormsModule} from "@angular/forms";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { NavbarComponent } from './modules/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccommodationCreateComponent
+    AccommodationCreateComponent,
+    NavbarComponent
   ],
   
   imports: [
