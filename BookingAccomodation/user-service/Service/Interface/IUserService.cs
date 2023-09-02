@@ -6,8 +6,12 @@ namespace user_service.Service.Interface
     {
         Task<IEnumerable<User>> GetAllAsync();
         Task CreateAsync(User user);
+        Task<User> EditUser(Guid id, EditUserDto editUserDTO);
+        Task<User> ChangePassword(Guid id, PasswordRequest passwordRequest);
         Task Register(RegisterRequest model);
         Task<AuthenticateResponse> Authenticate(AuthenticateRequest model);
         Task<User> GetByIdAsync(Guid id);
+
+
     }
 }

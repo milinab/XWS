@@ -6,6 +6,7 @@ namespace user_service.Repository.Interface
     {
         Task<IEnumerable<User>> GetAllAsync();
         Task CreateAsync(User user);
+        Task<User> UpdateUser(User user);
 
     }
 }

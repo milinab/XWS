@@ -58,5 +58,32 @@ namespace user_service.Controllers
             _userService.Register(model).Wait(); // Wait for the async method to complete
             return Ok(new { message = "Registration successful" });
         }
+        [AllowAnonymous]
+        [HttpPost("{id}")]
+        public async Task<IActionResult> EditUser(Guid id, [FromBody] EditUserDto editUserDto)
+        {
+            User updatedUser = await _userService.EditUser(id, editUserDto);
+
+            if (updatedUser != null)
+            {
+                return Ok("Updated successfully");
+            }
+
+            return BadRequest("Something went wrong, updated user is null");
+        }
+        [AllowAnonymous]
+        [HttpPost("change-password/{id}")]
+        public async Task<IActionResult> ChangePassword(Guid id, [FromBody] PasswordRequest password)
+        {
+            User updatedUser = await _userService.ChangePassword(id, password);
+            
+
+            if (updatedUser != null)
+            {
+                return Ok("Updated successfully");
+            }
+
+            return BadRequest("Something went wrong, updated user is null");
+        }
     }
 }

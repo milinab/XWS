@@ -70,7 +70,7 @@
     },
     {
       "UpstreamPathTemplate": "/api/accomodation/available",
-      "UpstreamHttpMethod": [ "Get", "Post","Options" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -114,6 +114,40 @@
         }
       ],
       "DownstreamPathTemplate": "/api/User/authenticate",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/change-password/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/change-password/{id:guid}",
       "EnableCors": true,
       "CorsOptions": {
         "PolicyName": "CorsPolicy"

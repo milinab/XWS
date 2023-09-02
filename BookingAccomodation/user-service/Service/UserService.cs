@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
 using user_service.Authorization;
 using user_service.Helpers;
 using user_service.Model;
@@ -66,7 +68,58 @@ namespace user_service.Service
             await _userRepository.CreateAsync(user);
         }
 
+        public async Task<User> EditUser(Guid id, EditUserDto editUserDto)
+        {
+            if (editUserDto == null)
+            {
+                throw new AppException("Faulty edit information");
+            }
+
+            var existingUser = await _userRepository.GetByIdAsync(id);
+
+            if (existingUser == null)
+            {
+                throw new AppException("User doesn't exist");
+            }
+
+            // Update the user's information based on the DTO.
+            existingUser.FirstName = editUserDto.FirstName;
+            existingUser.LastName = editUserDto.LastName;
+            existingUser.Username = editUserDto.Username;
+
+            // Update the user in the repository.
+            
+            return await _userRepository.UpdateUser(existingUser);
+
+        }
+
+        public async Task<User> ChangePassword(Guid id, PasswordRequest passwordRequest)
+        {
+            if (passwordRequest.Password == "")
+            {
+                throw new AppException("Password not allowed");
+            }
+
+            var existingUser = await _userRepository.GetByIdAsync(id);
+
+            if (existingUser == null)
+            {
+                throw new AppException("User doesn't exist ");
+            }
+
+            // Update the user's information based on the DTO.
+            existingUser.PasswordHash = BCrypt.Net.BCrypt.HashPassword(passwordRequest.Password);
+
+            // Update the user in the repository.
+
+            return await _userRepository.UpdateUser(existingUser);
+
+        }
+
+
         public async Task<User> GetByIdAsync(Guid id) =>
         await _userRepository.GetByIdAsync(id);
+
+      
     }
 }

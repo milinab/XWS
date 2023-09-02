@@ -39,5 +39,11 @@ namespace user_service.Repository
             var filter = Builders<User>.Filter.Eq(x => x.Id, id);
             return await _userCollection.Find(filter).FirstOrDefaultAsync();
         }
+        public async Task<User> UpdateUser(User user)
+        {
+            await _userCollection.ReplaceOneAsync(u => u.Id == user.Id, user);
+            return await _userCollection.Find(u => u.Id == user.Id).FirstOrDefaultAsync();
+
+        }
     }
 }
