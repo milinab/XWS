@@ -34,15 +34,17 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  createReservation(accommodation: Accommodation) {
+  createReservation(accomodation: Accommodation) {
     const newReservation: Reservation = {
       id: uuidv4(), // You can generate a new GUID if needed
       created: new Date(),
       startDate: new Date(this.searchRequest.startDate),
       endDate: new Date(this.searchRequest.endDate),
-      accommodationId: accommodation.id,
+      accomodationId: accomodation.id,
       guestUsername: "guest_username_here", // Replace with the actual guest username
-      canceled: false
+      canceled: false,
+      hostId: '',
+      status: 'PENDING'
     };
 
 

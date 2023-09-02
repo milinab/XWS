@@ -1,5 +1,6 @@
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using reservation_service;
 using reservation_service.Model;
 using reservation_service.ProtoServices;
 using reservation_service.Repository;
@@ -37,6 +38,7 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
 builder.Services.AddSingleton<ReservationRepository>();
 builder.Services.AddSingleton<ReservationService>();
 builder.Services.AddSingleton<CheckAccomodationAvailability>();
+builder.Services.AddSingleton<GetHost>();
 
 builder.Services.AddGrpc();
 
@@ -83,6 +85,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
     endpoints.MapGrpcService<GrpcAccomodationService>();
+    endpoints.MapGrpcService<GetHost>();
 });
 
 app.Run();

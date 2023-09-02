@@ -8,12 +8,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MaterialModule} from "../../material/material.module";
 import {MatInputModule} from "@angular/material/input";
+import { PendingComponent } from './pending/pending.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
+    PendingComponent,
   ],
     imports: [
         CommonModule,

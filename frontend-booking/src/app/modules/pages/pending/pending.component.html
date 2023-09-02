@@ -1,0 +1,25 @@
+<div>
+  <h2>Reservations</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Reservation ID</th>
+      <th>Created</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Guest Username</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.id }}</td>
+      <td>{{ reservation.created | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+      <td>{{ reservation.startDate | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ reservation.endDate | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ reservation.guestUsername }}</td>
+      <td>{{ reservation.status }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

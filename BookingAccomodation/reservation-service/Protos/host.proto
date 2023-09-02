@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "reservation_service";
+
+service GrpcGetHostByAccomodation{
+  rpc GetHostByAccomodation (AccomodationRequest) returns(HostResponse);
+}
+message AccomodationRequest{
+  string AccomodationId = 1;
+}
+
+message HostResponse{
+  string HostId = 1;
+}
