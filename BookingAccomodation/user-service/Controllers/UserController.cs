@@ -26,6 +26,14 @@ namespace user_service.Controllers
             _appSettings = appSettings.Value;
         }
 
+        [AllowAnonymous]
+        [HttpGet("get/{id}")]
+        public async Task<User> GetUser(Guid id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+            return _mapper.Map<User>(user);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<User>> GetUsers()
         {
@@ -62,28 +70,15 @@ namespace user_service.Controllers
         [HttpPost("{id}")]
         public async Task<IActionResult> EditUser(Guid id, [FromBody] EditUserDto editUserDto)
         {
-            User updatedUser = await _userService.EditUser(id, editUserDto);
-
-            if (updatedUser != null)
-            {
-                return Ok("Updated successfully");
-            }
-
-            return BadRequest("Something went wrong, updated user is null");
+            await _userService.EditUser(id, editUserDto); 
+            return Ok(new { message = "Updated information successfully"});
         }
         [AllowAnonymous]
         [HttpPost("change-password/{id}")]
         public async Task<IActionResult> ChangePassword(Guid id, [FromBody] PasswordRequest password)
         {
-            User updatedUser = await _userService.ChangePassword(id, password);
-            
-
-            if (updatedUser != null)
-            {
-                return Ok("Updated successfully");
-            }
-
-            return BadRequest("Something went wrong, updated user is null");
+            await _userService.ChangePassword(id, password);
+            return Ok(new { message = "Updated information successfully" });
         }
     }
 }

@@ -68,7 +68,7 @@ namespace user_service.Service
             await _userRepository.CreateAsync(user);
         }
 
-        public async Task<User> EditUser(Guid id, EditUserDto editUserDto)
+        public async Task EditUser(Guid id, EditUserDto editUserDto)
         {
             if (editUserDto == null)
             {
@@ -89,7 +89,7 @@ namespace user_service.Service
 
             // Update the user in the repository.
             
-            return await _userRepository.UpdateUser(existingUser);
+            await _userRepository.UpdateUser(existingUser);
 
         }
 
