@@ -6,10 +6,11 @@
     <a href="/books">Books</a>
     <a href="#">Add Something</a>
     <a href="#">Add Something</a>
-    <button class="btn btn-primary" *ngIf="isLoggedIn" (click)="routeToCart()">View Cart</button>
+
     <button class="btnLogin-popup" *ngIf="!isLoggedIn" (click)="routeToSignUp()">Sign up</button>
     <button class="btnLogin-popup" *ngIf="!isLoggedIn" (click)="routeToSignIn()">Sign in</button>
     <button class="btnLogin-popup" *ngIf="isLoggedIn" (click)="signOut()">Sign out</button>
+    <button mat-button *ngIf="isLoggedIn" (click)="routeToCart()"><mat-icon>settings</mat-icon></button>
 
   </nav>
 </header>

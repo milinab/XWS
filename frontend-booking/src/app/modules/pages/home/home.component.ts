@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         // Handle any errors that occur during the reservation creation
-        console.error("Error creating reservation:", error);
+        console.error(error);
         // You can also show an error message to the user
       }
     );

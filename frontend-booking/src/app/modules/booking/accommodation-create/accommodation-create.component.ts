@@ -24,7 +24,7 @@ export class AccommodationCreateComponent implements OnInit {
         alert("Accommodation created.");
       },
       (error) => {
-        console.error("Error creating accommodation:", error);
+        console.error(error);
         alert("Error creating accommodation. Please check the console for details.");
       }
     );

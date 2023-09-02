@@ -186,6 +186,23 @@
       "CorsOptions": {
         "PolicyName": "CorsPolicy"
       }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/get/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/get/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
     }
   ],
   "GlobalConfiguration": {
