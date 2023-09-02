@@ -8,7 +8,7 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Guest Username</th>
-      <th>Status</th>
+      <th>Actions</th> <!-- Added column for buttons -->
     </tr>
     </thead>
     <tbody>
@@ -18,7 +18,10 @@
       <td>{{ reservation.startDate | date: 'yyyy-MM-dd' }}</td>
       <td>{{ reservation.endDate | date: 'yyyy-MM-dd' }}</td>
       <td>{{ reservation.guestUsername }}</td>
-      <td>{{ reservation.status }}</td>
+      <td>
+        <button class="custom-button" (click)="acceptReservation(reservation)">Accept</button>
+        <button class="custom-button" (click)="declineReservation(reservation)">Decline</button>
+      </td>
     </tr>
     </tbody>
   </table>

@@ -22,4 +22,12 @@ export class ReservationService {
     const requestBody = { accomodationId };
     return this.http.post<string>(`${this.apiHost}api/Reservation/host`, requestBody);
   }
+  acceptReservation(id: string): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiHost}api/Reservation/${id}/accept`, null, { headers: this.headers });
+  }
+
+  // Add method to decline a reservation
+  declineReservation(id: string): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiHost}api/Reservation/${id}/decline`, null, { headers: this.headers });
+  }
 }

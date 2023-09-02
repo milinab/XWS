@@ -41,3 +41,16 @@
     font-size: 14px;
   }
 }
+.custom-button {
+  background-color: #007bff; /* Change the background color */
+  color: #fff; /* Change the text color */
+  padding: 5px 10px; /* Add padding for better spacing */
+  border: none; /* Remove the border */
+  border-radius: 4px; /* Add rounded corners */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  margin-right: 5px; /* Add margin between buttons */
+}
+
+.custom-button:hover {
+  background-color: #0056b3; /* Change the background color on hover */
+}

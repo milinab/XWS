@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservation } from '../../booking/model/reservation.model';
 import { ReservationService } from '../../booking/services/reservation.service';
+import {UserToken} from "../../booking/model/user-token.model";
+import {TokenStorageService} from "../../booking/services/token-storage.service";
 
 @Component({
   selector: 'app-pending',
@@ -8,10 +10,16 @@ import { ReservationService } from '../../booking/services/reservation.service';
   styleUrls: ['./pending.component.css'],
 })
 export class PendingComponent implements OnInit {
+  user: UserToken;
   reservations: Reservation[] = [];
-  hostId: string | undefined = 'a270af8a-f0ef-4411-8679-4bd59f464142'; // Add your desired hostId here
+  hostId: string | undefined = '';
+  successMessage: string = '';
+  errorMessage: string = '';
 
-  constructor(private reservationService: ReservationService) {}
+  constructor(private reservationService: ReservationService, private tokenStorageService: TokenStorageService) {
+    this.user = this.tokenStorageService.getUser();
+    this.hostId = this.tokenStorageService.getUser().id;
+  }
 
   ngOnInit(): void {
     this.loadReservations();
@@ -24,10 +32,23 @@ export class PendingComponent implements OnInit {
         this.reservations = reservations.filter(
           (reservation) => reservation.hostId === this.hostId
         );
+        console.log(this.reservations)
       },
       (error) => {
         console.error('Error loading reservations:', error);
       }
     );
+  }
+  acceptReservation(reservation: Reservation) {
+    this.reservationService.acceptReservation(reservation.id).subscribe(result => {
+      alert("You accepted reservation!");
+    });
+  }
+
+  // Method to decline a reservation
+  declineReservation(reservation: Reservation) {
+    this.reservationService.declineReservation(reservation.id).subscribe(result => {
+      alert("You declined reservation!");
+    });
   }
 }
