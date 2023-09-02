@@ -9,12 +9,14 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MaterialModule} from "../../material/material.module";
 import {MatInputModule} from "@angular/material/input";
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PendingComponent } from './pending/pending.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
+    PendingComponent,
     ChangePasswordComponent,
   ],
     imports: [

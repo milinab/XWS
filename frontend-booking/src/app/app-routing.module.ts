@@ -5,13 +5,16 @@ import {AccommodationCreateComponent} from "./modules/booking/accommodation-crea
 import {LoginComponent} from "./modules/pages/login/login.component";
 import {RegistrationComponent} from "./modules/pages/registration/registration.component";
 import {SettingsComponent} from "./modules/settings/settings.component";
+import {PendingComponent} from "./modules/pages/pending/pending.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'accommodation-create', component: AccommodationCreateComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegistrationComponent},
-  { path: 'settings', component: SettingsComponent}
+  { path: 'settings', component: SettingsComponent},
+  { path: 'register', component: RegistrationComponent},
+  { path: 'pending', component: PendingComponent}
 ];
 
 @NgModule({

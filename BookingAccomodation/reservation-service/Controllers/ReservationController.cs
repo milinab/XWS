@@ -11,10 +11,12 @@ namespace reservation_service.Controllers
     {
         private readonly ReservationService _reservationService;
         private readonly CheckAccomodationAvailability checkAccomodationAvailability;
-        public ReservationController(ReservationService reservationService, CheckAccomodationAvailability checkAccomodationAvailability)
+        private readonly GetHost _getHost;
+        public ReservationController(ReservationService reservationService, CheckAccomodationAvailability checkAccomodationAvailability, GetHost getHost)
         {
             _reservationService = reservationService;
             this.checkAccomodationAvailability = checkAccomodationAvailability;
+            this._getHost = getHost;
         }
 
         [HttpGet]
@@ -44,11 +46,27 @@ namespace reservation_service.Controllers
         {
             return checkAccomodationAvailability.CheckAccomodadtions(reservation.AccomodationId,reservation.StartDate,reservation.EndDate);
         }
-        
+
+        [HttpPost("host")]
+        public async Task<string> GetHost(Reservation reservation)
+        {
+            return _getHost.GetHostId(reservation.AccomodationId);
+        }
+
         [HttpPut("{id:guid}/cancel")]
         public async Task<bool> Cancel(Guid id)
         {
             return await _reservationService.CancelReservationAsync(id);
+        }
+        [HttpPut("{id:guid}/accept")]
+        public async Task<bool> Accept(Guid id)
+        {
+            return await _reservationService.AcceptReservationAsync(id);
+        }
+        [HttpPut("{id:guid}/decline")]
+        public async Task<bool> Decline(Guid id)
+        {
+            return await _reservationService.DeclineReservationAsync(id);
         }
     }
 

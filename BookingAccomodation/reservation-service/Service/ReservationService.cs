@@ -1,4 +1,6 @@
 ﻿using reservation_service.Model;
+using reservation_service.ProtoServices;
+using reservation_service.ProtoServices.Interfaces;
 using reservation_service.Repository;
 using reservation_service.Service.Interface;
 
@@ -7,10 +9,12 @@ namespace reservation_service.Service
     public class ReservationService : IReservationService
     {
         private readonly ReservationRepository _repository;
+        private readonly GetHost _getHost;
 
-        public ReservationService(ReservationRepository repository)
+        public ReservationService(ReservationRepository repository, GetHost getHost)
         {
             _repository = repository;
+            _getHost = getHost;
         }
 
         public async Task<List<Reservation>> GetAllAsync() =>
@@ -22,8 +26,7 @@ namespace reservation_service.Service
         {
             List<Reservation> reservations = await GetAllAsync();
             List<Reservation> filteredReservations = reservations.FindAll(r => r.AccomodationId.Equals(newReservation.AccomodationId));
-
-
+            newReservation.hostId = _getHost.GetHostId(newReservation.AccomodationId);
             await _repository.CreateAsync(newReservation);
         }
 
@@ -54,6 +57,29 @@ namespace reservation_service.Service
             DateTime endDate = DateTime.Parse(requestEndDate);
 
             return _repository.IsAccomodationAvailable(accomodationId, startDate, endDate);
+        }
+        public async Task<bool> AcceptReservationAsync(Guid id)
+        {
+            Reservation reservation = await GetByIdAsync(id);
+            if (reservation != null)
+            {
+                reservation.Status = ReservationStatus.Active;
+                await _repository.UpdateAsync(reservation); // Assuming you have an UpdateAsync method in your repository.
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeclineReservationAsync(Guid id)
+        {
+            Reservation reservation = await GetByIdAsync(id);
+            if (reservation != null)
+            {
+                reservation.Status = ReservationStatus.Canceled;
+                await _repository.UpdateAsync(reservation); // Assuming you have an UpdateAsync method in your repository.
+                return true;
+            }
+            return false;
         }
     }
 
