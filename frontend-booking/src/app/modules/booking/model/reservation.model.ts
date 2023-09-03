@@ -6,8 +6,9 @@ export class Reservation {
   accomodationId: string = '';
   guestUsername: string = '';
   canceled: boolean = false;
-  status: string = '';
+  status: number = 0;
   hostId: string = '';
+  guestId: string = '';
 
   constructor(obj?: any) {
     if (obj) {
@@ -20,6 +21,7 @@ export class Reservation {
       this.canceled = obj.canceled || false;
       this.hostId = obj.hostId;
       this.status = obj.status;
+      this.guestId = obj.guestId;
     }
   }
 }

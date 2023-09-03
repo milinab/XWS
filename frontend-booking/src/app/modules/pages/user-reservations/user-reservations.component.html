@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="user-reservations.component.css">
+  <title>Booking App - My Reservations</title>
+</head>
+
+<body>
+<hr>
+<div class="spacing"></div>
+<a routerLink="/" class="btn-your-reservations">Back</a>
+<div class="spacing"></div>
+<hr>
+<div class="reservation-list">
+  <div class="reservation-card" *ngFor="let reservation of userReservations">
+    <div>
+      <h2 class="reservation-name">{{ reservation.accomodationId }}</h2>
+      <p class="reservation-location">
+        Check-in: {{ reservation.startDate  | date:'yyyy-MM-dd h:mm a'}} | Check-out: {{ reservation.endDate  | date:'yyyy-MM-dd h:mm a'}}
+      </p>
+      <p class="reservation-details"> Created: {{ reservation.created  | date:'yyyy-MM-dd h:mm a'}}</p>
+      <p class="reservation-status active-status" *ngIf="reservation.status === 0">Status: Active</p>
+      <p class="reservation-status pending-status" *ngIf="reservation.status === 1">Status: Pending</p>
+      <p class="reservation-status canceled-status" *ngIf="reservation.status === 2">Status: Canceled</p>
+    </div>
+    <button class="cancel-button" (click)="cancel(reservation.id)" *ngIf="reservation.status !== 2">Cancel</button>
+  </div>
+</div>
+
+</body>
+</html>
