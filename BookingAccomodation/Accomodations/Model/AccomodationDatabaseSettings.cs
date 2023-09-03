@@ -6,5 +6,6 @@
         public string DatabaseName { get; set; } = null!;
         public string AccomodationsCollectionName { get; set; } = null!;
         public string AccomodationGradesCollectionName { get; set; } = null!;
+        public string AvailablePeriodCollectionName { get; set; } = null!;
     }
 }

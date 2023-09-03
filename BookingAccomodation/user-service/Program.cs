@@ -44,7 +44,9 @@ builder.Services.AddSingleton<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddSingleton<CheckRemovalEligibility>();
 builder.Services.AddSingleton<UserRepository>();
+builder.Services.AddSingleton<GradeRepository>();
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<GradeService>();
 builder.Services.AddGrpc();
 
 builder.Services.Configure<KestrelServerOptions>(options =>

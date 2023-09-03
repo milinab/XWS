@@ -30,4 +30,13 @@ export class ReservationService {
   declineReservation(id: string): Observable<boolean> {
     return this.http.put<boolean>(`${this.apiHost}api/Reservation/${id}/decline`, null, { headers: this.headers });
   }
+
+  getUserReservations(id: string): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.apiHost}api/Reservation/by-guest/${id}`, {headers: this.headers});
+  }
+
+  cancelReservation(id: string): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiHost}api/Reservation/${id}/cancel`, { headers: this.headers });
+  }
+
 }

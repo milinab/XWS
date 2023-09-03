@@ -30,7 +30,7 @@ export class PendingComponent implements OnInit {
       (reservations) => {
         // Filter reservations based on the hostId
         this.reservations = reservations.filter(
-          (reservation) => reservation.hostId === this.hostId
+          (reservation) => reservation.hostId === this.hostId && reservation.status === 1
         );
         console.log(this.reservations)
       },
@@ -42,6 +42,7 @@ export class PendingComponent implements OnInit {
   acceptReservation(reservation: Reservation) {
     this.reservationService.acceptReservation(reservation.id).subscribe(result => {
       alert("You accepted reservation!");
+      window.location.reload();
     });
   }
 
@@ -49,6 +50,7 @@ export class PendingComponent implements OnInit {
   declineReservation(reservation: Reservation) {
     this.reservationService.declineReservation(reservation.id).subscribe(result => {
       alert("You declined reservation!");
+      window.location.reload();
     });
   }
 }

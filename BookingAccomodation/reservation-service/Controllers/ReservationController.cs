@@ -21,7 +21,7 @@ namespace reservation_service.Controllers
 
         [HttpGet]
         public async Task<List<Reservation>> Get() =>
-   await _reservationService.GetAllAsync();
+        await _reservationService.GetAllAsync();
 
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Reservation>> Get(Guid id)
@@ -67,6 +67,17 @@ namespace reservation_service.Controllers
         public async Task<bool> Decline(Guid id)
         {
             return await _reservationService.DeclineReservationAsync(id);
+        }
+        
+        [HttpGet("by-guest/{guestId:guid}")]
+        public async Task<ActionResult<IEnumerable<Reservation>>> GetByGuestId(Guid guestId)
+        {
+            var reservations = await _reservationService.GetReservationsByGuestIdAsync(guestId);
+
+            if (reservations == null || !reservations.Any())
+                return NotFound("No reservations found for the specified guest.");
+
+            return Ok(reservations);
         }
     }
 

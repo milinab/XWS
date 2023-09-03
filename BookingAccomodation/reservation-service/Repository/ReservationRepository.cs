@@ -57,5 +57,12 @@ namespace reservation_service.Repository
             var filter = Builders<Reservation>.Filter.Eq(r => r.Id, reservation.Id);
             await _reservationsCollection.ReplaceOneAsync(filter, reservation);
         }
+        
+        public async Task<List<Reservation>> GetReservationsByGuestIdAsync(Guid guestId)
+        {
+            var filter = Builders<Reservation>.Filter.Eq(r => r.GuestId, guestId);
+            var reservations = await _reservationsCollection.Find(filter).ToListAsync();
+            return reservations;
+        }
     }
 }

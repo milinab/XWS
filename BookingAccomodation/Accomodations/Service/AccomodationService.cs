@@ -19,12 +19,12 @@ namespace Accomodations.Service
 
         public async Task CreateAsync(Accomodation newAccomodation)
         {
-            newAccomodation.Id = Guid.NewGuid();
+            /*newAccomodation.Id = Guid.NewGuid();
             newAccomodation.HostId = Guid.NewGuid();
             newAccomodation.Address = new Address
             {
                 Id = Guid.NewGuid(),
-            };
+            };*/
             await _repository.CreateAsync(newAccomodation);
         }
 
