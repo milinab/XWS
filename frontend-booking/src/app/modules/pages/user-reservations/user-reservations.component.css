@@ -114,22 +114,20 @@ hr {
 }
 
 .reservation-status {
-  font-weight: bold; /* Make the text bold */
-  margin-top: 10px; /* Add some top margin for spacing */
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-/* Style for "Status: Canceled" */
 .canceled-status {
-  color: red; /* Set text color to red */
+  color: red;
 }
 
-/* Style for "Status: Active" */
 .active-status {
-  color: green; /* Set text color to green */
+  color: green;
 }
 
 .pending-status {
-  color: orange; /* You can choose any color you prefer for pending status */
+  color: orange;
 }
 
 .cancel-button {
