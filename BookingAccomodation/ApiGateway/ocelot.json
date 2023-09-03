@@ -137,6 +137,57 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/User/allGrade",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/allGrade",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/deleteGrade/{id:guid}",
+      "UpstreamHttpMethod": [ "Delete", "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/deleteGrade/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/grade",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/grade",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/User/authenticate",
       "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
 

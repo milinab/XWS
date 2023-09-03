@@ -21,7 +21,7 @@ namespace reservation_service.Controllers
 
         [HttpGet]
         public async Task<List<Reservation>> Get() =>
-   await _reservationService.GetAllAsync();
+        await _reservationService.GetAllAsync();
 
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Reservation>> Get(Guid id)

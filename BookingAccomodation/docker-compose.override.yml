@@ -26,6 +26,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "AccomodationDatabase:ConnectionString=mongodb://accomodationdb:27017"
       - DatabaseName=AccomodationDB
+      - "GrpcCheckAccomodationsReservation=http://reservation-service:5101"
       - "GrpcGetHost=http://reservation-service:5101"
     depends_on:
       - accomodationdb
@@ -39,6 +40,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ReservationDatabase:ConnectionString=mongodb://reservationdb:27017"
       - DatabaseName=ReservationDB
+      - "GrpcCheckAccomodations=http://accomodation-service:5201"
       - "GrpcGetHost=http://accomodation-service:5201"
     depends_on:
       - reservationdb

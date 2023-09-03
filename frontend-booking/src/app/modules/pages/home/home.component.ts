@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       guestUsername: "guest_username_here", // Replace with the actual guest username
       canceled: false,
       hostId: '',
-      status: 'PENDING'
+      status: 1
     };
 
 
