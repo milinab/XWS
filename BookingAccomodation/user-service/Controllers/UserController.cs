@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver.Core.Operations;
 using user_service.Helpers;
 using user_service.Model;
+using user_service.ProtoServices;
 using user_service.Service;
 
 namespace user_service.Controllers
@@ -17,11 +18,13 @@ namespace user_service.Controllers
         private readonly UserService _userService;
         private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
+        private readonly CheckRemovalEligibility _checkRemovalEligibility;
 
 
-        public UserController(UserService userService, IMapper mapper, IOptions<AppSettings> appSettings)
+        public UserController(UserService userService, IMapper mapper, IOptions<AppSettings> appSettings, CheckRemovalEligibility checkRemovalEligibility)
         {
             _userService = userService;
+            _checkRemovalEligibility = checkRemovalEligibility;
             _mapper = mapper;
             _appSettings = appSettings.Value;
         }
@@ -79,6 +82,22 @@ namespace user_service.Controllers
         {
             await _userService.ChangePassword(id, password);
             return Ok(new { message = "Updated information successfully" });
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("delete/{id}")]
+        public async Task<IActionResult> GetBool(Guid id)
+        {
+            var isEligible = _checkRemovalEligibility.CheckEligibility(id);
+            if (isEligible)
+            {
+                await _userService.DeleteUser(id);
+                return Ok(new { message = "Deleted user successfully" });
+            }
+            else
+            {
+                return NotFound(new { message = "User not found or not eligible for deletion" });
+            }
         }
     }
 }

@@ -40,6 +40,7 @@ services:
       - "ReservationDatabase:ConnectionString=mongodb://reservationdb:27017"
       - DatabaseName=ReservationDB
       - "GrpcGetHost=http://accomodation-service:5201"
+      - "GrpcCheckRemovalEligibility=http://user-service:5401"
     depends_on:
       - reservationdb
     ports:
@@ -52,6 +53,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "UserDatabase:ConnectionString=mongodb://userdb:27017"
       - DatabaseName=UserDB
+      - "GrpcCheckRemovalEligibility=http://reservation-service:5101"
     depends_on:
       - userdb
     ports:

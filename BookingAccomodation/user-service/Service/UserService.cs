@@ -120,6 +120,9 @@ namespace user_service.Service
         public async Task<User> GetByIdAsync(Guid id) =>
         await _userRepository.GetByIdAsync(id);
 
-      
+        public Task DeleteUser(Guid id)
+        {
+            return  _userRepository.DeleteUserByIdAsync(id);
+        }
     }
 }

@@ -31,5 +31,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Protobuf Include="Protos\account.proto" GrpcServices="Both"></Protobuf>
+  </ItemGroup>
 
 </Project>

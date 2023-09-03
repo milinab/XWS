@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "reservation_service";
+
+service GrpcCheckRemovalEligibility {
+  rpc CheckRemovalEligibility (CheckRemovalEligibilityRequest) returns(IsEligibleResponse);
+}
+
+message CheckRemovalEligibilityRequest {
+  string UserId = 1;
+}
+
+message IsEligibleResponse {
+  bool IsEligible = 1;
+}

@@ -6,6 +6,7 @@ using user_service.Helpers;
 using user_service.Repository;
 using user_service.Service;
 using user_service.Service.Interface;
+using user_service.ProtoServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,7 @@ builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSet
 
 builder.Services.AddSingleton<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSingleton<CheckRemovalEligibility>();
 builder.Services.AddSingleton<UserRepository>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddGrpc();

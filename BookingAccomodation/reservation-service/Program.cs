@@ -5,6 +5,7 @@ using reservation_service.Model;
 using reservation_service.ProtoServices;
 using reservation_service.Repository;
 using reservation_service.Service;
+using GrpcCheckRemovalEligibility = reservation_service.ProtoServices.GrpcCheckRemovalEligibility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -85,6 +86,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
     endpoints.MapGrpcService<GrpcAccomodationService>();
+    endpoints.MapGrpcService<GrpcCheckRemovalEligibility>();
     endpoints.MapGrpcService<GetHost>();
 });
 

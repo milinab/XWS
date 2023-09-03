@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using user_service.Model;
 using user_service.Repository.Interface;
@@ -45,5 +46,27 @@ namespace user_service.Repository
             return await _userCollection.Find(u => u.Id == user.Id).FirstOrDefaultAsync();
 
         }
+
+        public async Task DeleteUserByIdAsync(Guid userId)
+        {
+            // Create a filter to find the user by their ObjectId (_id).
+            var filter = Builders<User>.Filter.Eq(x => x.Id, userId);
+            
+
+            // Delete the user that matches the filter asynchronously.
+            var result = await _userCollection.DeleteOneAsync(filter);
+
+            if (result.DeletedCount == 1)
+            {
+                // The user was successfully deleted.
+                Console.WriteLine($"User with ID {userId} deleted.");
+            }
+            else
+            {
+                // No user with the given ID was found.
+                Console.WriteLine($"User with ID {userId} not found.");
+            }
+        }
     }
+    
 }

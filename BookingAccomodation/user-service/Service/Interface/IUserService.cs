@@ -11,6 +11,7 @@ namespace user_service.Service.Interface
         Task Register(RegisterRequest model);
         Task<AuthenticateResponse> Authenticate(AuthenticateRequest model);
         Task<User> GetByIdAsync(Guid id);
+        Task DeleteUser(Guid id);
 
 
     }

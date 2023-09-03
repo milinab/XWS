@@ -81,6 +81,21 @@ namespace reservation_service.Service
             }
             return false;
         }
+
+        public async Task<bool> IsEligibleToRemove(string id)
+        {
+            Guid UserId = Guid.Parse(id);
+            List<Reservation> reservations = await GetAllAsync();
+            foreach (var r in reservations)
+            {
+                if ((r.hostId.Equals(id) || r.GuestId.Equals(id)) && r.Status == ReservationStatus.Active)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 
 }
