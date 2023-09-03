@@ -154,6 +154,23 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/AvailablePeriod",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/AvailablePeriod",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/User/deleteGrade/{id:guid}",
       "UpstreamHttpMethod": [ "Delete", "Get", "Post", "Options" ],
 
