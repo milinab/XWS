@@ -10,12 +10,14 @@ import {MaterialModule} from "../../material/material.module";
 import {MatInputModule} from "@angular/material/input";
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PendingComponent } from './pending/pending.component';
+import {UserReservationsComponent} from "./user-reservations/user-reservations.component";
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
+    UserReservationsComponent,
     PendingComponent,
     ChangePasswordComponent,
   ],

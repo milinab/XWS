@@ -35,7 +35,7 @@ namespace reservation_service.Service
             Reservation reservation = GetByIdAsync(id).Result;
             DateTime currentDate = DateTime.Now;
             TimeSpan difference = reservation.StartDate - currentDate;
-            if (difference.Days > 1)
+            if (difference.Days > 1 && ReservationStatus.Canceled != reservation.Status)
             {
                 Console.WriteLine("Current date " + currentDate);
                 Console.WriteLine("Start date " + reservation.StartDate);
@@ -80,6 +80,12 @@ namespace reservation_service.Service
                 return true;
             }
             return false;
+        }
+        
+        public async Task<IEnumerable<Reservation>> GetReservationsByGuestIdAsync(Guid guestId)
+        {
+            var reservations = await _repository.GetReservationsByGuestIdAsync(guestId);
+            return reservations;
         }
     }
 

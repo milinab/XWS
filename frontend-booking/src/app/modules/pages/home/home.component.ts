@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   searchResponse: Accommodation[] | undefined;
+  showNoAccommodationsMessage: boolean = false;
 
   constructor(private accommodationService: AccommodationService, private reservationService: ReservationService, private authService: AuthService ) { }
 
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
   searchAccommodations() {
     this.accommodationService.searchAccommodations(this.searchRequest).subscribe((res) => {
       this.searchResponse = res;
+      this.showNoAccommodationsMessage = this.searchResponse?.length === 0;
     })
   }
 
@@ -44,7 +46,8 @@ export class HomeComponent implements OnInit {
       guestUsername: "guest_username_here", // Replace with the actual guest username
       canceled: false,
       hostId: '',
-      status: 1
+      status: 1,
+      guestId: ''
     };
 
 

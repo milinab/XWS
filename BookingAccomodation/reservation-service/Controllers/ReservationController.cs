@@ -68,6 +68,17 @@ namespace reservation_service.Controllers
         {
             return await _reservationService.DeclineReservationAsync(id);
         }
+        
+        [HttpGet("by-guest/{guestId:guid}")]
+        public async Task<ActionResult<IEnumerable<Reservation>>> GetByGuestId(Guid guestId)
+        {
+            var reservations = await _reservationService.GetReservationsByGuestIdAsync(guestId);
+
+            if (reservations == null || !reservations.Any())
+                return NotFound("No reservations found for the specified guest.");
+
+            return Ok(reservations);
+        }
     }
 
 }

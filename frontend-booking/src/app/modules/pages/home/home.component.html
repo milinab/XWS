@@ -7,14 +7,11 @@
 
 <body>
 <div>
-  <div class="header">
-    <div class="header-content">
-      <h1 class="site-title">Booking<span class="dot">.</span>rs</h1>
-      <p class="slogan">Discover Your Perfect Getaway</p>
-    </div>
-  </div>
   <hr>
   <div>
+    <div class="spacing"></div>
+    <div class="spacing"></div>
+    <hr>
     <form (ngSubmit)="searchAccommodations()" class="search-div">
       <mat-form-field class="label-input example-full-width">
         <mat-label>Location</mat-label>
@@ -41,7 +38,7 @@
     </form>
   </div>
   <hr>
-  <div class="accommodation-list">
+  <div class="accommodation-list" *ngIf="searchResponse && searchResponse.length > 0">
     <div class="accommodation-card" *ngFor="let acc of searchResponse">
       <h2 class="accommodation-name">{{ acc.name }}</h2>
       <p class="accommodation-location">{{ acc.address.city }}, {{ acc.address.country }}</p>
@@ -52,11 +49,9 @@
       <button (click)="createReservation(acc)" class="reserve-button">Reserve</button>
     </div>
   </div>
+  <div class="no-accommodations-message" *ngIf="showNoAccommodationsMessage">
+    <p>Sorry, there are no available accommodations for that interval and place. Please try with different parameters.</p>
+  </div>
 </div>
 </body>
-<footer class="footer">
-  <p class="footer-text">
-    &copy; 2023 Booking.rs. All rights reserved.
-  </p>
-</footer>
 </html>
