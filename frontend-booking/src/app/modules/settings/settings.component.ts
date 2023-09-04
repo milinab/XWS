@@ -75,7 +75,11 @@ export class SettingsComponent implements OnInit {
     this.userService.deleteAccount(this.tokenStorageService.getUser().id).subscribe({
       next: (response) => {
         // Handle the successful response here
-        this.accomomodationService.deleteAccommodations(this.tokenStorageService.getUser().id);
+        this.accomomodationService.deleteAccommodations(this.tokenStorageService.getUser().id).subscribe({
+          next: (response) => {
+            console.log(response);
+          }
+        })
         console.log('Request successful:', response);
         this.tokenStorageService.signOut()
         this.router.navigate(['']).then(() => {

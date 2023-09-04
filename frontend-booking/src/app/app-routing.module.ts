@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'pending', component: PendingComponent},
-  { path: 'user-reservations', component: UserReservationsComponent}
+  { path: 'user-reservations', component: UserReservationsComponent},
   { path: 'register', component: RegistrationComponent},
   { path: 'pending', component: PendingComponent},
   { path: 'host-grade', component: HostGradesComponent},
