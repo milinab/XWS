@@ -9,5 +9,7 @@ public interface IGradeRespository
     Task UpdateAsync(Guid id, Grade updateHostGrade);
     Task<Grade> GetGradeByIdAsync(Guid id);
     Task DeleteAsync(Guid id);
+    Task<List<Grade>> GetAllByHostIdAsync(Guid hostId);
+    Task<List<Grade>> GetAllByGuestIdAsync(Guid guestId);
 
 }

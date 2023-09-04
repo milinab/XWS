@@ -6,7 +6,7 @@ export class Reservation {
   accomodationId: string = '';
   guestUsername: string = '';
   canceled: boolean = false;
-  status: string = '';
+  status: number = 0;
   hostId: string = '';
 
   constructor(obj?: any) {

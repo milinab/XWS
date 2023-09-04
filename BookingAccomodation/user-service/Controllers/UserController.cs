@@ -129,5 +129,14 @@ namespace user_service.Controllers
 
             return NoContent();
         }
+        [AllowAnonymous]
+        [HttpGet("getByHost/{id}")]
+        public async Task<List<Grade>> GetByHostId(Guid id) =>
+            await _gradeService.GetAllByHostIdAsync(id);
+        
+        [AllowAnonymous]
+        [HttpGet("getByGuest/{id}")]
+        public async Task<List<Grade>> GetByGuestId(Guid id) =>
+            await _gradeService.GetAllByGuestIdAsync(id);
     }
 }

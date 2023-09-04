@@ -26,8 +26,11 @@ export class ReservationService {
     return this.http.put<boolean>(`${this.apiHost}api/Reservation/${id}/accept`, null, { headers: this.headers });
   }
 
-  // Add method to decline a reservation
   declineReservation(id: string): Observable<boolean> {
     return this.http.put<boolean>(`${this.apiHost}api/Reservation/${id}/decline`, null, { headers: this.headers });
+  }
+
+  getReservationsByGuestId(guestId: string): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.apiHost}api/Reservation/guest/${guestId}`);
   }
 }

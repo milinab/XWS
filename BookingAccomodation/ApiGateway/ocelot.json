@@ -154,6 +154,57 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/Reservation/guest/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "reservation-service",
+          "Port": 5100
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Reservation/guest/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/getByHost/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/getByHost/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/User/getByGuest/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/getByGuest/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/AvailablePeriod",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Options" ],
 

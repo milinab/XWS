@@ -10,6 +10,9 @@ import {MaterialModule} from "../../material/material.module";
 import {MatInputModule} from "@angular/material/input";
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PendingComponent } from './pending/pending.component';
+import { HostGradesComponent } from './host-grades/host-grades.component';
+import { GradeComponent } from './grade/grade.component';
+import { GuestGradesComponent } from './guest-grades/guest-grades.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { PendingComponent } from './pending/pending.component';
     RegistrationComponent,
     PendingComponent,
     ChangePasswordComponent,
+    HostGradesComponent,
+    GradeComponent,
+    GuestGradesComponent,
   ],
     imports: [
         CommonModule,

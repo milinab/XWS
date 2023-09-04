@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Grades</h1>
+  <ul>
+    <li *ngFor="let grade of guestGrades">
+      <p>Grade ID: {{ grade.id }}</p>
+      <p>Guest Username: {{ grade.guestUsername }}</p>
+      <p>Value: {{ grade.value }}</p>
+      <p>Created: {{ grade.created | date }}</p>
+    </li>
+  </ul>
+</div>
