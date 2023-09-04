@@ -6,6 +6,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using reservation_service;
+using reservation_service.Model;
+using reservation_service.Repository;
 
 namespace Accomodations.Controllers
 {
@@ -17,12 +19,15 @@ namespace Accomodations.Controllers
         private readonly AccomodationService _service;
         private readonly IMapper _mapper;
         private readonly AccomodationAvailableService accomodationAvailableService;
+        private readonly AvailablePeriodRepository _availablePeriodRepository;
 
-        public AccomodationController(AccomodationService service, IMapper mapper, AccomodationAvailableService accomodationAvailableService)
+        public AccomodationController(AccomodationService service, IMapper mapper, AccomodationAvailableService accomodationAvailableService, 
+            AvailablePeriodRepository availablePeriodRepository)
         {
             _service = service;
             _mapper = mapper;
             this.accomodationAvailableService = accomodationAvailableService;
+            this._availablePeriodRepository = availablePeriodRepository;
         }
 
         [HttpGet]
@@ -56,15 +61,15 @@ namespace Accomodations.Controllers
         }
         
         [HttpPost("available")]
-        public async Task<IEnumerable<Accomodation>> IsAccomodationAvailable(SearchDto searchRequest)
+        public async Task<IEnumerable<SearchResponse>> IsAccomodationAvailable(SearchDto searchRequest)
         {
             List<Accomodation> accomodations = _service.checkCityAndNumberOfGuests(searchRequest);
             if (accomodations.Count == 0)
             {
-                return Array.Empty<Accomodation>();
+                return Array.Empty<SearchResponse>();
             }
 
-            List<Accomodation> results = new List<Accomodation>();
+            List<Accomodation> withoutActiveReservation = new List<Accomodation>();
 
             foreach (var accomodation in accomodations)
             {
@@ -75,10 +80,27 @@ namespace Accomodations.Controllers
 
                 if (isAccAvailable)
                 {
-                    results.Add(accomodation);
+                    withoutActiveReservation.Add(accomodation);
                 }
             }
+            List<SearchResponse> results = new List<SearchResponse>();
 
+            foreach (var accommodation in withoutActiveReservation)
+            {
+                List<AvailablePeriod> availablePeriodsByAccommodation = _availablePeriodRepository.GetByAccommodationId(accommodation.Id);
+
+                foreach (var availablePeriod in availablePeriodsByAccommodation)
+                {
+                    if (searchRequest.StartDate >= availablePeriod.Start && availablePeriod.End >= searchRequest.EndDate)
+                    {
+                        results.Add(new SearchResponse
+                        {
+                            Accomodation = accommodation,
+                            AvailablePeriod = availablePeriod
+                        });
+                    }
+                }
+            }
             return results;
         }
         

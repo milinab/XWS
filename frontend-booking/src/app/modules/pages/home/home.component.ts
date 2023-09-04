@@ -6,6 +6,8 @@ import {Reservation} from "../../booking/model/reservation.model";
 import { v4 as uuidv4 } from 'uuid';
 import {AuthService} from "../../booking/services/auth.service";
 import {TokenStorageService} from "../../booking/services/token-storage.service";
+import {AvailablePeriodDto} from "../../booking/model/availablePeriodDto";
+import {SearchResponse} from "../../booking/model/searchResponse";
 
 @Component({
   selector: 'app-home',
@@ -27,23 +29,20 @@ export class HomeComponent implements OnInit {
     numberOfGuests: 0
   }
 
-  searchResponse: Accommodation[] | undefined;
+  accommodations: Accommodation[] = [];
+  searchResponse: SearchResponse[] = [];
   showNoAccommodationsMessage: boolean = false;
 
   constructor(private tokenStorageService: TokenStorageService, private accommodationService: AccommodationService, private reservationService: ReservationService, private authService: AuthService ) { }
 
   ngOnInit(): void {
-    this.accommodationService.getAllAccommodations().subscribe(
-      (result) => {
-        this.searchResponse = result;
-      }
-    )
-    console.log("Home Component nmOnInit()")
   }
 
   searchAccommodations() {
     this.accommodationService.searchAccommodations(this.searchRequest).subscribe((res) => {
       this.searchResponse = res;
+      console.log(res)
+      console.log("----")
       console.log(this.searchResponse);
       this.showNoAccommodationsMessage = this.searchResponse?.length === 0;
     })
@@ -82,24 +81,11 @@ export class HomeComponent implements OnInit {
   }
 
   filter() {
-    this.accommodationService.getAllAccommodations().subscribe(
-      (result) => {
-        this.searchResponse = result;
-        this.searchResponse = this.searchResponse?.filter(item =>
-          item.convenience.wifi === this.wifi &&
-          item.convenience.kitchen === this.kitchen &&
-          item.convenience.parking === this.parking &&
-          item.convenience.airConditioner === this.airConditioner)
-      }
-    )
-
-
-
-    console.log(this.searchResponse?.filter(item => item.convenience.wifi === this.wifi &&
-      item.convenience.kitchen === this.kitchen &&
-      item.convenience.wifi === this.parking &&
-      item.convenience.airConditioner === this.airConditioner))
-    console.log(this.wifi, this.kitchen, this.parking, this.airConditioner)
+    this.searchResponse = this.searchResponse?.filter(item =>
+      item.accomodation.convenience.wifi === this.wifi &&
+      item.accomodation.convenience.kitchen === this.kitchen &&
+      item.accomodation.convenience.parking === this.parking &&
+      item.accomodation.convenience.airConditioner === this.airConditioner)
   }
 
   clear() {
@@ -107,5 +93,16 @@ export class HomeComponent implements OnInit {
       this.searchResponse = res;
       this.showNoAccommodationsMessage = this.searchResponse?.length === 0;
     })
+  }
+
+  calculatePrice(availablePeriod: AvailablePeriodDto): number {
+    var startDateVar = new Date(this.searchRequest.startDate);
+    var endDateVar = new Date(this.searchRequest.endDate);
+    var nights = Math.abs(endDateVar.getTime() - startDateVar.getTime()) / (1000 * 60 * 60 * 24);
+    if(availablePeriod.type == 0) {
+      return availablePeriod.price*this.searchRequest.numberOfGuests*nights
+    } else {
+      return availablePeriod.price*nights
+    }
   }
 }
