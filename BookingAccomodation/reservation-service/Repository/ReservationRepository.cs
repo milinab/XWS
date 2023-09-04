@@ -64,9 +64,10 @@ namespace reservation_service.Repository
             var reservations = await _reservationsCollection.Find(filter).ToListAsync();
             return reservations;
         }
-        public async Task<List<Reservation>> GetReservationsByGuestIdAsync(string guestId)
+        /*
+        public async Task<List<Reservation>> GetReservationsByGuestIdAsync(Guid guestId)
         {
             return await _reservationsCollection.Find(r => r.GuestId == guestId).ToListAsync();
-        }
+        }*/
     }
 }

@@ -7,6 +7,6 @@ namespace reservation_service.Repository.Interface
         Task<List<Reservation>> GetAllAsync();
         Task<Reservation> GetByIdAsync(Guid id);
         Task CreateAsync(Reservation newReservation);
-        Task<List<Reservation>> GetReservationsByGuestIdAsync(string guestId);
+        //ask<List<Reservation>> GetReservationsByGuestIdAsync(string guestId);
     }
 }

@@ -68,12 +68,12 @@ namespace reservation_service.Controllers
         {
             return await _reservationService.DeclineReservationAsync(id);
         }
-        [HttpGet("guest/{guestId}")]
+        /*[HttpGet("guest/{guestId}")]
         public async Task<ActionResult<List<Reservation>>> GetReservationsByGuestId(string guestId)
         {
             var reservations = await _reservationService.GetReservationsByGuestIdAsync(guestId);
             return reservations;
-        }
+        }*/
         
         [HttpGet("by-guest/{guestId:guid}")]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetByGuestId(Guid guestId)

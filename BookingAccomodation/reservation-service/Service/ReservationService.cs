@@ -80,11 +80,11 @@ namespace reservation_service.Service
                 return true;
             }
             return false;
-        }
+        }/*
         public async Task<List<Reservation>> GetReservationsByGuestIdAsync(string guestId)
         {
             return await _repository.GetReservationsByGuestIdAsync(guestId);
-        }
+        }*/
         
         public async Task<IEnumerable<Reservation>> GetReservationsByGuestIdAsync(Guid guestId)
         {
