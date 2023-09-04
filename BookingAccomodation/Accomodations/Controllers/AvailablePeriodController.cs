@@ -37,5 +37,12 @@ public class AvailablePeriodController : ControllerBase
         }
         return false;
     }
+    
+    [HttpGet("{id}/GetAvailablePeriodByAccomodationId")]
+    public async Task<ActionResult<AvailablePeriod>> GetAvailablePeriodByAccomodationId(Guid id)
+    {
+        var availablePeriod = await _availablePeriodService.GetAvailablePeriodByAccomodationId(id);
+        return availablePeriod;
+    }
 
 }

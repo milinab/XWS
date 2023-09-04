@@ -2,8 +2,8 @@
 
 public class Convenience
 {
-    private Boolean wifi { get; set; }
-    private Boolean kitchen { get; set; }
-    private Boolean airConditioner { get; set; }
-    private Boolean parking { get; set; }
+    public Boolean wifi { get; set; }
+    public Boolean kitchen { get; set; }
+    public Boolean airConditioner { get; set; }
+    public Boolean parking { get; set; }
 }

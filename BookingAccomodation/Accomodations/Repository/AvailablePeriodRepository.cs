@@ -25,6 +25,9 @@ public class AvailablePeriodRepository : IAvailablePeriodRepository
 
     public async Task<AvailablePeriod> GetByIdAsync(Guid id) =>
         await _availablePeriodCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+    
+    public async Task<AvailablePeriod> GetByAccomodationIdAsync(Guid id) =>
+        await _availablePeriodCollection.Find(x => x.AccomodationId == id).FirstOrDefaultAsync();
 
 
     public async Task CreateAsync(AvailablePeriod newAvalablePeriod) =>

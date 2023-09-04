@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {AccommodationDto} from "../model/accomodation.dto";
+import {Reservation} from "../model/reservation.model";
+import {Accommodation} from "../model/accommodation";
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +30,10 @@ export class AccommodationService {
   getAllAccommodations(): Observable<any> {
     return this.http.get<any>(this.apiHost + 'api/Accomodation', {headers: this.headers})
   }
+
+  GetAccomodations(): Observable<Accommodation[]> {
+    return this.http.get<Accommodation[]>(`${this.apiHost}api/Accomodation`);
+  }
+
+
 }
