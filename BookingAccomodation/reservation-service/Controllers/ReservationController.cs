@@ -71,7 +71,7 @@ namespace reservation_service.Controllers
         [HttpGet("guest/{guestId}")]
         public async Task<ActionResult<List<Reservation>>> GetReservationsByGuestId(Guid guestId)
         {
-            var reservations = await _reservationService.GetReservationsByGuestId(guestId);
+            var reservations = await _reservationService.GetReservationsByGuestIdAsync(guestId);
             if (reservations == null || !reservations.Any())
                 return NotFound("No reservations found for the specified guest.");
 

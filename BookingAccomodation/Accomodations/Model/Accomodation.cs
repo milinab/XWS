@@ -19,6 +19,7 @@ namespace Accomodations.Model
         public Convenience Convenience { get; set; }
         public List<String> Photos { get; set; }
         public int MinNumberOfGuests { get; set; }
+        public Boolean isAutomatic { get; set; }
         public int MaxNumberOfGuests { get; set; } 
     }
 }

@@ -30,6 +30,7 @@ export class Accommodation{
      this.id = obj.id;
      this.hostId = obj.hostId;
       this.name = obj.name;
+      this.hostId = obj.hostId;
       this.address = obj.address;
       this.convenience = obj.convenience;
       this.photos = obj.photos;

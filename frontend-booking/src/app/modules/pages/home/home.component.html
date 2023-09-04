@@ -55,13 +55,28 @@
   <hr>
   <div class="accommodation-list" *ngIf="searchResponse && searchResponse.length > 0">
     <div class="accommodation-card" *ngFor="let acc of searchResponse">
-      <h2 class="accommodation-name">{{ acc.name }}</h2>
-      <p class="accommodation-location">{{ acc.address.city }}, {{ acc.address.country }}</p>
+      <h2 class="accommodation-name">{{ acc.accomodation.name }}</h2>
+      <p class="accommodation-location">{{ acc.accomodation.address.city }}, {{ acc.accomodation.address.country }}</p>
       <p class="accommodation-details">
-        Min Guests: {{ acc.minNumberOfGuests }} | WiFi: {{ acc.convenience.wifi ? 'Available' : 'Not Available' }}
+        Min/Max Guests: {{ acc.accomodation.minNumberOfGuests }} / {{ acc.accomodation.maxNumberOfGuests }}
+      </p>
+      <p class="accommodation-details">
+        WiFi: {{ acc.accomodation.convenience.wifi ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        Parking: {{ acc.accomodation.convenience.parking ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        Kitchen: {{ acc.accomodation.convenience.kitchen ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        airConditioner: {{ acc.accomodation.convenience.airConditioner ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        FULL PRICE: {{calculatePrice(acc.availablePeriod)}}$ / {{ acc.availablePeriod.type === 0 ? 'Price per guest' : 'Price per night' }}: {{ acc.availablePeriod.price }}$
       </p>
       <!-- Add the Reserve button here -->
-      <button (click)="createReservation(acc)" class="reserve-button">Reserve</button>
+      <button (click)="createReservation(acc.accomodation)" class="reserve-button">Reserve</button>
     </div>
   </div>
   <div class="no-accommodations-message" *ngIf="showNoAccommodationsMessage">
