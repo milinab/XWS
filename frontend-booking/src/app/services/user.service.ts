@@ -28,4 +28,8 @@ export class UserService {
     return this.http.post<any>(this.apiHost + 'change-password/'+ id, password, { headers: this.headers });
   }
 
+  deleteAccount(id: string): Observable<any> {
+    return this.http.get<any>(this.apiHost + 'delete/'+ id,{headers: this.headers});
+  }
+
 }

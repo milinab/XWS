@@ -69,4 +69,23 @@ export class SettingsComponent implements OnInit {
       }
     })
   }
+
+  deleteAccount() {
+    this.userService.deleteAccount(this.tokenStorageService.getUser().id).subscribe({
+      next: (response) => {
+        // Handle the successful response here
+        console.log('Request successful:', response);
+        this.tokenStorageService.signOut()
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        })
+        alert("Successfully deleted!");
+      },
+      error: (error) => {
+        // Handle any errors here
+        console.error('Error:', error);
+        alert("You are not eligible for account removal, there might be active reservations!")
+      }
+    });
+  }
 }
