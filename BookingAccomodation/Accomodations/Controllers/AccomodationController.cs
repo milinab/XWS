@@ -17,12 +17,13 @@ namespace Accomodations.Controllers
         private readonly AccomodationService _service;
         private readonly IMapper _mapper;
         private readonly AccomodationAvailableService accomodationAvailableService;
-
-        public AccomodationController(AccomodationService service, IMapper mapper, AccomodationAvailableService accomodationAvailableService)
+        private readonly GradeService _gradeService;
+        public AccomodationController(AccomodationService service, IMapper mapper, AccomodationAvailableService accomodationAvailableService, GradeService gradeService)
         {
             _service = service;
             _mapper = mapper;
             this.accomodationAvailableService = accomodationAvailableService;
+            this._gradeService = gradeService;
         }
 
         [HttpGet]
@@ -81,7 +82,7 @@ namespace Accomodations.Controllers
 
             return results;
         }
-        
+
         [AllowAnonymous]
         [HttpGet("delete/{id}")]
         public async Task<ActionResult<Accomodation>> DeleteAccommodationsWithHostId(Guid id)
@@ -89,6 +90,63 @@ namespace Accomodations.Controllers
             await _service.DeleteWithHostId(id);
             return Ok(new { message = "Deleted host owned accommodations successfully" });
         }
+        
+        [AllowAnonymous]
+        [HttpGet("getByAccomodation/{id}")]
+        public async Task<List<Grade>> GetByAccomodationId(Guid id) =>
+            await _gradeService.GetAllByAccomodationIdAsync(id);
+        
+        [AllowAnonymous]
+        [HttpGet("getByGuest/{id}")]
+        public async Task<List<Grade>> GetByGuestId(Guid id) =>
+            await _gradeService.GetAllByGuestIdAsync(id);
+        
+        [AllowAnonymous]
+        [HttpDelete("deleteGrade/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var hostGrade = await _gradeService.GetGradeByIdAsync(id);
 
+            if (hostGrade is null)
+                return NotFound();
+
+            await _gradeService.DeleteAsync(id);
+
+            return NoContent();
+        }
+        
+        [AllowAnonymous]
+        [HttpPut("updateGrade/{id}")]
+        public async Task<IActionResult> Update(Guid id, Grade updateHostGrade)
+        {
+            if (!updateHostGrade.Validate())
+                return BadRequest();
+
+            var hostGrade = await _gradeService.GetGradeByIdAsync(id);
+
+            if (hostGrade is null)
+                return NotFound();
+
+            updateHostGrade.Id = hostGrade.Id;
+
+            await _gradeService.UpdateAsync(id, updateHostGrade);
+
+            return NoContent();
+        }
+        [AllowAnonymous]
+        [HttpGet("allGrade")]
+        public async Task<List<Grade>> Get() =>
+            await _gradeService.GetAllAsync();
+        
+        [AllowAnonymous]
+        [HttpPost("grade")]
+        public async Task<IActionResult> Create(Grade newHostGrade)
+        {
+            if(!newHostGrade.Validate())
+                return BadRequest();
+
+            await _gradeService.CreateAsync(newHostGrade);
+            return CreatedAtAction(nameof(Get), new { id = newHostGrade.Id }, newHostGrade);
+        }
     }
 }

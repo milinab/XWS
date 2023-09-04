@@ -4,6 +4,10 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AccommodationDto} from "../model/accomodation.dto";
 import {Reservation} from "../model/reservation.model";
 import {Accommodation} from "../model/accommodation";
+import {GradeDto} from "../dto/gradeDto.model";
+import {HostGrade} from "../model/hostGrade";
+import {GradeAccomodationDto} from "../dto/gradeAccomodationDto.model";
+import {AccomodationGrade} from "../model/accomodationGrade.model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +37,25 @@ export class AccommodationService {
 
   GetAccomodations(): Observable<Accommodation[]> {
     return this.http.get<Accommodation[]>(`${this.apiHost}api/Accomodation`);
+  }
+  createAccomodationGrade(newAccomodationGrade: GradeAccomodationDto): Observable<GradeDto> {
+    return this.http.post<HostGrade>(this.apiHost + 'api/Accomodation/grade', newAccomodationGrade, { headers: this.headers });
+  }
+
+  updateAccomodationGrade(id: string, updateHostGrade: AccomodationGrade): Observable<void> {
+    return this.http.put<void>(this.apiHost + 'api/Accomodation/updateGrade/' + id, updateHostGrade, { headers: this.headers });
+  }
+
+  deleteHostGrade(id: string): Observable<void> {
+    return this.http.delete<void>(this.apiHost + 'api/Accomodation/deleteGrade/' + id);
+  }
+
+  getAccomodationGradesByAccomodationId(id: string): Observable<AccomodationGrade[]> {
+    return this.http.get<AccomodationGrade[]>(this.apiHost + 'api/Accomodation/getByAccomodation/' + id);
+  }
+
+  getGradesByGuestId(guestId: string): Observable<AccomodationGrade[]> {
+    return this.http.get<AccomodationGrade[]>(this.apiHost + 'api/Accomodation/getByGuest/' + guestId);
   }
 
 

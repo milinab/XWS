@@ -13,6 +13,10 @@ import {GradeComponent} from "./modules/pages/grade/grade.component";
 import {GuestGradesComponent} from "./modules/pages/guest-grades/guest-grades.component";
 import {Accommodation} from "./modules/booking/model/accommodation";
 import {AccommodationsComponent} from "./modules/pages/accommodations/accommodations.component";
+import {GradeAccomodationComponent} from "./modules/pages/grade-accomodation/grade-accomodation.component";
+import {
+  GuestGradesAccomodationComponent
+} from "./modules/pages/guest-grades-accomodation/guest-grades-accomodation.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +31,9 @@ const routes: Routes = [
   { path: 'host-grade', component: HostGradesComponent},
   { path: 'grade', component: GradeComponent},
   { path: 'guest-grade', component: GuestGradesComponent},
-  { path: 'accommodations', component: AccommodationsComponent}
+  { path: 'accommodations', component: AccommodationsComponent},
+  { path: 'grade-accomodation', component: GradeAccomodationComponent},
+  { path: 'guest-grade-accomodation', component: GuestGradesAccomodationComponent}
 ];
 
 @NgModule({

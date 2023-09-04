@@ -91,6 +91,12 @@ namespace reservation_service.Service
             var reservations = await _repository.GetReservationsByGuestIdAsync(guestId);
             return reservations;
         }
+        
+        public async Task<IEnumerable<Reservation>> GetReservationsByGuestId(Guid guestId)
+        {
+            var reservations = await _repository.GetReservationsByGuestId(guestId);
+            return reservations;
+        }
 
         public async Task<bool> IsEligibleToRemove(string id)
         {

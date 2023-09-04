@@ -16,6 +16,8 @@ import { GradeComponent } from './grade/grade.component';
 import { GuestGradesComponent } from './guest-grades/guest-grades.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { GradeAccomodationComponent } from './grade-accomodation/grade-accomodation.component';
+import { GuestGradesAccomodationComponent } from './guest-grades-accomodation/guest-grades-accomodation.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     GradeComponent,
     GuestGradesComponent,
     AccommodationsComponent,
+    GradeAccomodationComponent,
+    GuestGradesAccomodationComponent,
   ],
     imports: [
         CommonModule,
