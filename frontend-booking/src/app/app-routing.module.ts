@@ -11,6 +11,8 @@ import {HostGrade} from "./modules/booking/model/hostGrade";
 import {HostGradesComponent} from "./modules/pages/host-grades/host-grades.component";
 import {GradeComponent} from "./modules/pages/grade/grade.component";
 import {GuestGradesComponent} from "./modules/pages/guest-grades/guest-grades.component";
+import {Accommodation} from "./modules/booking/model/accommodation";
+import {AccommodationsComponent} from "./modules/pages/accommodations/accommodations.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'pending', component: PendingComponent},
   { path: 'host-grade', component: HostGradesComponent},
   { path: 'grade', component: GradeComponent},
-  { path: 'guest-grade', component: GuestGradesComponent}
+  { path: 'guest-grade', component: GuestGradesComponent},
+  { path: 'accommodations', component: AccommodationsComponent}
 ];
 
 @NgModule({

@@ -8,5 +8,6 @@ public interface IAvailablePeriodRepository
     Task<AvailablePeriod> GetByIdAsync(Guid id);
     Task CreateAsync(AvailablePeriod newAvalablePeriod);
     Task UpdateAsync(AvailablePeriod newAvalablePeriod);
+    Task<AvailablePeriod> GetByAccomodationIdAsync(Guid id);
 
 }
