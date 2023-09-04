@@ -339,6 +339,23 @@
       "CorsOptions": {
         "PolicyName": "CorsPolicy"
       }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/delete/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/delete/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
     }
   ],
   "GlobalConfiguration": {

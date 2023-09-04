@@ -19,4 +19,8 @@ export class AccommodationService {
   searchAccommodations(searchRequest: any) {
     return this.http.post<any>(this.apiHost + 'api/accomodation/available', searchRequest, {headers: this.headers});
   }
+
+  deleteAccommodations(id: any): Observable<any> {
+    return this.http.get<any>(this.apiHost + 'api/Accomodation/delete/' + id, {headers: this.headers})
+  }
 }

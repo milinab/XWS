@@ -2,6 +2,8 @@
 using Accomodations.Model;
 using Accomodations.Repository;
 using Accomodations.Service.Interface;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Accomodations.Service
 {
@@ -35,6 +37,11 @@ namespace Accomodations.Service
         {
            return _repository.CheckCityAndNumberOfGuests(searchRequest);
         }
-        
+
+        public async Task DeleteWithHostId(Guid id)
+        {
+             await _repository.DeleteAllWithHostId(id);
+        }
+
     }
 }

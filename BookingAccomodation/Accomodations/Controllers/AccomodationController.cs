@@ -3,6 +3,7 @@ using Accomodations.Model;
 using Accomodations.ProtoServices;
 using Accomodations.Service;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using reservation_service;
 
@@ -79,6 +80,14 @@ namespace Accomodations.Controllers
             }
 
             return results;
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("delete/{id}")]
+        public async Task<ActionResult<Accomodation>> DeleteAccommodationsWithHostId(Guid id)
+        {
+            await _service.DeleteWithHostId(id);
+            return Ok(new { message = "Deleted host owned accommodations successfully" });
         }
 
     }

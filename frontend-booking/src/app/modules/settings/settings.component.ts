@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 import {EditUserNoIdDto} from "../booking/model/editUserNoIdDto";
 import {ChangePasswordComponent} from "../pages/change-password/change-password.component";
 import {MatDialog} from "@angular/material/dialog";
+import {AccommodationService} from "../booking/services/accommodation.service";
 
 @Component({
   selector: 'app-settings',
@@ -21,7 +22,7 @@ export class SettingsComponent implements OnInit {
   isLoggedIn: boolean = false;
 
 
-  constructor(public dialog: MatDialog, private tokenStorageService: TokenStorageService, private router: Router, private userService: UserService) {
+  constructor(public accomomodationService: AccommodationService, public dialog: MatDialog, private tokenStorageService: TokenStorageService, private router: Router, private userService: UserService) {
     this.isLoggedIn = this.tokenStorageService.isLoggedIn()
     this.getUser();
   }
@@ -74,6 +75,7 @@ export class SettingsComponent implements OnInit {
     this.userService.deleteAccount(this.tokenStorageService.getUser().id).subscribe({
       next: (response) => {
         // Handle the successful response here
+        this.accomomodationService.deleteAccommodations(this.tokenStorageService.getUser().id);
         console.log('Request successful:', response);
         this.tokenStorageService.signOut()
         this.router.navigate(['']).then(() => {
