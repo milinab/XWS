@@ -13,6 +13,7 @@ public class Grade
     [BsonRepresentation(BsonType.String)]
     public Guid HostId { get; set; }
     public string GuestUsername { get; set; }
+    public Guid GuestId { get; set; }
     public int Value { get; set; }
     public DateTime Created { get; set; }
 

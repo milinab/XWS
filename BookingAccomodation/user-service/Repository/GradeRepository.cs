@@ -28,7 +28,12 @@ public class GradeRepository : IGradeRespository
 
     public async Task UpdateAsync(Guid id, Grade updateHostGrade) =>  
         await _hostGradeCollection.ReplaceOneAsync(x => x.Id == id, updateHostGrade);
+    public async Task<List<Grade>> GetAllByHostIdAsync(Guid hostId) =>
+        await _hostGradeCollection.Find(x => x.HostId == hostId).ToListAsync();
     
+    public async Task<List<Grade>> GetAllByGuestIdAsync(Guid guestId) =>
+        await _hostGradeCollection.Find(x => x.GuestId == guestId).ToListAsync();
+
     public async Task<Grade> GetGradeByIdAsync(Guid id) =>
         await _hostGradeCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 }

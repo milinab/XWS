@@ -21,8 +21,9 @@ namespace reservation_service.Model
         [BsonRepresentation(BsonType.String)]
         public Guid AccomodationId { get; set; }
         public string hostId { get; set; }
-        public Guid GuestId { get; set; }
         public string GuestUsername { get; set; }
+        public string GuestId { get; set; }
+        
         public ReservationStatus Status { get; set; }
         public Reservation()
         {

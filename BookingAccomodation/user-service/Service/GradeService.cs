@@ -25,4 +25,9 @@ public class GradeService : IGradeService
 
     public async Task<Grade> GetGradeByIdAsync(Guid id) =>
         await _gradeRepository.GetGradeByIdAsync(id);
+    
+    public async Task<List<Grade>> GetAllByHostIdAsync(Guid hostId) =>
+        await _gradeRepository.GetAllByHostIdAsync(hostId);
+    public async Task<List<Grade>> GetAllByGuestIdAsync(Guid guestId) =>
+        await _gradeRepository.GetAllByGuestIdAsync(guestId);
 }

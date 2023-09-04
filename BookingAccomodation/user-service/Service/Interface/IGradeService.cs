@@ -9,4 +9,7 @@ public interface IGradeService
     Task UpdateAsync(Guid id, Grade updateHostGrade);
     Task DeleteAsync(Guid id);
     Task<Grade> GetGradeByIdAsync(Guid id);
+    Task<List<Grade>> GetAllByHostIdAsync(Guid hostId);
+    Task<List<Grade>> GetAllByGuestIdAsync(Guid guestId);
+
 }

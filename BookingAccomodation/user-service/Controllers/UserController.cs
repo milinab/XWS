@@ -148,5 +148,14 @@ namespace user_service.Controllers
                 return NotFound(new { message = "User not found or not eligible for deletion" });
             }
         }
+        [AllowAnonymous]
+        [HttpGet("getByHost/{id}")]
+        public async Task<List<Grade>> GetByHostId(Guid id) =>
+            await _gradeService.GetAllByHostIdAsync(id);
+        
+        [AllowAnonymous]
+        [HttpGet("getByGuest/{id}")]
+        public async Task<List<Grade>> GetByGuestId(Guid id) =>
+            await _gradeService.GetAllByGuestIdAsync(id);
     }
 }

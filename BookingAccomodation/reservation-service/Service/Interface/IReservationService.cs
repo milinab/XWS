@@ -11,5 +11,6 @@ namespace reservation_service.Service.Interface
         Task<bool> AcceptReservationAsync(Guid id);
         Task<bool> DeclineReservationAsync(Guid id);
         Task<bool> IsEligibleToRemove(string id);
+        Task<List<Reservation>> GetReservationsByGuestIdAsync(string guestId);
     }
 }

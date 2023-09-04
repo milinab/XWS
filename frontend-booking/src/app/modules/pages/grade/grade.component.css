@@ -1,0 +1,90 @@
+
+.container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Style for Yes/No columns */
+.yes {
+  color: #28a745;
+}
+
+.no {
+  color: #dc3545;
+}
+
+button:hover {
+  background-color: #0056b3; /* Hover color */
+}
+
+/* Style for the <select> element */
+select {
+  padding: 8px; /* Adjust padding for better appearance */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none; /* Remove the default outline */
+  margin-right: 10px; /* Add right margin to create spacing */
+}
+
+/* Style for the <option> elements within the <select> */
+select option {
+  padding: 8px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style for the <option> elements when hovered */
+select option:hover {
+  background-color: #f2f2f2;
+}
+
+/* Style for the button */
+button {
+  background-color: #007bff; /* Button background color */
+  color: #fff;
+  padding: 8px 16px; /* Adjust padding for better button size */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
