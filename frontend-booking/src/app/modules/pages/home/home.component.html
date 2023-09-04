@@ -36,6 +36,21 @@
         <button type="reset" class="search-alone">Cancel</button>
       </div>
     </form>
+    <hr/>
+    <div class="filter">
+        <mat-button-toggle  (click)="this.wifi = !this.wifi">Wi-Fi</mat-button-toggle>
+        <mat-button-toggle  (click)="this.kitchen = !this.kitchen">Kitchen</mat-button-toggle>
+        <mat-button-toggle  (click)="this.airConditioner = !this.airConditioner">Air conditioner</mat-button-toggle>
+        <mat-button-toggle  (click)="this.parking = !this.parking">Parking</mat-button-toggle>
+      <mat-label style="margin-left: 20px">Min. price</mat-label>
+      <input style="width: 60px; margin-left: 10px" matInput type="number" name="minPrice">
+      <mat-label style="margin: 10px"> - </mat-label>
+      <mat-label style="margin-left: 0px">Max. price</mat-label>
+      <input style="width: 60px; margin-left: 10px" matInput type="number" name="maxPrice">
+      <button mat-raised-button style="margin: 30px" color="accent" (click)="filter()">Filter</button>
+      <button mat-raised-button style="margin: 30px" color="accent" (click)="clear()">Clear filter</button>
+    </div>
+    <hr/>
   </div>
   <hr>
   <div class="accommodation-list" *ngIf="searchResponse && searchResponse.length > 0">

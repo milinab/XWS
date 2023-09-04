@@ -13,6 +13,12 @@ import {AuthService} from "../../booking/services/auth.service";
 })
 export class HomeComponent implements OnInit {
 
+  wifi: Boolean = false;
+  kitchen: Boolean = false;
+  parking: Boolean = false;
+  airConditioner: Boolean = false;
+
+
   searchRequest = {
     city: '',
     startDate: '',
@@ -26,6 +32,11 @@ export class HomeComponent implements OnInit {
   constructor(private accommodationService: AccommodationService, private reservationService: ReservationService, private authService: AuthService ) { }
 
   ngOnInit(): void {
+    this.accommodationService.getAllAccommodations().subscribe(
+      (result) => {
+        this.searchResponse = result;
+      }
+    )
     console.log("Home Component nmOnInit()")
   }
 
@@ -68,4 +79,31 @@ export class HomeComponent implements OnInit {
 
   }
 
+  filter() {
+    this.accommodationService.getAllAccommodations().subscribe(
+      (result) => {
+        this.searchResponse = result;
+        this.searchResponse = this.searchResponse?.filter(item =>
+          item.convenience.wifi === this.wifi &&
+          item.convenience.kitchen === this.kitchen &&
+          item.convenience.parking === this.parking &&
+          item.convenience.airConditioner === this.airConditioner)
+      }
+    )
+
+
+
+    console.log(this.searchResponse?.filter(item => item.convenience.wifi === this.wifi &&
+      item.convenience.kitchen === this.kitchen &&
+      item.convenience.wifi === this.parking &&
+      item.convenience.airConditioner === this.airConditioner))
+    console.log(this.wifi, this.kitchen, this.parking, this.airConditioner)
+  }
+
+  clear() {
+    this.accommodationService.searchAccommodations(this.searchRequest).subscribe((res) => {
+      this.searchResponse = res;
+      this.showNoAccommodationsMessage = this.searchResponse?.length === 0;
+    })
+  }
 }

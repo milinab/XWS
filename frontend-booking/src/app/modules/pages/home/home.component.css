@@ -173,3 +173,9 @@ hr {
 .no-accommodations-message p {
   margin: 0;
 }
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

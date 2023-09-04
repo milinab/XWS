@@ -14,6 +14,7 @@ import {UserReservationsComponent} from "./user-reservations/user-reservations.c
 import { HostGradesComponent } from './host-grades/host-grades.component';
 import { GradeComponent } from './grade/grade.component';
 import { GuestGradesComponent } from './guest-grades/guest-grades.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { GuestGradesComponent } from './guest-grades/guest-grades.component';
         MatFormFieldModule,
         MaterialModule,
         FormsModule,
-        MatInputModule
+        MatInputModule,
+        MatButtonToggleModule
     ]
 })
 export class PagesModule { }

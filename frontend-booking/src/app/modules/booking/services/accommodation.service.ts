@@ -23,4 +23,8 @@ export class AccommodationService {
   deleteAccommodations(id: any): Observable<any> {
     return this.http.get<any>(this.apiHost + 'api/Accomodation/delete/' + id, {headers: this.headers})
   }
+
+  getAllAccommodations(): Observable<any> {
+    return this.http.get<any>(this.apiHost + 'api/Accomodation', {headers: this.headers})
+  }
 }
