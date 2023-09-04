@@ -14,6 +14,7 @@ import {UserReservationsComponent} from "./user-reservations/user-reservations.c
 import { HostGradesComponent } from './host-grades/host-grades.component';
 import { GradeComponent } from './grade/grade.component';
 import { GuestGradesComponent } from './guest-grades/guest-grades.component';
+import { AccommodationsComponent } from './accommodations/accommodations.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { GuestGradesComponent } from './guest-grades/guest-grades.component';
     HostGradesComponent,
     GradeComponent,
     GuestGradesComponent,
+    AccommodationsComponent,
   ],
     imports: [
         CommonModule,

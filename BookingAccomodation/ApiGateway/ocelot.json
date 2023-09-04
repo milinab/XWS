@@ -103,6 +103,23 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/AvailablePeriod/{id:guid}/GetAvailablePeriodByAccomodationId",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/AvailablePeriod/{id:guid}/GetAvailablePeriodByAccomodationId",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/accomodation/available",
       "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
 

@@ -15,6 +15,7 @@ class Convenience {
 
 export class AccommodationDto{
   name: string = '';
+  hostId: string = '';
   description: string = '';
   address: Address = new Address();
   convenience: Convenience = new Convenience();
@@ -26,6 +27,7 @@ export class AccommodationDto{
   public constructor(obj?: any) {
     if(obj){
       this.name = obj.name;
+      this.hostId = obj.hostId;
       this.description = obj.description;
       this.address = obj.address;
       this.convenience = obj.convenience;

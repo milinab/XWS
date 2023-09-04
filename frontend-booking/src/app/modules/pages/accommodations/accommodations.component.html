@@ -1,0 +1,54 @@
+<!-- accommodations.component.html -->
+
+<div *ngIf="accomodations.length > 0; else noAccommodations">
+  <h1>Accommodations</h1>
+  <ul>
+    <li *ngFor="let accommodation of accomodations">
+      <h2>{{ accommodation.name }}</h2>
+      <p>Host: {{ accommodation.hostId }}</p>
+      <p>Address: {{ accommodation.address.streetNumber }} {{ accommodation.address.streetName }}, {{ accommodation.address.city }}, {{ accommodation.address.country }}</p>
+      <p>Conveniences:</p>
+      <ul>
+        <li *ngIf="accommodation.convenience.wifi">Wi-Fi</li>
+        <li *ngIf="accommodation.convenience.kitchen">Kitchen</li>
+        <li *ngIf="accommodation.convenience.airConditioner">Air Conditioner</li>
+        <li *ngIf="accommodation.convenience.parking">Parking</li>
+      </ul>
+      <p>Min Guests: {{ accommodation.minNumberOfGuests }}</p>
+      <p>Max Guests: {{ accommodation.maxNumberOfGuests }}</p>
+      <div *ngFor="let photo of accommodation.photos">
+        <img src="{{ photo }}" alt="Accommodation Photo" />
+      </div>
+
+      <button (click)="showAvailablePeriodsForm(accommodation.id)">Show Available Periods</button>
+      <form (submit)="createAvailablePeriod(accommodation.id)">
+        <h3>Create Available Period</h3>
+        <input type="hidden" name="accomodationId" [(ngModel)]="accommodation.id">
+        <label for="start">Start Date:</label>
+        <input type="date" id="start" name="start" [(ngModel)]="availablePeriod.start" required>
+        <label for="end">End Date:</label>
+        <input type="date" id="end" name="end" [(ngModel)]="availablePeriod.end" required>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" [(ngModel)]="availablePeriod.price" required>
+        <label for="type">Type:</label>
+        <input type="number" id="type" name="type" [(ngModel)]="availablePeriod.type" required>
+        <button type="submit">Create</button>
+      </form>
+    </li>
+  </ul>
+</div>
+<div>
+  <h3>Available Periods</h3>
+  <ul>
+    <li *ngFor="let period of availablePeriods">
+      <p>Start Date: {{ period.start }}</p>
+      <p>End Date: {{ period.end }}</p>
+      <p>Price: {{ period.price }}</p>
+      <!-- Add more fields as needed -->
+    </li>
+  </ul>
+</div>
+
+<ng-template #noAccommodations>
+  <p>No accommodations available.</p>
+</ng-template>

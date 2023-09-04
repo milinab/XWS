@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {AccommodationDto} from "../model/accomodation.dto";
+import {Reservation} from "../model/reservation.model";
+import {Accommodation} from "../model/accommodation";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,7 @@ export class AccommodationService {
 
   constructor(private http: HttpClient) { }
 
-  createAccommodation(accomodation: any): Observable<any> {
+  createAccommodation(accomodation: AccommodationDto): Observable<any> {
     return this.http.post<any>(this.apiHost + 'api/Accomodation', accomodation, {headers: this.headers});
   }
 
@@ -23,4 +26,10 @@ export class AccommodationService {
   deleteAccommodations(id: any): Observable<any> {
     return this.http.get<any>(this.apiHost + 'api/Accomodation/delete/' + id, {headers: this.headers})
   }
+
+  GetAccomodations(): Observable<Accommodation[]> {
+    return this.http.get<Accommodation[]>(`${this.apiHost}api/Accomodation`);
+  }
+
+
 }

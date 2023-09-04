@@ -31,6 +31,9 @@ public class AvailablePeriodService
         return true;
     }
 
+    public async Task<AvailablePeriod> GetAvailablePeriodByAccomodationId(Guid id) =>
+        await _availablePeriodRepository.GetByAccomodationIdAsync(id);
+
     private bool IsAvailablePeriodValidForAdd(AvailablePeriod availablePeriod)
     {
         var availablePeriods = _availablePeriodRepository.GetByAccommodationId(availablePeriod.AccomodationId);
