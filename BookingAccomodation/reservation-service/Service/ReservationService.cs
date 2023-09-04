@@ -94,7 +94,7 @@ namespace reservation_service.Service
             List<Reservation> reservations = await GetAllAsync();
             foreach (var r in reservations)
             {
-                if ((r.hostId.Equals(id) || r.GuestId.Equals(id)) && r.Status == ReservationStatus.Active)
+                if ((r.hostId.Equals(id) || r.GuestId.Equals(UserId)) && r.Status == ReservationStatus.Active)
                 {
                     return false;
                 }
