@@ -56,5 +56,26 @@ namespace Accomodations.Repository
                     && numberOfGuests <= a.MaxNumberOfGuests
             ).ToList();
         }
+
+        public async Task DeleteAllWithHostId(Guid userId)
+        {
+            // Create a filter to find the objects with the specified HostId.
+            var filter = Builders<Accomodation>.Filter.Eq(x => x.HostId, userId);
+
+            // Delete all objects that match the filter asynchronously.
+            var result = await _accomodationsCollection.DeleteManyAsync(filter);
+
+            if (result.DeletedCount > 0)
+            {
+                // At least one object was successfully deleted.
+                Console.WriteLine($"{result.DeletedCount} objects with HostId {userId} deleted.");
+            }
+            else
+            {
+                // No objects with the given HostId were found.
+                Console.WriteLine($"No objects with HostId {userId} found.");
+            }
+        }
+
     }
 }

@@ -7,5 +7,6 @@ namespace Accomodations.Repository.Interface
         Task<IEnumerable<Accomodation>> GetAllAsync();
         Task CreateAsync(Accomodation accomodation);
         Task<Accomodation> GetAccomodationById(Guid id);
+        Task DeleteAllWithHostId(Guid id);
     }
 }
