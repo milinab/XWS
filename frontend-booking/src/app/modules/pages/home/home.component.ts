@@ -5,6 +5,7 @@ import {ReservationService} from "../../booking/services/reservation.service";
 import {Reservation} from "../../booking/model/reservation.model";
 import { v4 as uuidv4 } from 'uuid';
 import {AuthService} from "../../booking/services/auth.service";
+import {TokenStorageService} from "../../booking/services/token-storage.service";
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   searchResponse: Accommodation[] | undefined;
   showNoAccommodationsMessage: boolean = false;
 
-  constructor(private accommodationService: AccommodationService, private reservationService: ReservationService, private authService: AuthService ) { }
+  constructor(private tokenStorageService: TokenStorageService, private accommodationService: AccommodationService, private reservationService: ReservationService, private authService: AuthService ) { }
 
   ngOnInit(): void {
     this.accommodationService.getAllAccommodations().subscribe(
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
   searchAccommodations() {
     this.accommodationService.searchAccommodations(this.searchRequest).subscribe((res) => {
       this.searchResponse = res;
+      console.log(this.searchResponse);
       this.showNoAccommodationsMessage = this.searchResponse?.length === 0;
     })
   }
@@ -54,11 +56,11 @@ export class HomeComponent implements OnInit {
       startDate: new Date(this.searchRequest.startDate),
       endDate: new Date(this.searchRequest.endDate),
       accomodationId: accomodation.id,
-      guestUsername: "guest_username_here", // Replace with the actual guest username
+      guestUsername: "Anonymous", // Replace with the actual guest username
       canceled: false,
-      hostId: '',
+      hostId: accomodation.hostId,
       status: 1,
-      guestId: ''
+      guestId: this.tokenStorageService.getUser().id
     };
 
 

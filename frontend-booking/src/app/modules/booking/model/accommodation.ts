@@ -16,6 +16,7 @@ class Convenience {
 
 export class Accommodation{
   id: string = '';
+  hostId: string = '';
   name: string = '';
   address: Address = new Address();
   convenience: Convenience = new Convenience();
@@ -28,6 +29,7 @@ export class Accommodation{
     if(obj){
      this.id = obj.id;
       this.name = obj.name;
+      this.hostId = obj.hostId;
       this.address = obj.address;
       this.convenience = obj.convenience;
       this.photos = obj.photos;
