@@ -30,7 +30,7 @@
         <input type="date" id="end" name="end" [(ngModel)]="availablePeriod.end" required>
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" [(ngModel)]="availablePeriod.price" required>
-        <label for="type">Type:</label>
+        <label for="type">Price type:</label>
         <input type="number" id="type" name="type" [(ngModel)]="availablePeriod.type" required>
         <button type="submit">Create</button>
       </form>
@@ -44,7 +44,8 @@
       <p>Start Date: {{ period.start }}</p>
       <p>End Date: {{ period.end }}</p>
       <p>Price: {{ period.price }}</p>
-      <!-- Add more fields as needed -->
+      <p>Price type: {{ period.type }}</p>
+      <button (click)="showEditWindow(period)">Update</button>
     </li>
   </ul>
 </div>
