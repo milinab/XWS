@@ -69,5 +69,10 @@
     <input type="checkbox" id="parking" name="parking" [(ngModel)]="accommodation.convenience.parking">
   </div>
 
+  <div>
+    <label for="isAutomatic">Automatic reservation?</label>
+    <input type="checkbox" id="isAutomatic" name="isAutomatic" [(ngModel)]="accommodation.isAutomatic">
+  </div>
+
   <button type="submit" [disabled]="accommodationForm.invalid">Create Accommodation</button>
 </form>
