@@ -2,7 +2,7 @@
   <h1>Grades</h1>
   <ul>
     <li *ngFor="let grade of guestGrades">
-      <p>Host id: {{ grade.hostId }}</p>
+      <p>Accomodation id: {{ grade.accomodationId }}</p>
       <p>
         Value:
         <span *ngIf="selectedGrade !== grade; else edittGrade">

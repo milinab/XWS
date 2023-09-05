@@ -17,6 +17,8 @@ import { GuestGradesComponent } from './guest-grades/guest-grades.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { EditPeriodComponent } from './edit-period/edit-period.component';
+import { GradeAccomodationComponent } from './grade-accomodation/grade-accomodation.component';
+import { GuestGradesAccomodationComponent } from './guest-grades-accomodation/guest-grades-accomodation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { EditPeriodComponent } from './edit-period/edit-period.component';
     GradeComponent,
     GuestGradesComponent,
     AccommodationsComponent,
+    GradeAccomodationComponent,
+    GuestGradesAccomodationComponent,
     EditPeriodComponent,
   ],
     imports: [

@@ -47,8 +47,10 @@ builder.Services.Configure<KestrelServerOptions>(options =>
 
 builder.Services.AddSingleton<AccomodationRepository>();
 builder.Services.AddSingleton<AvailablePeriodRepository>();
+builder.Services.AddSingleton<GradeRepository>();
 builder.Services.AddSingleton<AccomodationService>();
 builder.Services.AddSingleton<AvailablePeriodService>();
+builder.Services.AddSingleton<GradeService>();
 builder.Services.AddSingleton<AccomodationAvailableService>();
 builder.Services.AddSingleton<GrpcGetHost>();
 

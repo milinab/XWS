@@ -256,6 +256,23 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/api/User/updateGrade/{id:guid}",
+      "UpstreamHttpMethod": [ "Put", "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "user-service",
+          "Port": 5400
+        }
+      ],
+      "DownstreamPathTemplate": "/api/User/updateGrade/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
       "UpstreamPathTemplate": "/api/User/grade",
       "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
 
@@ -403,6 +420,108 @@
         }
       ],
       "DownstreamPathTemplate": "/api/User/delete/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/getByAccomodation/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/getByAccomodation/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/getByGuest/{id:guid}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/getByGuest/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/deleteGrade/{id:guid}",
+      "UpstreamHttpMethod": [ "Delete", "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/deleteGrade/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/updateGrade/{id:guid}",
+      "UpstreamHttpMethod": [ "Put", "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/updateGrade/{id:guid}",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/allGrade",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/allGrade",
+      "EnableCors": true,
+      "CorsOptions": {
+        "PolicyName": "CorsPolicy"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/accomodation/grade",
+      "UpstreamHttpMethod": [ "Get", "Post", "Options" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "Accomodations",
+          "Port": 5200
+        }
+      ],
+      "DownstreamPathTemplate": "/api/accomodation/grade",
       "EnableCors": true,
       "CorsOptions": {
         "PolicyName": "CorsPolicy"

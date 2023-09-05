@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorageService} from "../../booking/services/token-storage.service";
 import {HostGrade} from "../../booking/model/hostGrade";
 import {AuthService} from "../../booking/services/auth.service";
+import {TokenStorageService} from "../../booking/services/token-storage.service";
+import {AccommodationService} from "../../booking/services/accommodation.service";
+import {AccomodationGrade} from "../../booking/model/accomodationGrade.model";
 
 @Component({
-  selector: 'app-guest-grades',
-  templateUrl: './guest-grades.component.html',
-  styleUrls: ['./guest-grades.component.css']
+  selector: 'app-guest-grades-accomodation',
+  templateUrl: './guest-grades-accomodation.component.html',
+  styleUrls: ['./guest-grades-accomodation.component.css']
 })
-export class GuestGradesComponent implements OnInit {
+export class GuestGradesAccomodationComponent implements OnInit {
   guestId: string = '';
-  guestGrades: HostGrade[] = [];
-  selectedGrade: HostGrade | null = null;
+  guestGrades: AccomodationGrade[] = [];
+  selectedGrade: AccomodationGrade | null = null;
 
-
-  constructor(private authService: AuthService, private tokenStorageService: TokenStorageService) {
+  constructor(private accomodationService: AccommodationService, private tokenStorageService: TokenStorageService) {
     this.guestId = tokenStorageService.getUser().id;
   }
 
   ngOnInit(): void {
     this.loadGuestGrades();
-
   }
 
-
   loadGuestGrades() {
-    this.authService.getGradesByGuestId(this.guestId).subscribe(
-      (grades: HostGrade[]) => {
+    this.accomodationService.getGradesByGuestId(this.guestId).subscribe(
+      (grades: AccomodationGrade[]) => {
         this.guestGrades = grades;
       },
       (error) => {
@@ -34,15 +33,14 @@ export class GuestGradesComponent implements OnInit {
       }
     );
   }
-
-  editGrade(grade: HostGrade) {
+  editGrade(grade: AccomodationGrade) {
     // Set the selectedGrade to the grade you want to edit
     this.selectedGrade = grade;
   }
 
-  updateGrade(grade: HostGrade) {
+  updateGrade(grade: AccomodationGrade) {
     if (grade) {
-      this.authService.updateHostGrade(grade.id, grade).subscribe(
+      this.accomodationService.updateAccomodationGrade(grade.id, grade).subscribe(
         () => {
           console.log('Grade updated successfully.');
           this.selectedGrade = null; // Clear the selectedGrade
@@ -56,7 +54,7 @@ export class GuestGradesComponent implements OnInit {
 
   deleteGrade(id: string) {
     if (id) {
-      this.authService.deleteHostGrade(id).subscribe(
+      this.accomodationService.deleteHostGrade(id).subscribe(
         () => {
           console.log('Grade deleted successfully.');
           this.loadGuestGrades(); // Reload the list after deletion
@@ -67,5 +65,4 @@ export class GuestGradesComponent implements OnInit {
       );
     }
   }
-
 }
