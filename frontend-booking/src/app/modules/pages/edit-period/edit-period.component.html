@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="form-wrapper">
+    <div class="title-container">
+      <h1 style="color: orange">Edit period</h1>
+    </div>
+    <mat-form-field class="mat-form-field" color="primary" id="startDateInput" appearance="fill">
+      <mat-label>Start</mat-label>
+      <input matInput class="mat-input-element" type="date"  name="startId"  [(ngModel)]="newPeriod.start" >
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary" id="endDateInput" appearance="fill">
+      <mat-label>End</mat-label>
+      <input matInput class="mat-input-element" type="date"  name="endId"  [(ngModel)]="newPeriod.end" >
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary" id="priceInput" appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput  type="number" class="mat-input-element"   name="priceId"  [(ngModel)]="newPeriod.price" >
+    </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary" id="typeInput" appearance="fill">
+      <mat-label>Type</mat-label>
+      <input matInput  class="mat-input-element" type="number"  name="typeId"  [(ngModel)]="newPeriod.type" >
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="accent" type="submit" (click)="savePeriod()">Save period</button>
+      <button mat-raised-button color="accent" type="submit" (click)="cancel()">Cancel</button>
+    </div>
+
+  </div>
+</div>

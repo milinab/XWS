@@ -16,6 +16,7 @@ import { GradeComponent } from './grade/grade.component';
 import { GuestGradesComponent } from './guest-grades/guest-grades.component';
 import { AccommodationsComponent } from './accommodations/accommodations.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { EditPeriodComponent } from './edit-period/edit-period.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     GradeComponent,
     GuestGradesComponent,
     AccommodationsComponent,
+    EditPeriodComponent,
   ],
     imports: [
         CommonModule,

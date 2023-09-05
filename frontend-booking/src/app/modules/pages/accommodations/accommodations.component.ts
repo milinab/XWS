@@ -6,6 +6,10 @@ import { Accommodation } from "../../booking/model/accommodation";
 import { AccommodationDto } from "../../booking/model/accomodation.dto";
 import { AvailablePeriodService } from "../../booking/services/availablePeriod.service";
 import { AvailablePeriod } from "../../booking/model/availablePeriod";
+import {AvailablePeriodDto} from "../../booking/model/availablePeriodDto";
+import {ChangePasswordComponent} from "../change-password/change-password.component";
+import {MatDialog} from "@angular/material/dialog";
+import {EditPeriodComponent} from "../edit-period/edit-period.component";
 
 @Component({
   selector: 'app-accommodations',
@@ -17,12 +21,12 @@ export class AccommodationsComponent implements OnInit {
   accomodations: Accommodation[] = [];
   accomodationId: string = '';
   showAvailablePeriods: { [key: string]: boolean } = {};
-  availablePeriods: AvailablePeriod[] = [];
+  availablePeriods: AvailablePeriodDto[] = [];
 
   public accommodation: Accommodation = new Accommodation();
   public availablePeriod: AvailablePeriod = new AvailablePeriod();
 
-  constructor(private accommodationService: AccommodationService, private tokenStorageService: TokenStorageService,
+  constructor(public dialog: MatDialog, private accommodationService: AccommodationService, private tokenStorageService: TokenStorageService,
               private availablePeriodService: AvailablePeriodService) {
     this.hostId = this.tokenStorageService.getUser().id;
   }
@@ -72,9 +76,9 @@ export class AccommodationsComponent implements OnInit {
     console.log(accommodationId);
     this.availablePeriodService.getAvailablePeriodByAccommodationId(accommodationId).subscribe(
       (periods) => {
-
-        this.availablePeriods.push(periods);
-        console.log(periods)
+        this.availablePeriods = periods;
+        // this.availablePeriods.push(periods);
+        console.log("PERIODDDDDD", periods)
         console.log(this.availablePeriods);
       },
       (error) => {
@@ -82,4 +86,32 @@ export class AccommodationsComponent implements OnInit {
       }
     );
   }
+
+  showEditWindow(period: AvailablePeriodDto) : void {
+    const dialogRef = this.dialog.open(EditPeriodComponent, {
+      width: '280px',
+      data: {
+        period: period,
+        id: period.id,
+        accommodationId: period.accomodationId
+      }
+    })
+  }
+
+
+ /* updateAvailablePeriod(id: string) {
+    this.availablePeriodService.update(this.availablePeriod).subscribe({
+      next: (response) => {
+        // Handle the successful response here
+        console.log('Update successful:', response);
+        alert("Successfully changed!");
+      },
+      error: (error) => {
+        // Handle any errors here
+        console.error('Error:', error);
+        alert("There was an error changing available period!")
+      }
+    });
+  }*/
+
 }

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AccommodationDto} from "../model/accomodation.dto";
 import {Observable} from "rxjs";
 import {AvailablePeriod} from "../model/availablePeriod";
+import {AvailablePeriodDto} from "../model/availablePeriodDto";
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class AvailablePeriodService{
     return this.http.put<boolean>(this.apiHost+`api/AvailablePeriod`, availablePeriod);
   }
 
-  getAvailablePeriodByAccommodationId(id: string): Observable<AvailablePeriod> {
-    return this.http.get<AvailablePeriod>(this.apiHost + `api/AvailablePeriod/${id}/GetAvailablePeriodByAccomodationId`);
+  getAvailablePeriodByAccommodationId(id: string): Observable<AvailablePeriodDto[]> {
+    return this.http.get<AvailablePeriodDto[]>(this.apiHost + `api/AvailablePeriod/${id}/GetAvailablePeriodByAccomodationId`);
   }
 
 }
