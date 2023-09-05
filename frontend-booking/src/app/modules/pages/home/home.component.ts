@@ -50,15 +50,15 @@ export class HomeComponent implements OnInit {
 
   createReservation(accomodation: Accommodation) {
     const newReservation: Reservation = {
-      id: uuidv4(), // You can generate a new GUID if needed
+      id: uuidv4(),
       created: new Date(),
       startDate: new Date(this.searchRequest.startDate),
       endDate: new Date(this.searchRequest.endDate),
       accomodationId: accomodation.id,
-      guestUsername: "Anonymous", // Replace with the actual guest username
+      guestUsername: "Anonymous",
       canceled: false,
       hostId: accomodation.hostId,
-      status: 1,
+      status: accomodation.isAutomatic ? 0 : 1, // Set status based on isAutomatic
       guestId: this.tokenStorageService.getUser().id
     };
 

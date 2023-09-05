@@ -22,6 +22,7 @@ export class AccommodationDto{
   photos: string[] = [];
   minNumberOfGuests: number = 0;
   maxNumberOfGuests: number = 0;
+  isAutomatic: boolean= false;
 
 
   public constructor(obj?: any) {
@@ -34,6 +35,7 @@ export class AccommodationDto{
       this.photos = obj.photos;
       this.minNumberOfGuests = obj.minNumberOfGuests;
       this.maxNumberOfGuests = obj.maxNumberOfGuests;
+      this.isAutomatic = obj.isAutomatic;
     }
   }
 }
