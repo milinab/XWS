@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "reservation_service";
+
+service GrpcCheckAvailability {
+	rpc CheckAccomodationAvailability (ReservationForCheckRequest) returns(IsAvailableResponse);
+}
+
+message ReservationForCheckRequest{
+	string AccomodationId = 1;
+	string StartDate = 2;
+	string EndDate = 3;
+}
+
+message IsAvailableResponse {
+	bool isAvailable = 1;
+}

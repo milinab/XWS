@@ -1,0 +1,42 @@
+name: dockercompose17164511607915148410
+services:
+  accomodation-service:
+    build:
+      context: C:\Users\Nemanja\source\repos\XML project
+      dockerfile: Accomodations\Dockerfile
+    container_name: accomodation-service
+    depends_on:
+      accomodationdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      AccomodationDatabase:ConnectionString: mongodb://accomodationdb:27017
+      GrpcAccomodationNotifications: http://notification-service:5401
+      GrpcCheckReservations: http://reservation-service:5101
+      GrpcCreate: http://search-service:5001
+    image: accomodationservice
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5200"
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "5201"
+      protocol: tcp
+  accomodationdb:
+    container_name: accomodationdb
+    image: mongo
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 27017
+      published: "18007"
+      protocol: tcp
+    restart: always
+networks:
+  default:
+    name: dockercompose17164511607915148410_default

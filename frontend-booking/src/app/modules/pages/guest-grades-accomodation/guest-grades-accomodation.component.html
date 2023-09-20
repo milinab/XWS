@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Grades</h1>
+  <ul>
+    <li *ngFor="let grade of guestGrades">
+      <p>Accomodation id: {{ grade.accomodationId }}</p>
+      <p>
+        Value:
+        <span *ngIf="selectedGrade !== grade; else edittGrade">
+          {{ grade.value }}
+        </span>
+        <ng-template #edittGrade>
+          <input type="number" [(ngModel)]="grade.value" />
+        </ng-template>
+      </p>
+      <p>Created: {{ grade.created | date }}</p>
+      <button (click)="editGrade(grade)">Edit</button>
+      <button (click)="updateGrade(grade)">Update</button>
+      <button (click)="deleteGrade(grade.id)">Delete</button>
+    </li>
+  </ul>
+</div>

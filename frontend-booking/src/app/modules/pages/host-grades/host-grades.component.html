@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Grades</h1>
+  <p>Average Grade: {{ averageGrade.toFixed(2) }}</p>
+
+  <ul>
+    <li *ngFor="let grade of hostGrades">
+      <p>Grade ID: {{ grade.id }}</p>
+      <p>Guest Username: {{ grade.guestUsername }}</p>
+      <p>Value: {{ grade.value }}</p>
+      <p>Created: {{ grade.created | date }}</p>
+    </li>
+  </ul>
+</div>

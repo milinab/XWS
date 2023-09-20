@@ -1,0 +1,105 @@
+name: dockercompose17164511607915148410
+services:
+  accomodation-service:
+    build:
+      context: C:\Users\Nemanja\source\repos\XML project
+      dockerfile: Accomodations\Dockerfile
+    container_name: accomodation-service
+    depends_on:
+      accomodationdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      AccomodationDatabase:ConnectionString: mongodb://accomodationdb:27017
+      DatabaseName: AccomodationDB
+    image: accomodationservice
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5200"
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "5201"
+      protocol: tcp
+  accomodationdb:
+    container_name: accomodationdb
+    image: mongo
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 27017
+      published: "18007"
+      protocol: tcp
+    restart: always
+  mongo-express:
+    depends_on:
+      accomodationdb:
+        condition: service_started
+    environment:
+      ME_CONFIG_MONGODB_SERVER: accomodationdb
+    image: mongo-express
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 8081
+      published: "8081"
+      protocol: tcp
+    restart: always
+  mongo-express1:
+    depends_on:
+      reservationdb:
+        condition: service_started
+    environment:
+      ME_CONFIG_MONGODB_SERVER: reservationdb
+    image: mongo-express
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 8081
+      published: "8082"
+      protocol: tcp
+    restart: always
+  reservation-service:
+    build:
+      context: C:\Users\Nemanja\source\repos\XML project
+      dockerfile: reservation-service\Dockerfile
+    container_name: reservation-service
+    depends_on:
+      reservationdb:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DatabaseName: ReservationDB
+      ReservationDatabase:ConnectionString: mongodb://reservationdb:27017
+    image: reservationservice
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5100"
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      published: "5101"
+      protocol: tcp
+  reservationdb:
+    container_name: reservationdb
+    image: mongo
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 27017
+      published: "18005"
+      protocol: tcp
+    restart: always
+networks:
+  default:
+    name: dockercompose17164511607915148410_default

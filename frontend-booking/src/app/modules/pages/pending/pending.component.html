@@ -1,0 +1,28 @@
+<div>
+  <h2>Reservations</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Reservation ID</th>
+      <th>Created</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Guest Username</th>
+      <th>Actions</th> <!-- Added column for buttons -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.id }}</td>
+      <td>{{ reservation.created | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+      <td>{{ reservation.startDate | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ reservation.endDate | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ reservation.guestUsername }}</td>
+      <td>
+        <button class="custom-button" (click)="acceptReservation(reservation)">Accept</button>
+        <button class="custom-button" (click)="declineReservation(reservation)">Decline</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

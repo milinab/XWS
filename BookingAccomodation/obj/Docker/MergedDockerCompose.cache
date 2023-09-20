@@ -1,0 +1,35 @@
+name: dockercompose17164511607915148410
+services:
+  accomodations:
+    build:
+      context: C:\Users\Nemanja\source\repos\XML project
+      dockerfile: Accomodations\Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: accomodations
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Nemanja\AppData\Roaming/Microsoft/UserSecrets
+      target: C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Nemanja\AppData\Roaming/ASP.NET/Https
+      target: C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose17164511607915148410_default

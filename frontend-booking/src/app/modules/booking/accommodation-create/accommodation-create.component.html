@@ -1,0 +1,78 @@
+<form (ngSubmit)="createAccommodation()" #accommodationForm="ngForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="accommodation.name" required>
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" [(ngModel)]="accommodation.description">
+  </div>
+
+  <div>
+    <label for="streetNumber">Street Number:</label>
+    <input type="text" id="streetNumber" name="streetNumber" [(ngModel)]="accommodation.address.streetNumber" required>
+  </div>
+
+  <div>
+    <label for="streetName">Street Name:</label>
+    <input type="text" id="streetName" name="streetName" [(ngModel)]="accommodation.address.streetName" required>
+  </div>
+
+  <div>
+    <label for="postalCode">Postal Code:</label>
+    <input type="text" id="postalCode" name="postalCode" [(ngModel)]="accommodation.address.postalCode" required>
+  </div>
+
+  <div>
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" [(ngModel)]="accommodation.address.city" required>
+  </div>
+
+  <div>
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" [(ngModel)]="accommodation.address.country" required>
+  </div>
+
+  <div>
+    <label for="minGuests">Min Guests:</label>
+    <input type="number" id="minGuests" name="minGuests" [(ngModel)]="accommodation.minNumberOfGuests" required>
+  </div>
+
+  <div>
+    <label for="maxGuests">Max Guests:</label>
+    <input type="number" id="maxGuests" name="maxGuests" [(ngModel)]="accommodation.maxNumberOfGuests" required>
+  </div>
+
+  <div>
+    <label for="photos">Photos:</label>
+    <input type="file" id="photos" name="photos" (change)="handlePhotosChange($event)" multiple required>
+  </div>
+
+  <div>
+    <label for="kitchen">Kitchen:</label>
+    <input type="checkbox" id="kitchen" name="kitchen" [(ngModel)]="accommodation.convenience.kitchen">
+  </div>
+
+  <div>
+    <label for="wifi">WiFi:</label>
+    <input type="checkbox" id="wifi" name="wifi" [(ngModel)]="accommodation.convenience.wifi">
+  </div>
+
+  <div>
+    <label for="airConditioner">Air Conditioner:</label>
+    <input type="checkbox" id="airConditioner" name="airConditioner" [(ngModel)]="accommodation.convenience.airConditioner">
+  </div>
+
+  <div>
+    <label for="parking">Parking:</label>
+    <input type="checkbox" id="parking" name="parking" [(ngModel)]="accommodation.convenience.parking">
+  </div>
+
+  <div>
+    <label for="isAutomatic">Automatic reservation?</label>
+    <input type="checkbox" id="isAutomatic" name="isAutomatic" [(ngModel)]="accommodation.isAutomatic">
+  </div>
+
+  <button type="submit" [disabled]="accommodationForm.invalid">Create Accommodation</button>
+</form>

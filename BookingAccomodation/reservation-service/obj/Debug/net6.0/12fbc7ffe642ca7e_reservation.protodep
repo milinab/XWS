@@ -1,0 +1,2 @@
+obj\Debug\net6.0\Protos/Reservation.cs \
+obj\Debug\net6.0\Protos/ReservationGrpc.cs: Protos/reservation.proto

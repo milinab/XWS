@@ -1,0 +1,18 @@
+<body>
+<header>
+  <h2 class="logo">Booking.rs</h2>
+  <nav class="navigation">
+    <a href="">Home</a>
+    <a *ngIf="isLoggedIn" href="/user-reservations">Your reservations</a>
+    <a  *ngIf="isLoggedIn" href="/accommodation-create">Create accommodation</a>
+    <a  *ngIf="isLoggedIn" href="/accommodations">Create available period</a>
+
+
+    <button class="btnLogin-popup" *ngIf="!isLoggedIn" (click)="routeToSignUp()">Sign up</button>
+    <button class="btnLogin-popup" *ngIf="!isLoggedIn" (click)="routeToSignIn()">Sign in</button>
+    <button class="btnLogin-popup" *ngIf="isLoggedIn" (click)="signOut()">Sign out</button>
+    <button mat-button *ngIf="isLoggedIn" (click)="routeToCart()"><mat-icon>settings</mat-icon></button>
+
+  </nav>
+</header>
+</body>

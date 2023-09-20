@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Booking App</title>
+</head>
+
+<body>
+<div>
+  <hr>
+  <div>
+    <div class="spacing"></div>
+    <div class="spacing"></div>
+    <hr>
+    <form (ngSubmit)="searchAccommodations()" class="search-div">
+      <mat-form-field class="label-input example-full-width">
+        <mat-label>Location</mat-label>
+        <input matInput type="text" name="city" [(ngModel)]="searchRequest.city">
+      </mat-form-field>
+      <mat-form-field class="label-input example-full-width">
+        <mat-label>Start Date</mat-label>
+        <input matInput type="date" name="startDate" [(ngModel)]="searchRequest.startDate">
+      </mat-form-field>
+      <mat-form-field class="label-input example-full-width">
+        <mat-label>End Date</mat-label>
+        <input matInput type="date" name="endDate" [(ngModel)]="searchRequest.endDate">
+      </mat-form-field>
+      <mat-form-field class="label-input example-full-width">
+        <mat-label>Guests</mat-label>
+        <input matInput type="number" name="guests" [(ngModel)]="searchRequest.numberOfGuests">
+      </mat-form-field>
+      <div>
+        <button type="submit" class="search-alone" (click)="submit()">Search</button>
+      </div>
+      <div>
+        <button type="reset" class="search-alone">Cancel</button>
+      </div>
+    </form>
+    <hr/>
+    <div class="filter">
+        <mat-button-toggle  (click)="this.wifi = !this.wifi">Wi-Fi</mat-button-toggle>
+        <mat-button-toggle  (click)="this.kitchen = !this.kitchen">Kitchen</mat-button-toggle>
+        <mat-button-toggle  (click)="this.airConditioner = !this.airConditioner">Air conditioner</mat-button-toggle>
+        <mat-button-toggle  (click)="this.parking = !this.parking">Parking</mat-button-toggle>
+      <mat-label style="margin-left: 20px">Min. price</mat-label>
+      <input style="width: 60px; margin-left: 10px" matInput type="number" name="minPrice">
+      <mat-label style="margin: 10px"> - </mat-label>
+      <mat-label style="margin-left: 0px">Max. price</mat-label>
+      <input style="width: 60px; margin-left: 10px" matInput type="number" name="maxPrice">
+      <button mat-raised-button style="margin: 30px" color="accent" (click)="filter()">Filter</button>
+      <button mat-raised-button style="margin: 30px" color="accent" (click)="clear()">Clear filter</button>
+    </div>
+    <hr/>
+  </div>
+  <hr>
+  <div class="accommodation-list" *ngIf="searchResponse && searchResponse.length > 0">
+    <div class="accommodation-card" *ngFor="let acc of searchResponse">
+      <h2 class="accommodation-name">{{ acc.accomodation.name }}</h2>
+      <p class="accommodation-location">{{ acc.accomodation.address.city }}, {{ acc.accomodation.address.country }}</p>
+      <p class="accommodation-details">
+        Min/Max Guests: {{ acc.accomodation.minNumberOfGuests }} / {{ acc.accomodation.maxNumberOfGuests }}
+      </p>
+      <p class="accommodation-details">
+        WiFi: {{ acc.accomodation.convenience.wifi ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        Parking: {{ acc.accomodation.convenience.parking ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        Kitchen: {{ acc.accomodation.convenience.kitchen ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        airConditioner: {{ acc.accomodation.convenience.airConditioner ? 'Available' : 'Not Available' }}
+      </p>
+      <p class="accommodation-details">
+        FULL PRICE: {{calculatePrice(acc.availablePeriod)}}$ / {{ acc.availablePeriod.type === 0 ? 'Price per guest' : 'Price per night' }}: {{ acc.availablePeriod.price }}$
+      </p>
+      <!-- Add the Reserve button here -->
+      <button (click)="createReservation(acc.accomodation)" class="reserve-button">Reserve</button>
+    </div>
+  </div>
+  <div class="no-accommodations-message" *ngIf="showNoAccommodationsMessage">
+    <p>Sorry, there are no available accommodations for that interval and place. Please try with different parameters.</p>
+  </div>
+</div>
+</body>
+</html>
